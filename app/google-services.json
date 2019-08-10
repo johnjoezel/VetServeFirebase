@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "1026028961840",
+    "firebase_url": "https://vetservefirebase.firebaseio.com",
+    "project_id": "vetservefirebase",
+    "storage_bucket": "vetservefirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026028961840:android:593847599f73cbf2",
+        "android_client_info": {
+          "package_name": "com.example.vetservefirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1026028961840-3bjfnhtfnf01scea6e2dn64thdoj5udi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vetservefirebase",
+            "certificate_hash": "38762de1e58f53ed024a4d9947618dfc3f4097dd"
+          }
+        },
+        {
+          "client_id": "1026028961840-s4e2nbdsqk95v0m287o8pmqfit4sl0jo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vetservefirebase",
+            "certificate_hash": "d400ace7b9bdd94e20f011f325bc016fbba93c8f"
+          }
+        },
+        {
+          "client_id": "1026028961840-r267dd1kqf1i2595sfa1ckbqg78reoal.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh1xINc_OFzJcgZLflSO6Ut3w5uuIkzTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1026028961840-r267dd1kqf1i2595sfa1ckbqg78reoal.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
