@@ -14,19 +14,20 @@ import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.example.vetservefirebase.R;
+import fr.ganfra.materialspinner.MaterialSpinner;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class AddPetActivity_ViewBinding implements Unbinder {
   private AddPetActivity target;
 
+  private View view7f0a0120;
+
   private View view7f0a011f;
 
   private View view7f0a011e;
 
-  private View view7f0a011d;
-
-  private View view7f0a00e5;
+  private View view7f0a00e6;
 
   private View view7f0a0037;
 
@@ -41,8 +42,8 @@ public class AddPetActivity_ViewBinding implements Unbinder {
 
     View view;
     view = Utils.findRequiredView(source, R.id.spnrSpecies, "field 'spnrSpecies' and method 'onItemSelected'");
-    target.spnrSpecies = Utils.castView(view, R.id.spnrSpecies, "field 'spnrSpecies'", Spinner.class);
-    view7f0a011f = view;
+    target.spnrSpecies = Utils.castView(view, R.id.spnrSpecies, "field 'spnrSpecies'", MaterialSpinner.class);
+    view7f0a0120 = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -54,8 +55,8 @@ public class AddPetActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.spnrGender, "field 'spnrGender' and method 'onItemSelected'");
-    target.spnrGender = Utils.castView(view, R.id.spnrGender, "field 'spnrGender'", Spinner.class);
-    view7f0a011e = view;
+    target.spnrGender = Utils.castView(view, R.id.spnrGender, "field 'spnrGender'", MaterialSpinner.class);
+    view7f0a011f = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -67,8 +68,8 @@ public class AddPetActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.spnrBreed, "field 'spnrBreed' and method 'onItemSelected'");
-    target.spnrBreed = Utils.castView(view, R.id.spnrBreed, "field 'spnrBreed'", Spinner.class);
-    view7f0a011d = view;
+    target.spnrBreed = Utils.castView(view, R.id.spnrBreed, "field 'spnrBreed'", MaterialSpinner.class);
+    view7f0a011e = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -83,7 +84,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = Utils.findRequiredViewAsType(source, R.id.petColor, "field 'txtpetcolor'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petdateofbirth, "field 'txtpetDOB' and method 'getpetDOB'");
     target.txtpetDOB = Utils.castView(view, R.id.petdateofbirth, "field 'txtpetDOB'", TextView.class);
-    view7f0a00e5 = view;
+    view7f0a00e6 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -118,14 +119,14 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = null;
     target.txtpetDOB = null;
 
+    ((AdapterView<?>) view7f0a0120).setOnItemSelectedListener(null);
+    view7f0a0120 = null;
     ((AdapterView<?>) view7f0a011f).setOnItemSelectedListener(null);
     view7f0a011f = null;
     ((AdapterView<?>) view7f0a011e).setOnItemSelectedListener(null);
     view7f0a011e = null;
-    ((AdapterView<?>) view7f0a011d).setOnItemSelectedListener(null);
-    view7f0a011d = null;
-    view7f0a00e5.setOnClickListener(null);
-    view7f0a00e5 = null;
+    view7f0a00e6.setOnClickListener(null);
+    view7f0a00e6 = null;
     view7f0a0037.setOnClickListener(null);
     view7f0a0037 = null;
   }

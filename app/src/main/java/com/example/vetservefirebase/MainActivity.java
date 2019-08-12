@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         headerDisplayname = navHeader.findViewById(R.id.headerDisplayname);
         headerBackground = navHeader.findViewById(R.id.img_header_bg);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         //Set up an AuthStateListener that responds to changes in the user's sign-in state
         if (user != null) {
             email = user.getEmail();

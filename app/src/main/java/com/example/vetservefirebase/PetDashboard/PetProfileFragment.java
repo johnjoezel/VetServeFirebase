@@ -77,7 +77,6 @@ public class PetProfileFragment extends Fragment implements View.OnClickListener
                     petPic.setImageResource(R.drawable.catpic);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

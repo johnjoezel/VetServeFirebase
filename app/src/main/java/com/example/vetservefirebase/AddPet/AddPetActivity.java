@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.vetservefirebase.Base.BaseActivity;
 import com.example.vetservefirebase.Others.Breedname;
 import com.example.vetservefirebase.Others.Utils;
+import com.example.vetservefirebase.Others.Validation;
 import com.example.vetservefirebase.Others.fetchData;
 import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
@@ -31,15 +32,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
+import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class AddPetActivity extends BaseActivity implements AddPetView {
 
     @BindView(R.id.spnrSpecies)
-    Spinner spnrSpecies;
+    MaterialSpinner spnrSpecies;
     @BindView(R.id.spnrGender)
-    Spinner spnrGender;
+    MaterialSpinner spnrGender;
     @BindView(R.id.spnrBreed)
-    Spinner spnrBreed;
+    MaterialSpinner spnrBreed;
     @BindView(R.id.txtpetname)
     EditText txtpetname;
     @BindView(R.id.petColor)
@@ -58,6 +60,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     private Intent intent;
     public ArrayList<String> listofbreeds = new ArrayList<>();
     private String urlString;
+    Validation validation = new Validation();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +71,15 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         intent = getIntent();
         setTitle("Add Pet");
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        breedsadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, listofbreeds);
+        breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
         genderadapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_gender_items, R.layout.spinner_item);
         genderadapter.setDropDownViewResource(R.layout.spinner_adapter);
         speciesadapter = new ArrayAdapter(getContext(),R.layout.spinner_item,speciesArray);
         speciesadapter.setDropDownViewResource(R.layout.spinner_adapter);
         spnrGender.setAdapter(genderadapter);
         spnrSpecies.setAdapter(speciesadapter);
+        spnrBreed.setAdapter(breedsadapter);
         addPetPresenter.attachView(this);
 
     }
@@ -143,7 +149,72 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         petname = txtpetname.getText().toString().trim();
         petcolor = txtpetcolor.getText().toString().trim();
         petdob = txtpetDOB.getText().toString().trim();
-        addPetPresenter.addpet(this, uId, petname, petspecies, petbreed, petgender, petdob, petcolor);
+        Boolean testpetname=validation.validateNormalInput(txtpetname);
+        Boolean testpetcolor=validation.validateNormalInput(txtpetcolor);
+        Boolean testSpecies = validateSpinner(spnrSpecies);
+        Boolean testBreed = validateSpinner(spnrBreed);
+        Boolean testGender = validateSpinner(spnrGender);
+        if(petdob.isEmpty()){
+            txtpetDOB.setError("Field can't be empty");
+        }
+        if(testpetname){
+            if(testSpecies){
+                if(testBreed){
+                    if(testGender){
+                        if(!petdob.isEmpty()){
+                            if(testpetcolor){
+                                addPetPresenter.addpet(this, uId, petname, petspecies, petbreed, petgender, petdob, petcolor);
+                            }else{
+                                txtpetcolor.requestFocus();
+                            }
+                        }else{
+                            txtpetDOB.setFocusableInTouchMode(true);
+                            txtpetDOB.requestFocus();
+                        }
+                    }else{
+                        spnrGender.performClick();
+                    }
+                }else{
+                    spnrBreed.performClick();
+                }
+            }else{
+                spnrSpecies.performClick();
+            }
+        }else{
+            txtpetname.requestFocus();
+        }
+    }
+    private boolean validateSpinner(Spinner spinner){
+        if(spinner == spnrSpecies) {
+            if (petspecies != null){
+                if (!petspecies.equals("Species"))
+                    return true;
+                else {
+                    spnrSpecies.setError("Please select a species");
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else if(spinner == spnrBreed) {
+            if (petbreed != null){
+                if (!petbreed.equals("Breed"))
+                    return true;
+                else {
+                    spnrBreed.setError("Please select a breed");
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            if (!petgender.equals("Gender"))
+                return true;
+            else {
+                spnrGender.setError("Please select a pet gender");
+                return false;
+            }
+        }
     }
 
     @Override
