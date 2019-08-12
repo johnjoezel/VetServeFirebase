@@ -1,8 +1,5 @@
 package com.example.vetservefirebase.AddPet;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,15 +14,17 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.example.vetservefirebase.Base.BaseActivity;
-import com.example.vetservefirebase.MainActivity;
-import com.example.vetservefirebase.Others.ShowAlert;
+import com.example.vetservefirebase.Others.Breedname;
 import com.example.vetservefirebase.Others.Utils;
+import com.example.vetservefirebase.Others.fetchData;
 import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -33,7 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
-public class AddPetActivity extends BaseActivity implements AddPetView{
+public class AddPetActivity extends BaseActivity implements AddPetView {
 
     @BindView(R.id.spnrSpecies)
     Spinner spnrSpecies;
@@ -57,38 +56,65 @@ public class AddPetActivity extends BaseActivity implements AddPetView{
     private ProgressBar progressBar;
     private AddPetPresenterImpl addPetPresenter = new AddPetPresenterImpl();
     private Intent intent;
-
+    public ArrayList<String> listofbreeds = new ArrayList<>();
+    private String urlString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
         ButterKnife.bind(this);
+        spnrBreed.setEnabled(false);
         intent = getIntent();
         setTitle("Add Pet");
-        uId =  intent.getStringExtra("uId");
-        breedsadapter = ArrayAdapter.createFromResource(this, R.array.spinner_breed_items, R.layout.spinner_item);
-        breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
-        genderadapter = ArrayAdapter.createFromResource(this, R.array.spinner_gender_items, R.layout.spinner_item);
+        uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        genderadapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_gender_items, R.layout.spinner_item);
         genderadapter.setDropDownViewResource(R.layout.spinner_adapter);
-        speciesadapter = new ArrayAdapter(this,R.layout.spinner_item,speciesArray);
+        speciesadapter = new ArrayAdapter(getContext(),R.layout.spinner_item,speciesArray);
         speciesadapter.setDropDownViewResource(R.layout.spinner_adapter);
         spnrGender.setAdapter(genderadapter);
-        spnrBreed.setAdapter(breedsadapter);
         spnrSpecies.setAdapter(speciesadapter);
         addPetPresenter.attachView(this);
 
     }
 
+    private void getBreeds() {
+        fetchData task = new fetchData(urlString,new fetchData.TaskListener() {
+            @Override
+            public void onFinished(ArrayList<String> result) {
+                listofbreeds = result;
+                breedsadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, listofbreeds);
+                breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
+                spnrBreed.setAdapter(breedsadapter);
+                spnrBreed.setEnabled(true);
+            }
+        });
+        task.execute();
+    }
+
 
     @OnItemSelected ({R.id.spnrSpecies, R.id.spnrGender, R.id.spnrBreed}) void onItemSelected(Spinner spinner, int position){
-        if(spnrSpecies == spinner)
+        if(spnrSpecies == spinner) {
             petspecies = spinner.getItemAtPosition(position).toString();
+            Log.d("petspecies", petspecies);
+            if(!petspecies.equals("Species")) {
+                if (petspecies.equals("Dog")) {
+                    urlString = "https://api.thedogapi.com/v1/breeds";
+                }
+                if (petspecies.equals("Cat")) {
+                    urlString = "https://api.thecatapi.com/v1/breeds";
+                }
+                getBreeds();
+                Log.d("urlString", urlString);
+            }
+        }
         if(spnrBreed == spinner)
             petbreed = spinner.getItemAtPosition(position).toString();
         if(spnrGender == spinner)
             petgender = spinner.getItemAtPosition(position).toString();
     }
+
+
     @OnClick(R.id.petdateofbirth)
     public void getpetDOB() {
         Calendar cal = Calendar.getInstance();
@@ -133,6 +159,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView{
     }
 
     @Override
+    public void breedsforspinner(ArrayList<String> data) {
+        Log.d("unsani?", data.toString());
+    }
+
+    @Override
     public void addPetError(String errcode, String errmessage) {
 
     }
@@ -144,4 +175,6 @@ public class AddPetActivity extends BaseActivity implements AddPetView{
         else
             progressBar.setVisibility(View.GONE);
     }
+
+
 }

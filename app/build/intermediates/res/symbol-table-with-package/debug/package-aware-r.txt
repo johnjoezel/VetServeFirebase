@@ -28,7 +28,6 @@ animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
 array nav_item_activity_titles
-array spinner_breed_items
 array spinner_gender_items
 array spinner_species_items
 attr actionBarDivider
@@ -1269,6 +1268,7 @@ drawable appointment
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_circle
+drawable catpic
 drawable circular
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
@@ -1295,6 +1295,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable dogpic
 drawable editicon
 drawable edittext_border
 drawable example_appwidget_preview
@@ -1363,7 +1364,6 @@ drawable side_nav_bar
 drawable temporary_med_icon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
-drawable uploadpetpic
 drawable veterinarian
 font champagne
 id ALT

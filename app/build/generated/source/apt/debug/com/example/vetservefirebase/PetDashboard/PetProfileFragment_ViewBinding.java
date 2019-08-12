@@ -2,6 +2,7 @@
 package com.example.vetservefirebase.PetDashboard;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
@@ -23,6 +24,7 @@ public class PetProfileFragment_ViewBinding implements Unbinder {
     target.displaygender = Utils.findRequiredViewAsType(source, R.id.gender, "field 'displaygender'", TextView.class);
     target.displayweight = Utils.findRequiredViewAsType(source, R.id.weight, "field 'displayweight'", TextView.class);
     target.displayheight = Utils.findRequiredViewAsType(source, R.id.height, "field 'displayheight'", TextView.class);
+    target.petPic = Utils.findRequiredViewAsType(source, R.id.petPic, "field 'petPic'", ImageView.class);
   }
 
   @Override
@@ -37,5 +39,6 @@ public class PetProfileFragment_ViewBinding implements Unbinder {
     target.displaygender = null;
     target.displayweight = null;
     target.displayheight = null;
+    target.petPic = null;
   }
 }

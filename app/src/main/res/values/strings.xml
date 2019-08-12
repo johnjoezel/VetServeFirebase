@@ -39,43 +39,6 @@
         <item>Female</item>
     </string-array>
 
-    <string-array name="spinner_breed_items">
-        <item>Affenpinscher</item>
-        <item>Afghan Hound</item>
-        <item>Afghan Shepherd</item>
-        <item>Aidi</item>
-        <item>Airedale Terrier</item>
-        <item>Akbash</item>
-        <item>Akita</item>
-        <item>Alano Español</item>
-        <item>Alapaha Blue Blood Bulldog</item>
-        <item>Alaskan husky</item>
-        <item>Alaskan Klee Kai</item>
-        <item>Alaskan Malamute</item>
-        <item>Alaunt</item>
-        <item>Alopekis</item>
-        <item>Alpine Dachsbracke</item>
-        <item>Alpine Mastiff</item>
-        <item>American Akita</item>
-        <item>American Bully</item>
-        <item>American Bulldog</item>
-        <item>American Cocker Spaniel</item>
-        <item>American English Coonhound</item>
-        <item>American Eskimo Dog</item>
-        <item>American Foxhound</item>
-        <item>American Hairless Terrier</item>
-        <item>American Leopard Cur</item>
-        <item>American Pit Bull Terrier</item>
-        <item>American Staffordshire Terrier</item>
-        <item>American Water Spaniel</item>
-        <item>Anatolian Shepherd Dog</item>
-        <item>Andalusian Hound</item>
-        <item>Anglo-Français de Petite Vénerie</item>
-        <item>Appenzeller Mountain Dog</item>
-        <item>Argentine Pila Dog</item>
-        <item>Argentine Polar Dog</item>
-        <item>Ariegeois</item>
-    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
