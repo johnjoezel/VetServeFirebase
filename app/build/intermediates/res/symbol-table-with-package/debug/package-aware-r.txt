@@ -1358,6 +1358,7 @@ drawable pet_clinic2
 drawable pets
 drawable pets2
 drawable prof_calendar
+drawable prof_password
 drawable prof_user
 drawable profile_icon
 drawable side_nav_bar
@@ -1419,6 +1420,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnChangepass
 id btnRegister
 id btn_holder
 id btnaddpet
@@ -1572,6 +1574,7 @@ id name
 id name_layout
 id nav_home
 id nav_logout
+id nav_password
 id nav_profile
 id nav_view
 id navigation_header_container
@@ -1708,6 +1711,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id trouble_signing_in
 id trouble_signing_in_possible_fixes
+id txtcnewpassword
 id txtcontact
 id txtcpassword
 id txtdisplayname
@@ -1715,6 +1719,8 @@ id txtemail
 id txtfirstname
 id txtlastname
 id txtmname
+id txtnewpassword
+id txtoldpassword
 id txtpassword
 id txtpetname
 id uniform
@@ -1787,6 +1793,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_pet
+layout activity_change_password
 layout activity_main
 layout activity_personal_information
 layout activity_pet_dashboard

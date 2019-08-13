@@ -24,6 +24,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Dashboard.PetOwnerDashboardFragment;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
+import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.SignIn.SignInActivity;
 import com.google.android.material.navigation.NavigationView;
@@ -217,6 +218,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_profile:
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_PROFILE;
+                        break;
+                    case R.id.nav_password:
+                        startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
                         break;
                     case R.id.nav_logout:
                         // launch new intent instead of loading fragment

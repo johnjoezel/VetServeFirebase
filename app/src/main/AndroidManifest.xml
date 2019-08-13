@@ -14,12 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PetDashboard.PetDashboardActivity"></activity>
+        <activity android:name=".PetOwnerProfile.ChangePasswordActivity"></activity>
+        <activity android:name=".PetDashboard.PetDashboardActivity" />
         <activity android:name=".AddPet.AddPetActivity" />
         <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".SignUp.Personal_Information" />
-        <activity android:name=".PetListView.PetListViewActivity"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".PetListView.PetListViewActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".SignIn.SignInActivity" />
         <activity
             android:name=".MainActivity"

@@ -20,10 +20,10 @@
             <!--android:id="@+id/nav_feedback"-->
             <!--android:icon="@drawable/prof_feedback"-->
             <!--android:title="Feedbacks" />-->
-            <!--<item-->
-            <!--android:id="@+id/nav_password"-->
-            <!--android:icon="@drawable/prof_password"-->
-            <!--android:title="Password" />-->
+            <item
+            android:id="@+id/nav_password"
+            android:icon="@drawable/prof_password"
+            android:title="Change Your Password" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/logout_logo"

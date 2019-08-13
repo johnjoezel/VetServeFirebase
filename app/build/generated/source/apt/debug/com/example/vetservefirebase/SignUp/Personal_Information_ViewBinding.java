@@ -16,9 +16,9 @@ import java.lang.Override;
 public class Personal_Information_ViewBinding implements Unbinder {
   private Personal_Information target;
 
-  private View view7f0a0058;
+  private View view7f0a0059;
 
-  private View view7f0a0038;
+  private View view7f0a0039;
 
   @UiThread
   public Personal_Information_ViewBinding(Personal_Information target) {
@@ -36,7 +36,7 @@ public class Personal_Information_ViewBinding implements Unbinder {
     target.txtcontact = Utils.findRequiredViewAsType(source, R.id.txtcontact, "field 'txtcontact'", EditText.class);
     view = Utils.findRequiredView(source, R.id.dateofbirth, "field 'dateofbirth' and method 'getDOB'");
     target.dateofbirth = Utils.castView(view, R.id.dateofbirth, "field 'dateofbirth'", TextView.class);
-    view7f0a0058 = view;
+    view7f0a0059 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -44,7 +44,7 @@ public class Personal_Information_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btncontinue, "method 'toContinue'");
-    view7f0a0038 = view;
+    view7f0a0039 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -66,9 +66,9 @@ public class Personal_Information_ViewBinding implements Unbinder {
     target.txtcontact = null;
     target.dateofbirth = null;
 
-    view7f0a0058.setOnClickListener(null);
-    view7f0a0058 = null;
-    view7f0a0038.setOnClickListener(null);
-    view7f0a0038 = null;
+    view7f0a0059.setOnClickListener(null);
+    view7f0a0059 = null;
+    view7f0a0039.setOnClickListener(null);
+    view7f0a0039 = null;
   }
 }
