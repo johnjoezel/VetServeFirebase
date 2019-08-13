@@ -141,7 +141,8 @@ public class SignUpPresenterImpl implements SignUpPresenter {
         final String lastname = data.get(2);
         final String bday = data.get(3);
         final String contact = data.get(4);
-        final String displayname = data.get(5);
+        final String address = data.get(5);
+        final String displayname = data.get(6);
         String path = "ProfileImage/" + UUID.randomUUID() + ".jpg";
         StorageReference profileImageRef = storage.getReference(path);
         profileImageRef.putFile(photopath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
@@ -159,13 +160,13 @@ public class SignUpPresenterImpl implements SignUpPresenter {
                     if (task.isSuccessful()) {
                         String photoUrl = task.getResult().toString();
                         Log.d("unsani?", photoUrl);
-                        writeUserwithProfileImage(uId, firstname, middlename, lastname, bday, contact, displayname, photoUrl);
+                        writeUserwithProfileImage(uId, firstname, middlename, lastname, bday, contact, address, displayname, photoUrl);
                     }
                 }
             });
     }
-    private void writeUserwithProfileImage(String uId, String firstname, String middlename, String lastname, String bday, String contact, String displayname, String photoUrl){
-        User user = new User(firstname, middlename, lastname, bday, contact, displayname, photoUrl);
+    private void writeUserwithProfileImage(String uId, String firstname, String middlename, String lastname, String bday, String contact, String address, String displayname, String photoUrl){
+        User user = new User(firstname, middlename, lastname, bday, contact, address, displayname, photoUrl);
         //Add user to firebase database
         DatabaseReference userRef = mDatabase.child("users");
         userRef.child(uId).setValue(user);

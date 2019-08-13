@@ -1268,6 +1268,7 @@ drawable appointment
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_circle
+drawable blueediticon
 drawable catpic
 drawable circular
 drawable common_full_open_on_phone
@@ -1395,6 +1396,7 @@ id actions
 id activity_chooser_view_content
 id add
 id addpet
+id address
 id adjust_height
 id adjust_width
 id age
@@ -1447,6 +1449,7 @@ id clip_vertical
 id collapseActionView
 id confirmation_code
 id confirmation_code_layout
+id contact
 id container
 id content
 id contentPanel
@@ -1471,6 +1474,7 @@ id displaypetname
 id displayusername
 id drawer_layout
 id dynamic
+id edit
 id edit_phone_number
 id edit_query
 id editpetinfo
@@ -1493,6 +1497,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id firstname
 id fixed
 id forever
 id forpets
@@ -1529,6 +1534,10 @@ id ifRoom
 id image
 id imageView
 id imageView2
+id imageView3
+id imageView4
+id imageView5
+id imageView6
 id imgProfpic
 id img_header_bg
 id info
@@ -1538,23 +1547,34 @@ id italic
 id item_touch_helper_previous_elevation
 id labeled
 id largeLabel
+id lastname
 id layout1
 id layout2
 id layout3
 id layout4
 id layout5
 id layout6
+id lblAddress
+id lblContact
+id lblFirstname
+id lblLastname
+id lblMiddlename
 id left
 id light
 id line1
 id line3
 id linearLayout
+id linearLayout10
+id linearLayout11
+id linearLayout12
 id linearLayout2
 id linearLayout3
 id linearLayout4
 id linearLayout5
 id linearLayout6
 id linearLayout7
+id linearLayout8
+id linearLayout9
 id listMode
 id list_item
 id listofpet
@@ -1566,6 +1586,7 @@ id masked
 id media_actions
 id message
 id middle
+id middlename
 id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
@@ -1604,6 +1625,7 @@ id phone_button
 id phone_layout
 id phone_number
 id pin
+id profilepic
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -1686,6 +1708,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView2
 id textView3
 id textView4
 id textView6
@@ -1711,6 +1734,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id trouble_signing_in
 id trouble_signing_in_possible_fixes
+id txtaddress
 id txtcnewpassword
 id txtcontact
 id txtcpassword
@@ -1802,6 +1826,7 @@ layout activity_signin
 layout activity_signup
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout custom_alert_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar

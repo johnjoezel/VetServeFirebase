@@ -38,6 +38,8 @@ public class Personal_Information extends AppCompatActivity{
     EditText txtlastname;
     @BindView(R.id.txtcontact)
     EditText txtcontact;
+    @BindView(R.id.txtaddress)
+    EditText txtaddress;
     @BindView(R.id.dateofbirth)
     TextView dateofbirth;
     DatePickerDialog dialog;
@@ -84,10 +86,12 @@ public class Personal_Information extends AppCompatActivity{
         String lastname= txtlastname.getText().toString().trim();
         String birthday= dateofbirth.getText().toString().trim();
         String contact = txtcontact.getText().toString().trim();
+        String address = txtaddress.getText().toString().trim();
         Boolean testFirst=validation.validateNormalInput(txtfirstname);
         Boolean testMiddle=validation.validateNormalInput(txtmname);
         Boolean testLast=validation.validateNormalInput(txtlastname);
         Boolean testContact= validation.validateNumber(txtcontact);
+        Boolean testAddress= validation.validateNormalInput(txtaddress);
         Boolean testBdayAge=getAge(birthYear,birthMonth,birthDay);
         if(!testBdayAge){
             dateofbirth.setError("Should be 18 years old or above");
@@ -98,24 +102,29 @@ public class Personal_Information extends AppCompatActivity{
             if(testMiddle){
                 if(testLast){
                     if(testContact) {
-                        if(!birthday.isEmpty()) {
-                            if (testBdayAge) {
-                                ArrayList<String> data = new ArrayList<String>();
-                                data.add(firstname);
-                                data.add(middlename);
-                                data.add(lastname);
-                                data.add(birthday);
-                                data.add(contact);
-                                Intent intent = new Intent(this, SignUpActivity.class);
-                                intent.putStringArrayListExtra("data", data);
-                                startActivity(intent);
+                        if(testAddress) {
+                            if (!birthday.isEmpty()) {
+                                if (testBdayAge) {
+                                    ArrayList<String> data = new ArrayList<String>();
+                                    data.add(firstname);
+                                    data.add(middlename);
+                                    data.add(lastname);
+                                    data.add(birthday);
+                                    data.add(contact);
+                                    data.add(address);
+                                    Intent intent = new Intent(this, SignUpActivity.class);
+                                    intent.putStringArrayListExtra("data", data);
+                                    startActivity(intent);
+                                } else {
+                                    dateofbirth.setFocusableInTouchMode(true);
+                                    dateofbirth.requestFocus();
+                                }
                             } else {
                                 dateofbirth.setFocusableInTouchMode(true);
                                 dateofbirth.requestFocus();
                             }
-                        }else {
-                            dateofbirth.setFocusableInTouchMode(true);
-                            dateofbirth.requestFocus();
+                        }else{
+                            txtaddress.requestFocus();
                         }
                     }else{
                         txtcontact.requestFocus();

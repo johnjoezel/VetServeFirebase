@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import com.example.vetservefirebase.Base.BaseActivity;
 import com.example.vetservefirebase.MainActivity;
@@ -49,6 +50,7 @@ public class SignInActivity extends BaseActivity implements SignInView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        setTitle("Sign In");
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();
         signInPresenter = new SignInPresenterImpl(mAuth);

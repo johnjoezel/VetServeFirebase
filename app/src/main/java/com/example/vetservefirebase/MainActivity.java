@@ -221,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_password:
                         startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
-                        break;
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_logout:
                         // launch new intent instead of loading fragment
                         mAuth.signOut();

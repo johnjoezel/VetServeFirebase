@@ -12,6 +12,9 @@ public class User implements Parcelable{
     String contact;
     String displayname;
     String bday;
+
+
+
     String address;
     String phoneNumber;
     String photoUrl;
@@ -21,29 +24,17 @@ public class User implements Parcelable{
 
     }
 
-    public User( String firstname, String middlename, String lastname, String bday, String contact, String displayname, String photoUrl){
+    public User( String firstname, String middlename, String lastname, String bday, String contact, String address, String displayname, String photoUrl){
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
         this.bday = bday;
         this.contact = contact;
+        this.address = address;
         this.displayname = displayname;
         this.photoUrl = photoUrl;
     }
 
-
-
-
-    public User(String uId, String firstname, String middlename, String lastname, String bday, String contact, String displayname, String photoUrl){
-        this.uId = uId;
-        this.firstname = firstname;
-        this.middlename = middlename;
-        this.lastname = lastname;
-        this.bday = bday;
-        this.contact = contact;
-        this.displayname = displayname;
-        this.photoUrl = photoUrl;
-    }
 
 
     protected User(Parcel in) {
@@ -137,6 +128,13 @@ public class User implements Parcelable{
 
     public void setDisplayname(String displayname) {
         this.displayname = displayname;
+    }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
     @Override
     public int describeContents() {

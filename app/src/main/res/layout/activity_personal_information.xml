@@ -107,10 +107,24 @@
             android:fontFamily="@font/champagne"
             android:hint="Contact Number"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/btncontinue"
+            app:layout_constraintBottom_toTopOf="@+id/txtaddress"
             app:layout_constraintEnd_toEndOf="@+id/txtfirstname"
             app:layout_constraintStart_toStartOf="@+id/txtfirstname"
             app:layout_constraintTop_toBottomOf="@+id/dateofbirth" />
+
+        <EditText
+            android:id="@+id/txtaddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:fontFamily="@font/champagne"
+            android:hint="Address"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/btncontinue"
+            app:layout_constraintEnd_toEndOf="@+id/txtfirstname"
+            app:layout_constraintStart_toStartOf="@+id/txtfirstname"
+            app:layout_constraintTop_toBottomOf="@+id/txtcontact" />
 
         <Button
             android:id="@+id/btncontinue"
@@ -127,7 +141,7 @@
             app:layout_constraintEnd_toEndOf="@+id/txtfirstname"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/txtfirstname"
-            app:layout_constraintTop_toBottomOf="@+id/txtcontact"
+            app:layout_constraintTop_toBottomOf="@+id/txtaddress"
             app:layout_constraintVertical_bias="0.51" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
