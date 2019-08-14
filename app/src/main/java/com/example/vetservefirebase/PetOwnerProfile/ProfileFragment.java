@@ -1,6 +1,7 @@
 package com.example.vetservefirebase.PetOwnerProfile;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -20,10 +21,16 @@ import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.vetservefirebase.MainActivity;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.Others.ShowAlert;
+import com.example.vetservefirebase.Others.Utils;
 import com.example.vetservefirebase.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,8 +38,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,11 +71,14 @@ public class ProfileFragment extends Fragment {
     private String uId;
     private FirebaseUser user;
     private DatabaseReference dRef;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
     private LayoutInflater inflater;
     private Uri photoPath;
     private Bitmap bitmap;
-    String newfirstname, newmiddlename, newlastname, newcontact, newaddress;
-    String oldfirstname, oldmiddlename, oldlastname, oldcontact, oldaddress;
+    String newfirstname, newmiddlename, newlastname, newcontact, newaddress, newphotoUrl;
+    String oldfirstname, oldmiddlename, oldlastname, oldcontact, oldaddress, oldphotoUrl;
+    private ProgressDialog progressDialog;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -96,12 +110,17 @@ public class ProfileFragment extends Fragment {
                             .circleCrop()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(profilepic);
+                    oldphotoUrl = user.getPhotoUrl();
                     firstname.setText(user.getFirstname());
                     oldfirstname = firstname.getText().toString().trim();
                     middlename.setText(user.getMiddlename());
+                    oldmiddlename = middlename.getText().toString().trim();
                     lastname.setText(user.getLastname());
+                    oldlastname = lastname.getText().toString().trim();
                     contact.setText(user.getContact());
+                    oldcontact = contact.getText().toString().trim();
                     address.setText(user.getAddress());
+                    oldaddress = address.getText().toString().trim();
                 }
 
                 @Override
@@ -122,33 +141,56 @@ public class ProfileFragment extends Fragment {
             case R.id.imageView2:
                 ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Firstname ",oldfirstname, firstname);
                 break;
-//            case R.id.imageView3:
-//                oldmiddlename = middlename.getText().toString().trim();
-//                newmiddlename = ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Middlename ",oldmiddlename, middlename);
-//                Log.d(TAG, "toedit: "+ newmiddlename);
-//                break;
-//            case R.id.imageView4:
-//                oldlastname = lastname.getText().toString().trim();
-//                newlastname = ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Lastname ",oldlastname, lastname);
-//                Log.d(TAG, "toedit: "+ newlastname);
-//                break;
-//            case R.id.imageView5:
-//                oldcontact = contact.getText().toString().trim();
-//                newcontact = ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Contact No: ",oldcontact, contact);
-//                Log.d(TAG, "toedit: "+ newcontact);
-//                break;
-//            case R.id.imageView6:
-//                oldaddress = address.getText().toString().trim();
-//                newaddress = ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Address ",oldaddress, address);
-//                Log.d(TAG, "toedit: "+ newaddress);
-//                break;
+            case R.id.imageView3:
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Middlename ",oldmiddlename, middlename);
+                Log.d(TAG, "toedit: "+ newmiddlename);
+                break;
+            case R.id.imageView4:
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Lastname ",oldlastname, lastname);
+                Log.d(TAG, "toedit: "+ newlastname);
+                break;
+            case R.id.imageView5:
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Contact No: ",oldcontact, contact);
+                Log.d(TAG, "toedit: "+ newcontact);
+                break;
+            case R.id.imageView6:
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Address ",oldaddress, address);
+                Log.d(TAG, "toedit: "+ newaddress);
+                break;
             case R.id.btnUpdate:
-                updatedata();
+                if(photoPath != null)
+                    getImageUrl();
+                else
+                    updatedata();
                 break;
         }
 
     }
 
+    private void getImageUrl() {
+        String path = "ProfileImage/" + UUID.randomUUID() + ".jpg";
+        StorageReference profileImageRef = storage.getReference(path);
+        profileImageRef.putFile(photoPath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                // Continue with the task to get the download URL
+                return profileImageRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    String photoUrl = task.getResult().toString();
+                    Log.d(TAG, "onComplete: " + photoUrl);
+                    setPhotoUrl(photoUrl);
+                    updatedata();
+                }
+            }
+        });
+    }
 
 
     private void selectimage() {
@@ -158,6 +200,9 @@ public class ProfileFragment extends Fragment {
         startActivityForResult(intent, IMG_REQUEST);
     }
 
+    public void setPhotoUrl(String photoUrl){
+        this.newphotoUrl = photoUrl;
+    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -172,10 +217,79 @@ public class ProfileFragment extends Fragment {
         }
     }
     private void updatedata() {
-            newfirstname = firstname.getText().toString().trim();
-            if(!newfirstname.equals(oldfirstname))
-                dRef.child("firstname").setValue(firstname.getText().toString().trim());
-            else
-                ShowAlert.showAlert(getContext(),"You haven't made any changes yet");
+        newfirstname = firstname.getText().toString().trim();
+        newmiddlename = middlename.getText().toString().trim();
+        newlastname = lastname.getText().toString().trim();
+        newcontact = contact.getText().toString().trim();
+        newaddress = address.getText().toString().trim();
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Updating Profile");
+        progressDialog.show();
+        if(newphotoUrl != null){
+            dRef.child("photoUrl").setValue(newphotoUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    if(task.isSuccessful())
+                        newphotoUrl = "";
+                }
+            });
+        }
+        if(!newfirstname.equals(oldfirstname))
+                dRef.child("firstname").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        progressDialog.dismiss();
+                        if(task.isSuccessful())
+                            oldfirstname = newfirstname;
+                    }
+                });
+        if(!newmiddlename.equals(oldmiddlename))
+            dRef.child("middlename").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    if(task.isSuccessful())
+                        oldmiddlename = newmiddlename;
+                }
+            });
+        if(!newlastname.equals(oldlastname))
+            dRef.child("lastname").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    if(task.isSuccessful())
+                        oldlastname = newlastname;
+                }
+            });
+        if(!newcontact.equals(oldcontact))
+            dRef.child("contact").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    if(task.isSuccessful())
+                        oldcontact = newcontact;
+                }
+            });
+        if(!newaddress.equals(oldaddress))
+            dRef.child("address").setValue(address.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    progressDialog.dismiss();
+                    if(task.isSuccessful())
+                        oldaddress = newaddress;
+
+                }
+            });
+        if(newfirstname.equals(oldfirstname) && newmiddlename.equals(oldmiddlename)
+                && newlastname.equals(oldlastname) && newcontact.equals(oldcontact) &&
+                newaddress.equals(oldaddress) && newphotoUrl == null){
+            ShowAlert.showAlert(getContext(),"You haven't made any changes yet");
+            progressDialog.dismiss();
+        }else{
+            ((MainActivity)getActivity()).loadNavHeader(newphotoUrl, user.getEmail());
+            Utils.showMessage(getContext(), "Profile Updated");
+        }
     }
 }

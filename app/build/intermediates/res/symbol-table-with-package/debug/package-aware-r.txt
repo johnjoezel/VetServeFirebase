@@ -1340,6 +1340,7 @@ drawable main_border
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable my_background
+drawable nav_setting
 drawable navigation_empty_icon
 drawable near_me
 drawable notification_action_background

@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void loadNavHeader(String photoUrl, String email) {
+    public void loadNavHeader(String photoUrl, String email) {
         headerDisplayname.setText(email);
         Glide.with(this).load(R.drawable.main_background)
                 .transition(withCrossFade())
