@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.R;
 
 public class ShowAlert {
@@ -29,13 +31,13 @@ public class ShowAlert {
         }
 
     }
-    public static String showAlertwithreturn(LayoutInflater inflater, Context context, String msg, String string){
-        String returnvalue = null;
+    public static void showAlertwithreturn(LayoutInflater inflater, Context context, String msg, String string, TextView textView){
+
         try{
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             final View dialogView = inflater.inflate(R.layout.custom_alert_dialog, null);
-            alertDialog.setView(dialogView);
             final EditText edt = dialogView.findViewById(R.id.edit);
+            alertDialog.setView(dialogView);
             edt.setText(string);
             alertDialog.setMessage(msg);
             alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -47,8 +49,11 @@ public class ShowAlert {
             alertDialog.setPositiveButton("Confirm",  new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    if(!edt.getText().toString().trim().isEmpty())
+                        textView.setText(edt.getText().toString().trim());
+                    else
+                        textView.setText(string);
                     dialog.dismiss();
-
                 }
             });
 
@@ -56,6 +61,5 @@ public class ShowAlert {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 }

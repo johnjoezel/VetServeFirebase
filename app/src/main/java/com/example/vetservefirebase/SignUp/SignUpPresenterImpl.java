@@ -165,6 +165,7 @@ public class SignUpPresenterImpl implements SignUpPresenter {
                 }
             });
     }
+
     private void writeUserwithProfileImage(String uId, String firstname, String middlename, String lastname, String bday, String contact, String address, String displayname, String photoUrl){
         User user = new User(firstname, middlename, lastname, bday, contact, address, displayname, photoUrl);
         //Add user to firebase database

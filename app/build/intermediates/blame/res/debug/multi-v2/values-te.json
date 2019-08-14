@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\TOSHIBA\\StudioProjects\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-te\\values-te.xml",
+            "outputFile": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-te\\values-te.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\TOSHIBA\\.gradle\\caches\\transforms-2\\files-2.1\\e2efcc32209eb3a7327b955efef83620\\res\\values-te\\values.xml",
+                    "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2a7a65e97d38c5574169b7c6a98b5f9b\\res\\values-te\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,24 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\TOSHIBA\\.gradle\\caches\\transforms-2\\files-2.1\\5c8fda238742910322c41b1fb964b102\\res\\values-te\\values-te.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "48",
-                        "startColumns": "4",
-                        "startOffsets": "5623",
-                        "endColumns": "100",
-                        "endOffsets": "5719"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\TOSHIBA\\.gradle\\caches\\transforms-2\\files-2.1\\cbd6df95476be4db44cb113fa0f74dbe\\res\\values-te\\values-te.xml",
+                    "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\values-te\\values-te.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\TOSHIBA\\.gradle\\caches\\transforms-2\\files-2.1\\7bc09aa4e305768476bd26245d7cd684\\res\\values-te\\values.xml",
+                    "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2987d1381a2a9c125f7ff6914f97ca58\\res\\values-te\\values-te.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "48",
+                        "startColumns": "4",
+                        "startOffsets": "5623",
+                        "endColumns": "100",
+                        "endOffsets": "5719"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\d564384df449ab89605b592436137f3b\\res\\values-te\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

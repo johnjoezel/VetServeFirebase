@@ -1424,6 +1424,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnChangepass
 id btnRegister
+id btnUpdate
 id btn_holder
 id btnaddpet
 id btncontinue
