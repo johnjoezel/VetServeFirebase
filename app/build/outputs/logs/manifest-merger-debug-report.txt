@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:2:1-109:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\521681a000f26d75a0300467476b2454\AndroidManifest.xml:17:1-24:12
 MERGED from [me.srodrigo:androidhintspinner:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\07d954f281d5eea43cc5f35f1ba7355b\AndroidManifest.xml:2:1-16:12
@@ -22,6 +22,7 @@ MERGED from [com.google.android.gms:play-services-maps:16.0.0] C:\Users\ZerahNis
 MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\87672f7df2bf54f60b2c077c063f42cd\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-storage:18.1.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\83bca47a1e3843b466993bf6572a8276\AndroidManifest.xml:15:1-39:12
 MERGED from [com.google.firebase:firebase-auth:18.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\46c6e59c3a4b112fea410a4accf8fafb\AndroidManifest.xml:17:1-42:12
+MERGED from [com.synnapps:carouselview:0.1.5] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fa2f0e6acaff8c9e8047e3fabc66bed3\AndroidManifest.xml:2:1-16:12
 MERGED from [com.jakewharton:butterknife:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\30f26c2b972174e221e853dd7eed3480\AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\77f20474642008565ccf5fcbf7da8fb3\AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\292e1130ba1cda33b76685e56fa34aaa\AndroidManifest.xml:2:1-24:12
@@ -52,8 +53,8 @@ MERGED from [androidx.recyclerview:recyclerview:1.0.0] C:\Users\ZerahNissi\.grad
 MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\7ae9aed160023bd698a7fc136dbe2c60\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\383b0d52b49cdc91bf607eb3e9eb7570\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\3b26c873a763af684f60e02ef96e6c8d\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\6fe69679906059e4b611f5ec1b841c0d\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:17:1-22:12
 MERGED from [com.jakewharton:butterknife-runtime:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\311b5b366435fddb1dfd2c15498d019e\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\955db38d793c8d6a30b7f4a5b1072b16\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ea5621961ade9fdc1ea68177307fa38c\AndroidManifest.xml:17:1-22:12
@@ -66,8 +67,8 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Ze
 MERGED from [androidx.core:core:1.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2987d1381a2a9c125f7ff6914f97ca58\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\cade99251faacd72324d7bcdfbd9bd1f\AndroidManifest.xml:17:1-25:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\a08667455cc0ecdd217fac415193447a\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\04fe80f54c0074b2f69bb72d04dd51a3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fe8916097fb01b5442740b5e301c17e6\AndroidManifest.xml:17:1-22:12
 MERGED from [com.firebaseui:firebase-ui-common:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\81efa4f1557f75aa06e66de094ac226a\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.9.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\7b5299b6654cb483240fa49f1ad2ce7e\AndroidManifest.xml:2:1-11:12
@@ -83,22 +84,22 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\ZerahNissi\.gradle\
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\e86d1a1cbf542c581374987835c3a6ee\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:protolite-well-known-types:16.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\3ae3040a30bd383f28c718b534e3c149\AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2e062c8264f3bb7fca64a1bfd0c28e31\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
 	package
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:4:5-43
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	xmlns:dist
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:3:5-61
 	android:versionCode
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-39:12
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:11-69
@@ -135,7 +136,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.0.0] C:
 	android:name
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:8:22-64
 application
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:10:5-35:19
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:10:5-37:19
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:15:5-107:19
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:15:5-107:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\521681a000f26d75a0300467476b2454\AndroidManifest.xml:22:5-20
@@ -156,6 +157,8 @@ MERGED from [com.google.firebase:firebase-storage:18.1.1] C:\Users\ZerahNissi\.g
 MERGED from [com.google.firebase:firebase-storage:18.1.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\83bca47a1e3843b466993bf6572a8276\AndroidManifest.xml:29:5-37:19
 MERGED from [com.google.firebase:firebase-auth:18.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\46c6e59c3a4b112fea410a4accf8fafb\AndroidManifest.xml:23:5-40:19
 MERGED from [com.google.firebase:firebase-auth:18.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\46c6e59c3a4b112fea410a4accf8fafb\AndroidManifest.xml:23:5-40:19
+MERGED from [com.synnapps:carouselview:0.1.5] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fa2f0e6acaff8c9e8047e3fabc66bed3\AndroidManifest.xml:11:5-14:19
+MERGED from [com.synnapps:carouselview:0.1.5] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fa2f0e6acaff8c9e8047e3fabc66bed3\AndroidManifest.xml:11:5-14:19
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\77f20474642008565ccf5fcbf7da8fb3\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\77f20474642008565ccf5fcbf7da8fb3\AndroidManifest.xml:10:5-20
 MERGED from [com.google.firebase:firebase-firestore:19.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\292e1130ba1cda33b76685e56fa34aaa\AndroidManifest.xml:16:5-22:19
@@ -221,51 +224,51 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\ZerahNissi\.gr
 	android:theme
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:16:9-40
 activity#com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:9-85
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:9-19:15
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:19-73
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:13-67
 activity#com.example.vetservefirebase.PetDashboard.PetDashboardActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:9-71
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:9-71
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:19-68
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:19-68
 activity#com.example.vetservefirebase.AddPet.AddPetActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:9-59
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:9-59
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:19-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:19-56
 activity#com.example.vetservefirebase.SignUp.SignUpActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:9-59
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:22:9-59
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:19-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:22:19-56
 activity#com.example.vetservefirebase.SignUp.Personal_Information
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:9-65
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:9-65
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:19-62
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:19-62
 activity#com.example.vetservefirebase.PetListView.PetListViewActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:22:9-24:58
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:9-26:58
 	android:parentActivityName
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:13-55
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:26:13-55
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:13-60
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:13-60
 activity#com.example.vetservefirebase.SignIn.SignInActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:9-59
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:27:9-59
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:19-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:27:19-56
 activity#com.example.vetservefirebase.MainActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:26:9-34:20
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:28:9-36:20
 	android:theme
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:28:13-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:13-56
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:27:13-41
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:29:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:29:13-33:29
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:17-77
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:27-74
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:34:27-74
 uses-sdk
 INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
@@ -306,6 +309,8 @@ MERGED from [com.google.firebase:firebase-storage:18.1.1] C:\Users\ZerahNissi\.g
 MERGED from [com.google.firebase:firebase-storage:18.1.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\83bca47a1e3843b466993bf6572a8276\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-auth:18.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\46c6e59c3a4b112fea410a4accf8fafb\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:18.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\46c6e59c3a4b112fea410a4accf8fafb\AndroidManifest.xml:21:5-44
+MERGED from [com.synnapps:carouselview:0.1.5] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fa2f0e6acaff8c9e8047e3fabc66bed3\AndroidManifest.xml:7:5-9:41
+MERGED from [com.synnapps:carouselview:0.1.5] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fa2f0e6acaff8c9e8047e3fabc66bed3\AndroidManifest.xml:7:5-9:41
 MERGED from [com.jakewharton:butterknife:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\30f26c2b972174e221e853dd7eed3480\AndroidManifest.xml:5:5-44
 MERGED from [com.jakewharton:butterknife:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\30f26c2b972174e221e853dd7eed3480\AndroidManifest.xml:5:5-44
 MERGED from [com.github.bumptech.glide:glide:4.9.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\77f20474642008565ccf5fcbf7da8fb3\AndroidManifest.xml:6:5-8:41
@@ -366,10 +371,10 @@ MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ZerahNiss
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\383b0d52b49cdc91bf607eb3e9eb7570\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\3b26c873a763af684f60e02ef96e6c8d\AndroidManifest.xml:20:5-44
 MERGED from [androidx.vectordrawable:vectordrawable:1.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\3b26c873a763af684f60e02ef96e6c8d\AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:20:5-44
-MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\6fe69679906059e4b611f5ec1b841c0d\AndroidManifest.xml:20:5-44
 MERGED from [androidx.transition:transition:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\6fe69679906059e4b611f5ec1b841c0d\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media:media:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\d5b1928800971dcfcc5f0aae7f06a913\AndroidManifest.xml:20:5-44
 MERGED from [com.jakewharton:butterknife-runtime:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\311b5b366435fddb1dfd2c15498d019e\AndroidManifest.xml:5:5-44
 MERGED from [com.jakewharton:butterknife-runtime:10.1.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\311b5b366435fddb1dfd2c15498d019e\AndroidManifest.xml:5:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\955db38d793c8d6a30b7f4a5b1072b16\AndroidManifest.xml:20:5-44
@@ -394,10 +399,10 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\Ze
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\cade99251faacd72324d7bcdfbd9bd1f\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\a08667455cc0ecdd217fac415193447a\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\a08667455cc0ecdd217fac415193447a\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\04fe80f54c0074b2f69bb72d04dd51a3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\04fe80f54c0074b2f69bb72d04dd51a3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\ccc2188a9e17fbdf48d135203641b689\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fe8916097fb01b5442740b5e301c17e6\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\fe8916097fb01b5442740b5e301c17e6\AndroidManifest.xml:20:5-44
 MERGED from [com.firebaseui:firebase-ui-common:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\81efa4f1557f75aa06e66de094ac226a\AndroidManifest.xml:7:5-9:41

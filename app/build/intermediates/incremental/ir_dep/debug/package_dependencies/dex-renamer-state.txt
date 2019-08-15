@@ -1,4 +1,4 @@
-#Wed Aug 14 20:05:32 CST 2019
+#Thu Aug 15 23:37:27 CST 2019
 base.0=C\:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\10
 path.1=classes2.dex
 renamed.1=classes2.dex

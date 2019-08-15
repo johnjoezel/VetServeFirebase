@@ -22,17 +22,17 @@ import java.lang.Override;
 public class AddPetActivity_ViewBinding implements Unbinder {
   private AddPetActivity target;
 
-  private View view7f0a0139;
+  private View view7f0a0143;
 
-  private View view7f0a0138;
+  private View view7f0a0142;
 
-  private View view7f0a0137;
+  private View view7f0a0141;
 
-  private View view7f0a00fe;
+  private View view7f0a0106;
 
-  private View view7f0a00fd;
+  private View view7f0a0105;
 
-  private View view7f0a003a;
+  private View view7f0a0038;
 
   @UiThread
   public AddPetActivity_ViewBinding(AddPetActivity target) {
@@ -46,7 +46,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.spnrSpecies, "field 'spnrSpecies' and method 'onItemSelected'");
     target.spnrSpecies = Utils.castView(view, R.id.spnrSpecies, "field 'spnrSpecies'", MaterialSpinner.class);
-    view7f0a0139 = view;
+    view7f0a0143 = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -59,7 +59,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.spnrGender, "field 'spnrGender' and method 'onItemSelected'");
     target.spnrGender = Utils.castView(view, R.id.spnrGender, "field 'spnrGender'", MaterialSpinner.class);
-    view7f0a0138 = view;
+    view7f0a0142 = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -72,7 +72,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.spnrBreed, "field 'spnrBreed' and method 'onItemSelected'");
     target.spnrBreed = Utils.castView(view, R.id.spnrBreed, "field 'spnrBreed'", MaterialSpinner.class);
-    view7f0a0137 = view;
+    view7f0a0141 = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -86,7 +86,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetname = Utils.findRequiredViewAsType(source, R.id.txtpetname, "field 'txtpetname'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petpicture, "field 'petpicture' and method 'addpetpic'");
     target.petpicture = Utils.castView(view, R.id.petpicture, "field 'petpicture'", ImageView.class);
-    view7f0a00fe = view;
+    view7f0a0106 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -96,7 +96,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = Utils.findRequiredViewAsType(source, R.id.petColor, "field 'txtpetcolor'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petdateofbirth, "field 'txtpetDOB' and method 'getpetDOB'");
     target.txtpetDOB = Utils.castView(view, R.id.petdateofbirth, "field 'txtpetDOB'", TextView.class);
-    view7f0a00fd = view;
+    view7f0a0105 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -104,7 +104,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btnaddpet, "method 'toadd'");
-    view7f0a003a = view;
+    view7f0a0038 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -132,17 +132,17 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = null;
     target.txtpetDOB = null;
 
-    ((AdapterView<?>) view7f0a0139).setOnItemSelectedListener(null);
-    view7f0a0139 = null;
-    ((AdapterView<?>) view7f0a0138).setOnItemSelectedListener(null);
-    view7f0a0138 = null;
-    ((AdapterView<?>) view7f0a0137).setOnItemSelectedListener(null);
-    view7f0a0137 = null;
-    view7f0a00fe.setOnClickListener(null);
-    view7f0a00fe = null;
-    view7f0a00fd.setOnClickListener(null);
-    view7f0a00fd = null;
-    view7f0a003a.setOnClickListener(null);
-    view7f0a003a = null;
+    ((AdapterView<?>) view7f0a0143).setOnItemSelectedListener(null);
+    view7f0a0143 = null;
+    ((AdapterView<?>) view7f0a0142).setOnItemSelectedListener(null);
+    view7f0a0142 = null;
+    ((AdapterView<?>) view7f0a0141).setOnItemSelectedListener(null);
+    view7f0a0141 = null;
+    view7f0a0106.setOnClickListener(null);
+    view7f0a0106 = null;
+    view7f0a0105.setOnClickListener(null);
+    view7f0a0105 = null;
+    view7f0a0038.setOnClickListener(null);
+    view7f0a0038 = null;
   }
 }

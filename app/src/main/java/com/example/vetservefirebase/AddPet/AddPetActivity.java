@@ -85,7 +85,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     private Bitmap bitmap;
     private Uri photoPath;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private String photoUrl = "";
+    private String photoUrl = "nopicture";
 
 
     @Override
@@ -218,7 +218,6 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                                     getImageUrl();
                                 else
                                     addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
-
                             }else{
                                 txtpetcolor.requestFocus();
                             }

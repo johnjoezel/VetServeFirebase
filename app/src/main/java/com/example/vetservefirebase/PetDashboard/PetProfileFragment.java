@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.synnapps.carouselview.CarouselView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,28 +69,31 @@ public class PetProfileFragment extends Fragment implements View.OnClickListener
         arguments = getArguments();
         uId = arguments.getString("uId");
         petKey = arguments.getString("petKey");
-        dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId).child(petKey);
+//        dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId).child(petKey);
+        dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId);
         dRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Pet pet = dataSnapshot.getValue(Pet.class);
-                displaypetname.setText(petname = pet.getPet_name());
-                displaybreed.setText(breedname = pet.getBreed());
-                displaygender.setText(gender = pet.getGender());
-                if(pet.getPhotoUrl().equals("")) {
-                    if (pet.getSpecies().equals("Dog")) {
-                        petPic.setImageResource(R.drawable.dogpic);
-                    } else if (pet.getSpecies().equals("Cat")) {
-                        petPic.setImageResource(R.drawable.catpic);
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    Pet pet = ds.getValue(Pet.class);
+                    displaypetname.setText(petname = pet.getPet_name());
+                    displaybreed.setText(breedname = pet.getBreed());
+                    displaygender.setText(gender = pet.getGender());
+                    if (pet.getPhotoUrl().equals("nopicture")) {
+                        if (pet.getSpecies().equals("Dog")) {
+                            petPic.setImageResource(R.drawable.dogpic);
+                        } else if (pet.getSpecies().equals("Cat")) {
+                            petPic.setImageResource(R.drawable.catpic);
+                        }
+                    } else {
+                        Glide.with(getActivity()).load(pet.getPhotoUrl())
+                                .transition(withCrossFade())
+                                .thumbnail(0.5f)
+                                .transform(new CircleTransform())
+                                .circleCrop()
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .into(petPic);
                     }
-                }else{
-                    Glide.with(getActivity()).load(pet.getPhotoUrl())
-                            .transition(withCrossFade())
-                            .thumbnail(0.5f)
-                            .transform(new CircleTransform())
-                            .circleCrop()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .into(petPic);
                 }
             }
             @Override

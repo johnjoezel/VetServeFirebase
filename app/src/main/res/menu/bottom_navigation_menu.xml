@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bottomnavhome"
+        android:id="@+id/general"
         android:enabled="true"
-        android:icon="@drawable/home"
-        android:title="Pet Profile"
+        android:title="General"
         />
     <item
-        android:id="@+id/bottomnavmedication"
+        android:id="@+id/medical"
         android:enabled="true"
-        android:icon="@drawable/temporary_med_icon"
-        android:title="Medications"
+        android:title="Medical"
         />
     <item
         android:id="@+id/bottomnavschedule"
         android:enabled="true"
-        android:icon="@drawable/prof_calendar"
         android:title="Schedule" />
 </menu>

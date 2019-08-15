@@ -15,7 +15,7 @@ import java.lang.Override;
 public class ChangePasswordActivity_ViewBinding implements Unbinder {
   private ChangePasswordActivity target;
 
-  private View view7f0a0036;
+  private View view7f0a0034;
 
   @UiThread
   public ChangePasswordActivity_ViewBinding(ChangePasswordActivity target) {
@@ -31,7 +31,7 @@ public class ChangePasswordActivity_ViewBinding implements Unbinder {
     target.txtnewpassword = Utils.findRequiredViewAsType(source, R.id.txtnewpassword, "field 'txtnewpassword'", EditText.class);
     target.txtcnewpassword = Utils.findRequiredViewAsType(source, R.id.txtcnewpassword, "field 'txtcnewpassword'", EditText.class);
     view = Utils.findRequiredView(source, R.id.btnChangepass, "method 'changePass'");
-    view7f0a0036 = view;
+    view7f0a0034 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,7 +51,7 @@ public class ChangePasswordActivity_ViewBinding implements Unbinder {
     target.txtnewpassword = null;
     target.txtcnewpassword = null;
 
-    view7f0a0036.setOnClickListener(null);
-    view7f0a0036 = null;
+    view7f0a0034.setOnClickListener(null);
+    view7f0a0034 = null;
   }
 }
