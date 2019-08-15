@@ -3,17 +3,25 @@ package com.example.vetservefirebase.AddPet;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.vetservefirebase.Base.BaseActivity;
 import com.example.vetservefirebase.Others.Breedname;
 import com.example.vetservefirebase.Others.Utils;
@@ -21,11 +29,20 @@ import com.example.vetservefirebase.Others.Validation;
 import com.example.vetservefirebase.Others.fetchData;
 import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicMarkableReference;
 
 import butterknife.BindArray;
 import butterknife.BindView;
@@ -36,6 +53,8 @@ import fr.ganfra.materialspinner.MaterialSpinner;
 
 public class AddPetActivity extends BaseActivity implements AddPetView {
 
+    private static final int IMG_REQUEST = 1;
+    private static final String TAG = "Add Pet";
     @BindView(R.id.spnrSpecies)
     MaterialSpinner spnrSpecies;
     @BindView(R.id.spnrGender)
@@ -44,6 +63,8 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     MaterialSpinner spnrBreed;
     @BindView(R.id.txtpetname)
     EditText txtpetname;
+    @BindView(R.id.petpicture)
+    ImageView petpicture;
     @BindView(R.id.petColor)
     EditText txtpetcolor;
     @BindView(R.id.petdateofbirth)
@@ -51,7 +72,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     @BindArray(R.array.spinner_species_items)
     String[] speciesArray;
     private ArrayAdapter breedsadapter, genderadapter, speciesadapter;
-    public String petspecies, petbreed, petgender, petname, petcolor, petdob,uId;
+    public String petspecies, petbreed, petgender, petname, petcolor, petdob, uId;
     private DatePickerDialog.OnDateSetListener mDateListener;
     private int petbirthDay, petbirthMonth, petbirthYear;
     private DatePickerDialog dialog;
@@ -61,6 +82,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     public ArrayList<String> listofbreeds = new ArrayList<>();
     private String urlString;
     Validation validation = new Validation();
+    private Bitmap bitmap;
+    private Uri photoPath;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private String photoUrl = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +171,31 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         dialog.show();
     }
 
+    @OnClick(R.id.petpicture) void addpetpic(){
+        selectimage();
+    }
+
+    private void selectimage() {
+        Intent intent= new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, IMG_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==IMG_REQUEST && resultCode==RESULT_OK && data!=null){
+            photoPath = data.getData();
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), photoPath);
+                petpicture.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     @OnClick(R.id.btnaddpet) void toadd(){
         petname = txtpetname.getText().toString().trim();
         petcolor = txtpetcolor.getText().toString().trim();
@@ -163,7 +214,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                     if(testGender){
                         if(!petdob.isEmpty()){
                             if(testpetcolor){
-                                addPetPresenter.addpet(this, uId, petname, petspecies, petbreed, petgender, petdob, petcolor);
+                                if(photoPath != null)
+                                    getImageUrl();
+                                else
+                                    addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+
                             }else{
                                 txtpetcolor.requestFocus();
                             }
@@ -184,6 +239,31 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
             txtpetname.requestFocus();
         }
     }
+
+    private void getImageUrl() {
+        String path = "PetImage/" + UUID.randomUUID() + ".jpg";
+        StorageReference profileImageRef = storage.getReference(path);
+        profileImageRef.putFile(photoPath).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+                // Continue with the task to get the download URL
+                return profileImageRef.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+                    String photoUrl = task.getResult().toString();
+                    Log.d(TAG, "onComplete: " + photoUrl);
+                    addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                }
+            }
+        });
+    }
+
     private boolean validateSpinner(Spinner spinner){
         if(spinner == spnrSpecies) {
             if (petspecies != null){

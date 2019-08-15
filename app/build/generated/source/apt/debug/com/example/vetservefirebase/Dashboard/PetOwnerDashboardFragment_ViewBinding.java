@@ -16,7 +16,7 @@ import java.lang.Override;
 public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
   private PetOwnerDashboardFragment target;
 
-  private View view7f0a0180;
+  private View view7f0a0181;
 
   private View view7f0a0085;
 
@@ -28,7 +28,7 @@ public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.userProfpic, "field 'userProfpic' and method 'changePP'");
     target.userProfpic = Utils.castView(view, R.id.userProfpic, "field 'userProfpic'", ImageView.class);
-    view7f0a0180 = view;
+    view7f0a0181 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,8 +56,8 @@ public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
     target.userProfpic = null;
     target.txtUsername = null;
 
-    view7f0a0180.setOnClickListener(null);
-    view7f0a0180 = null;
+    view7f0a0181.setOnClickListener(null);
+    view7f0a0181 = null;
     view7f0a0085.setOnClickListener(null);
     view7f0a0085 = null;
   }

@@ -1162,6 +1162,8 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen petprofile_height
+dimen petprofile_width
 dimen profile_height
 dimen profile_width
 dimen right_left_spinner_padding
@@ -1357,6 +1359,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pet_clinic
 drawable pet_clinic2
+drawable petdefaultpic
 drawable pets
 drawable pets2
 drawable prof_calendar
@@ -1623,6 +1626,7 @@ id petPic
 id petWeight
 id pet_fragment_container
 id petdateofbirth
+id petpicture
 id phone_button
 id phone_layout
 id phone_number
@@ -1713,7 +1717,7 @@ id textView
 id textView2
 id textView3
 id textView4
-id textView6
+id textView5
 id text_input_password_toggle
 id textinput_counter
 id textinput_error

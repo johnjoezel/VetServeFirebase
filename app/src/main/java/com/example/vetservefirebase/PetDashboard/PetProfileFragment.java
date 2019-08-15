@@ -11,7 +11,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Model.Pet;
+import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 
 public class PetProfileFragment extends Fragment implements View.OnClickListener {
@@ -71,10 +76,20 @@ public class PetProfileFragment extends Fragment implements View.OnClickListener
                 displaypetname.setText(petname = pet.getPet_name());
                 displaybreed.setText(breedname = pet.getBreed());
                 displaygender.setText(gender = pet.getGender());
-                if(pet.getSpecies().equals("Dog")) {
-                    petPic.setImageResource(R.drawable.dogpic);
-                }else if (pet.getSpecies().equals("Cat")){
-                    petPic.setImageResource(R.drawable.catpic);
+                if(pet.getPhotoUrl().equals("")) {
+                    if (pet.getSpecies().equals("Dog")) {
+                        petPic.setImageResource(R.drawable.dogpic);
+                    } else if (pet.getSpecies().equals("Cat")) {
+                        petPic.setImageResource(R.drawable.catpic);
+                    }
+                }else{
+                    Glide.with(getActivity()).load(pet.getPhotoUrl())
+                            .transition(withCrossFade())
+                            .thumbnail(0.5f)
+                            .transform(new CircleTransform())
+                            .circleCrop()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .into(petPic);
                 }
             }
             @Override

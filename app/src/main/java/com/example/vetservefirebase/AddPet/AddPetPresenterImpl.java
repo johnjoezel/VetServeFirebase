@@ -28,15 +28,7 @@ import java.util.ArrayList;
 
 public class AddPetPresenterImpl implements AddPetPresenter {
 
-    private ArrayList<String> data = new ArrayList<>();
     public AddPetView addPetView ;
-    private String uId;
-    private String petname;
-    private String petspecies;
-    private String petbreed;
-    private String petgender;
-    private String petdob;
-    private String petcolor;
     private DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
     private ProgressDialog progressDialog;
 
@@ -56,8 +48,8 @@ public class AddPetPresenterImpl implements AddPetPresenter {
     }
 
     @Override
-    public void addpet(Context context, String uId, String petname, String petspecies, String petbreed, String petgender, String petdob, String petcolor) {
-        Pet pet = new Pet(petname, petspecies, petbreed, petgender, petdob, petcolor);
+    public void addpet(Context context, String uId, String petname, String petspecies, String petbreed, String petgender, String petdob, String petcolor, String photoUrl) {
+        Pet pet = new Pet(petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
         //Add user to firebase database
         progressDialog = new ProgressDialog(context);
         progressDialog.setIndeterminate(true);

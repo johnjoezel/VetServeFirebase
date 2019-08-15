@@ -34,8 +34,7 @@ public class PetListViewActivity extends AppCompatActivity {
     String uId;
     @BindView(R.id.listofpet)
     RecyclerView listofpets;
-    private DatabaseReference dRef, userpetref;
-    private Intent intent;
+    private DatabaseReference dRef;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class PetListViewActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         dRef = FirebaseDatabase.getInstance().getReference("pets");
-        userpetref = FirebaseDatabase.getInstance().getReference("pets").child(uId);
         listofpets.setLayoutManager(new LinearLayoutManager(this));
         FirebaseRecyclerOptions<Pet> options = new FirebaseRecyclerOptions.Builder<Pet>()
                 .setQuery(dRef.child(uId), Pet.class)

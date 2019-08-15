@@ -158,6 +158,10 @@ public class ProfileFragment extends Fragment {
                 Log.d(TAG, "toedit: "+ newaddress);
                 break;
             case R.id.btnUpdate:
+                progressDialog = new ProgressDialog(getContext());
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Updating Profile");
+                progressDialog.show();
                 if(photoPath != null)
                     getImageUrl();
                 else
@@ -222,10 +226,7 @@ public class ProfileFragment extends Fragment {
         newlastname = lastname.getText().toString().trim();
         newcontact = contact.getText().toString().trim();
         newaddress = address.getText().toString().trim();
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Updating Profile");
-        progressDialog.show();
+
         if(newphotoUrl != null){
             dRef.child("photoUrl").setValue(newphotoUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
