@@ -1400,6 +1400,7 @@ drawable prof_calendar
 drawable prof_password
 drawable prof_user
 drawable profile_icon
+drawable shadow
 drawable side_nav_bar
 drawable temporary_med_icon
 drawable tooltip_frame_dark
@@ -1665,6 +1666,7 @@ id percent
 id petColor
 id petHeight
 id petImage
+id petKey
 id petPic
 id petWeight
 id petdateofbirth
@@ -1898,7 +1900,9 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
 layout fragment_general
+layout fragment_medication
 layout fragment_profile
+layout fragment_schedules
 layout fui_activity_invisible
 layout fui_activity_register_email
 layout fui_activity_register_phone
@@ -2373,6 +2377,7 @@ style Base_Widget_MaterialComponents_TextInputLayout
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomViewAllTab
 style FirebaseUI
 style FirebaseUI_AuthMethodPicker
 style FirebaseUI_AuthMethodPicker_ButtonHolder

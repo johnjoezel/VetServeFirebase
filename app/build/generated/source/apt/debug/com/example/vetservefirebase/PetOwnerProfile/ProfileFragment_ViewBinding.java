@@ -16,7 +16,7 @@ import java.lang.Override;
 public class ProfileFragment_ViewBinding implements Unbinder {
   private ProfileFragment target;
 
-  private View view7f0a010c;
+  private View view7f0a010d;
 
   private View view7f0a00a8;
 
@@ -42,7 +42,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = Utils.findRequiredViewAsType(source, R.id.address, "field 'address'", TextView.class);
     view = Utils.findRequiredView(source, R.id.profilepic, "field 'profilepic' and method 'toedit'");
     target.profilepic = Utils.castView(view, R.id.profilepic, "field 'profilepic'", ImageView.class);
-    view7f0a010c = view;
+    view7f0a010d = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -113,8 +113,8 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = null;
     target.profilepic = null;
 
-    view7f0a010c.setOnClickListener(null);
-    view7f0a010c = null;
+    view7f0a010d.setOnClickListener(null);
+    view7f0a010d = null;
     view7f0a00a8.setOnClickListener(null);
     view7f0a00a8 = null;
     view7f0a00a9.setOnClickListener(null);

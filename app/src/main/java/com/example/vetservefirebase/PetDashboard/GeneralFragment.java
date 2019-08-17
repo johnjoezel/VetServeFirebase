@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import com.example.vetservefirebase.R;
 
 public class GeneralFragment extends Fragment {
 
+    private static final String TAG = "General Fragment";
     private OnFragmentInteractionListener mListener;
+    Bundle arguments = new Bundle();
 
     public GeneralFragment() {
         // Required empty public constructor
@@ -25,7 +28,11 @@ public class GeneralFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_general, container, false);
+        View view =  inflater.inflate(R.layout.fragment_general, container, false);
+        arguments = getArguments();
+        Log.d(TAG, "onCreateView: " + arguments.getString("petKey"));
+        return view;
+
     }
 
 
@@ -34,7 +41,6 @@ public class GeneralFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);

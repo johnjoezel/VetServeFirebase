@@ -2,7 +2,6 @@ package com.example.vetservefirebase.Model;
 
 public class Pet {
 
-    String uId;
     String pet_name;
     String species;
     String breed;
@@ -50,13 +49,6 @@ public class Pet {
         this.dob = dob;
     }
 
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uId) {
-        this.uId = uId;
-    }
     public String getPet_name() {
         return pet_name;
     }
