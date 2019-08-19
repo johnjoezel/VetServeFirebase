@@ -1301,6 +1301,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable addicon
 drawable appointment
+drawable arrow
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_circle
@@ -1334,6 +1335,7 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable dogpic
 drawable editicon
+drawable editpetbutton
 drawable edittext_border
 drawable example_appwidget_preview
 drawable final_button
@@ -1449,6 +1451,7 @@ id async
 id auto
 id barrier
 id beginning
+id blanklayout
 id blocking
 id bottom
 id bottomnavschedule
@@ -1517,7 +1520,7 @@ id dynamic
 id edit
 id edit_phone_number
 id edit_query
-id editpetinfo
+id editpet
 id email
 id email_button
 id email_footer_tos_and_pp_text
@@ -1603,6 +1606,7 @@ id lblFirstname
 id lblLastname
 id lblMiddlename
 id left
+id leftarrow
 id light
 id line1
 id line3
@@ -1666,7 +1670,6 @@ id percent
 id petColor
 id petHeight
 id petImage
-id petKey
 id petPic
 id petWeight
 id petdateofbirth
@@ -1686,6 +1689,7 @@ id resend_code
 id right
 id right_icon
 id right_side
+id rightarrow
 id root
 id satellite
 id save_image_matrix
@@ -1882,6 +1886,7 @@ layout activity_pet_dashboard
 layout activity_pet_list_view
 layout activity_signin
 layout activity_signup
+layout blanklayout
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_alert_dialog
@@ -1947,7 +1952,6 @@ layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
 layout pet_list_layout
-layout pet_profile_fragment
 layout petownerdashboardfragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material

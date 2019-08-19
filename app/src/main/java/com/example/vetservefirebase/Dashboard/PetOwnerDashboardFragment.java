@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
+import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -119,7 +120,7 @@ public class PetOwnerDashboardFragment extends Fragment implements DashboardView
         startActivityForResult(intent, IMG_REQUEST);
     }
     @OnClick(R.id.forpets) void next(){
-        Intent intent = new Intent(getContext(), PetListViewActivity.class);
+        Intent intent = new Intent(getContext(), PetDashboardActivity.class);
         startActivity(intent);
     }
 

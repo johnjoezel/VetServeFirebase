@@ -27,6 +27,7 @@ import com.example.vetservefirebase.Others.Breedname;
 import com.example.vetservefirebase.Others.Utils;
 import com.example.vetservefirebase.Others.Validation;
 import com.example.vetservefirebase.Others.fetchData;
+import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
 import com.google.android.gms.tasks.Continuation;
@@ -304,7 +305,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     @Override
     public void addPetSuccess() {
         Utils.showMessage(this, "Pet Added Successfully");
-        Intent intent = new Intent(this, PetListViewActivity.class);
+        Intent intent = new Intent(this, PetDashboardActivity.class);
         startActivity(intent);
     }
 

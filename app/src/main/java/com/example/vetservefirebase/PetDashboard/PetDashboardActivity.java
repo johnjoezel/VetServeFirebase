@@ -10,9 +10,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 
+import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,45 +33,58 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class PetDashboardActivity extends AppCompatActivity {
 
+    @BindView(R.id.rightarrow)
+    ImageView rightarrow;
+    @BindView(R.id.leftarrow)
+    ImageView leftarrow;
     private static final String TAG = "PetDashboardActivity";
-    private Intent intent;
-    private String uId, petKey;
-    BottomNavigationView bottomNavigationView;
-    private Bundle arguments;
+    String uId;
+    Bundle arguments = new Bundle();
     ArrayList<String> photoUrls = new ArrayList<>();
+    ArrayList<String> petnames = new ArrayList<>();
     MyCustomPagerAdapter myCustomPagerAdapter;
     private ViewPager viewPager1,viewPager;
-    private Toolbar toolbar;
     private TabLayout tabLayout;
     private DatabaseReference dRef;
-    private ArrayList<String> petKeys = new ArrayList<>();
+    ArrayList<String> petKeys = new ArrayList<>();
     GeneralFragment generalFragment = new GeneralFragment();
+    MedicationFragment medicationFragment = new MedicationFragment();
+    SchedulesFragment schedulesFragment = new SchedulesFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pet_dashboard);
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId);
-        viewPager = findViewById(R.id.viewPager);
-        viewPager1 = findViewById(R.id.viewPager1);
-        tabLayout =  findViewById(R.id.tabLayout);
-        tabLayout.setupWithViewPager(viewPager1);
         getImageUrls();
     }
-
     private void getImageUrls() {
         dRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    Pet pet = ds.getValue(Pet.class);
-                    photoUrls.add(pet.getPhotoUrl());
-                    petKeys.add(ds.getKey());
+                if(dataSnapshot.exists()) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        Pet pet = ds.getValue(Pet.class);
+                        photoUrls.add(pet.getPhotoUrl());
+                        petKeys.add(ds.getKey());
+                        petnames.add(pet.getPet_name());
+
+                    }
+                    setContentView(R.layout.activity_pet_dashboard);
+                    ButterKnife.bind(PetDashboardActivity.this);
+                    viewPager = findViewById(R.id.viewPager);
+                    viewPager1 = findViewById(R.id.viewPager1);
+                    tabLayout =  findViewById(R.id.tabLayout);
+                    tabLayout.setupWithViewPager(viewPager1);
+                    setupimageslider();
+                }else{
+                    setContentView(R.layout.blanklayout);
                 }
-                setupimageslider();
-                setupViewPager(viewPager1);
             }
 
             @Override
@@ -74,10 +93,40 @@ public class PetDashboardActivity extends AppCompatActivity {
             }
         });
     }
+    public String passUid(){
+        return uId;
+    }
+
+    @OnClick({R.id.rightarrow, R.id.leftarrow, R.id.editpet}) void leftandright(View imageView){
+        if(imageView == rightarrow){
+            if(viewPager.getCurrentItem() < viewPager.getRight())
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1,true);
+        }
+        if(imageView == leftarrow){
+            if(viewPager.getCurrentItem() > 0)
+                viewPager.setCurrentItem(viewPager.getCurrentItem()-1,true);
+        }
+
+    }
+    @OnClick (R.id.editpet) void editpet(){
+        finish();
+    }
 
     private void setupimageslider() {
-        myCustomPagerAdapter = new MyCustomPagerAdapter(this, photoUrls, petKeys);
-        this.viewPager.setAdapter(myCustomPagerAdapter);
+        myCustomPagerAdapter = new MyCustomPagerAdapter(this, photoUrls, petnames);
+        viewPager.setAdapter(myCustomPagerAdapter);
+        if(viewPager.getCurrentItem() == 0){
+            if(petKeys.size() == 1) {
+                rightarrow.setVisibility(View.INVISIBLE);
+                leftarrow.setVisibility(View.INVISIBLE);
+            }else
+                leftarrow.setVisibility(View.INVISIBLE);
+        }
+        arguments.putString("petKey", petKeys.get(viewPager1.getCurrentItem()));
+        generalFragment.setArguments(arguments);
+        medicationFragment.setArguments(arguments);
+        schedulesFragment.setArguments(arguments);
+        setupViewPager(viewPager1);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -86,8 +135,24 @@ public class PetDashboardActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                Log.d(TAG, "leftandright: clicked" + petKeys.size());
+                if(position > 0) {
+                    leftarrow.setVisibility(View.VISIBLE);
+                    if (position == petKeys.size() - 1)
+                        rightarrow.setVisibility(View.INVISIBLE);
+                }else if(petKeys.size() == 1){
+                    leftarrow.setVisibility(View.INVISIBLE);
+                    rightarrow.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    leftarrow.setVisibility(View.INVISIBLE);
+                    rightarrow.setVisibility(View.VISIBLE);
+                }
                 arguments.putString("petKey", petKeys.get(position));
                 generalFragment.setArguments(arguments);
+                medicationFragment.setArguments(arguments);
+                schedulesFragment.setArguments(arguments);
+                setupViewPager(viewPager1);
             }
 
             @Override
@@ -97,11 +162,27 @@ public class PetDashboardActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        Intent intent = new Intent(this, AddPetActivity.class);
+        startActivity(intent);
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(generalFragment, "General");
-        adapter.addFragment(new MedicationFragment(), "Medication");
-        adapter.addFragment(new SchedulesFragment(), "Schedule");
+        adapter.addFragment(medicationFragment, "Medication");
+        adapter.addFragment(schedulesFragment, "Schedule");
         viewPager.setAdapter(adapter);
     }
 

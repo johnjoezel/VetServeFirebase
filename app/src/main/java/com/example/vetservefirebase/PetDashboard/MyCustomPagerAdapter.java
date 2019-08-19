@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
@@ -16,6 +17,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.R;
 
+
 import java.util.ArrayList;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -23,14 +25,14 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 public class MyCustomPagerAdapter extends PagerAdapter {
     Context context;
     ArrayList<String> photoUrls;
-    ArrayList<String> petKeys;
+    ArrayList<String> petnames;
     LayoutInflater layoutInflater;
 
 
-    public MyCustomPagerAdapter(Context context, ArrayList<String> photoUrls, ArrayList<String> petKeys) {
+    public MyCustomPagerAdapter(Context context, ArrayList<String> photoUrls, ArrayList<String> petnames) {
         this.context = context;
         this.photoUrls = photoUrls;
-        this.petKeys = petKeys;
+        this.petnames = petnames;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -41,14 +43,14 @@ public class MyCustomPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((LinearLayout) object);
+        return view == ((RelativeLayout) object);
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View itemView = layoutInflater.inflate(R.layout.item, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.petpictures);
-        TextView petKey = itemView.findViewById(R.id.petKey);
+        TextView displaypetname = itemView.findViewById(R.id.displaypetname);
         Glide.with(context).load(photoUrls.get(position))
                 .transition(withCrossFade())
                 .thumbnail(0.5f)
@@ -56,7 +58,7 @@ public class MyCustomPagerAdapter extends PagerAdapter {
                 .circleCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
-        petKey.setText(petKeys.get(position));
+        displaypetname.setText(petnames.get(position));
         container.addView(itemView);
         return itemView;
     }
@@ -64,7 +66,7 @@ public class MyCustomPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
+        container.removeView((RelativeLayout) object);
     }
 
 }
