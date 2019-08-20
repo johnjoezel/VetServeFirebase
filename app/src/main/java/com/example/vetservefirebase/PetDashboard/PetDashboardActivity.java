@@ -44,7 +44,7 @@ public class PetDashboardActivity extends AppCompatActivity {
     @BindView(R.id.leftarrow)
     ImageView leftarrow;
     private static final String TAG = "PetDashboardActivity";
-    String uId;
+    String uId, petKey;
     Bundle arguments = new Bundle();
     ArrayList<String> photoUrls = new ArrayList<>();
     ArrayList<String> petnames = new ArrayList<>();
@@ -59,6 +59,7 @@ public class PetDashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("My Pets");
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId);
         getImageUrls();
@@ -108,14 +109,20 @@ public class PetDashboardActivity extends AppCompatActivity {
         }
 
     }
-    @OnClick (R.id.editpet) void editpet(){
-        finish();
-    }
+
 
     private void setupimageslider() {
+        Bundle extras = new Bundle();
+        Intent intent;
+        intent = getIntent();
+        extras = intent.getExtras();
+
         myCustomPagerAdapter = new MyCustomPagerAdapter(this, photoUrls, petnames);
         viewPager.setAdapter(myCustomPagerAdapter);
-        if(viewPager.getCurrentItem() == 0){
+        if(extras != null){
+            petKey = extras.getString("petKey");
+            viewPager.setCurrentItem(petKeys.indexOf(petKey));
+        }else if(viewPager.getCurrentItem() == 0){
             if(petKeys.size() == 1) {
                 rightarrow.setVisibility(View.INVISIBLE);
                 leftarrow.setVisibility(View.INVISIBLE);
@@ -123,6 +130,7 @@ public class PetDashboardActivity extends AppCompatActivity {
                 leftarrow.setVisibility(View.INVISIBLE);
         }
         arguments.putString("petKey", petKeys.get(viewPager1.getCurrentItem()));
+        petKey = petKeys.get(viewPager1.getCurrentItem());
         generalFragment.setArguments(arguments);
         medicationFragment.setArguments(arguments);
         schedulesFragment.setArguments(arguments);
@@ -140,6 +148,8 @@ public class PetDashboardActivity extends AppCompatActivity {
                     leftarrow.setVisibility(View.VISIBLE);
                     if (position == petKeys.size() - 1)
                         rightarrow.setVisibility(View.INVISIBLE);
+                    else
+                        rightarrow.setVisibility(View.VISIBLE);
                 }else if(petKeys.size() == 1){
                     leftarrow.setVisibility(View.INVISIBLE);
                     rightarrow.setVisibility(View.INVISIBLE);
@@ -149,6 +159,7 @@ public class PetDashboardActivity extends AppCompatActivity {
                     rightarrow.setVisibility(View.VISIBLE);
                 }
                 arguments.putString("petKey", petKeys.get(position));
+                petKey = petKeys.get(position);
                 generalFragment.setArguments(arguments);
                 medicationFragment.setArguments(arguments);
                 schedulesFragment.setArguments(arguments);
@@ -160,6 +171,13 @@ public class PetDashboardActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @OnClick (R.id.editpet) void editpet(){
+        finish();
+        Intent intent = new Intent(this, AddPetActivity.class);
+        intent.putExtra("petKey", petKey);
+        Log.d(TAG, "editpet: "+ petKey);
+        startActivity(intent);
     }
 
     @Override

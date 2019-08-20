@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,18 +23,25 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Base.BaseActivity;
-import com.example.vetservefirebase.Others.Breedname;
+import com.example.vetservefirebase.Model.Pet;
+import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.Others.Utils;
 import com.example.vetservefirebase.Others.Validation;
 import com.example.vetservefirebase.Others.fetchData;
 import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
-import com.example.vetservefirebase.PetListView.PetListViewActivity;
 import com.example.vetservefirebase.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,16 +49,15 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicMarkableReference;
-
 import butterknife.BindArray;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 import fr.ganfra.materialspinner.MaterialSpinner;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class AddPetActivity extends BaseActivity implements AddPetView {
 
@@ -70,16 +77,18 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     EditText txtpetcolor;
     @BindView(R.id.petdateofbirth)
     TextView txtpetDOB;
+    @BindView(R.id.btnaddpet)
+    Button btnUpAdd;
     @BindArray(R.array.spinner_species_items)
     String[] speciesArray;
-    private ArrayAdapter breedsadapter, genderadapter, speciesadapter;
-    public String petspecies, petbreed, petgender, petname, petcolor, petdob, uId;
-    private DatePickerDialog.OnDateSetListener mDateListener;
     private int petbirthDay, petbirthMonth, petbirthYear;
+    ArrayAdapter breedsadapter, genderadapter, speciesadapter;
+    public String petspecies, petbreed, petgender, petname, petcolor, petdob, uId, petKey;
+    private DatePickerDialog.OnDateSetListener mDateListener;
     private DatePickerDialog dialog;
-    private ProgressBar progressBar;
     private AddPetPresenterImpl addPetPresenter = new AddPetPresenterImpl();
     private Intent intent;
+    private ProgressBar progressBar;
     public ArrayList<String> listofbreeds = new ArrayList<>();
     private String urlString;
     Validation validation = new Validation();
@@ -87,6 +96,8 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     private Uri photoPath;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private String photoUrl = "nopicture";
+    Bundle extras = new Bundle();
+    private DatabaseReference dRef;
 
 
     @Override
@@ -96,18 +107,58 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         ButterKnife.bind(this);
         spnrBreed.setEnabled(false);
         intent = getIntent();
-        setTitle("Add Pet");
+        extras = intent.getExtras();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         breedsadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, listofbreeds);
         breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
         genderadapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_gender_items, R.layout.spinner_item);
         genderadapter.setDropDownViewResource(R.layout.spinner_adapter);
-        speciesadapter = new ArrayAdapter(getContext(),R.layout.spinner_item,speciesArray);
+        speciesadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, speciesArray);
         speciesadapter.setDropDownViewResource(R.layout.spinner_adapter);
         spnrGender.setAdapter(genderadapter);
         spnrSpecies.setAdapter(speciesadapter);
         spnrBreed.setAdapter(breedsadapter);
-        addPetPresenter.attachView(this);
+        if(extras != null){
+            btnUpAdd.setText("Save Changes");
+            setTitle("Edit Pet Information");
+            petKey = extras.getString("petKey");
+            setPetInformation();
+        }else {
+            setTitle("Add Pet");
+            addPetPresenter.attachView(this);
+        }
+    }
+
+    private void setPetInformation() {
+        dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId).child(petKey);
+        dRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Pet pet = dataSnapshot.getValue(Pet.class);
+                photoUrl = pet.getPhotoUrl();
+                Glide.with(getContext()).load(photoUrl)
+                        .transition(withCrossFade())
+                        .thumbnail(0.5f)
+                        .transform(new CircleTransform())
+                        .circleCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(petpicture);
+                txtpetname.setText(pet.getPet_name());
+                int spcsPosition = speciesadapter.getPosition(pet.getSpecies());
+                spnrSpecies.setSelection(spcsPosition + 1);
+                petbreed = pet.getBreed();
+                int genderPosition = genderadapter.getPosition(pet.getGender());
+                spnrGender.setSelection(genderPosition + 1);
+                txtpetDOB.setText(pet.getDob());
+                txtpetcolor.setText(pet.getColor());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -120,6 +171,10 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                 breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
                 spnrBreed.setAdapter(breedsadapter);
                 spnrBreed.setEnabled(true);
+                if(petKey != null) {
+                    int breedposition = breedsadapter.getPosition(petbreed);
+                    spnrBreed.setSelection(breedposition + 1);
+                }
             }
         });
         task.execute();
@@ -141,8 +196,10 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                 Log.d("urlString", urlString);
             }
         }
-        if(spnrBreed == spinner)
-            petbreed = spinner.getItemAtPosition(position).toString();
+        if(spnrBreed == spinner) {
+            if(!listofbreeds.isEmpty())
+                petbreed = spinner.getItemAtPosition(position).toString();
+        }
         if(spnrGender == spinner)
             petgender = spinner.getItemAtPosition(position).toString();
     }
@@ -217,8 +274,13 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                             if(testpetcolor){
                                 if(photoPath != null)
                                     getImageUrl();
-                                else
-                                    addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                                else {
+                                    Log.d(TAG, "selectimage: " + petKey);
+                                    if (petKey != null)
+                                        addPetPresenter.updatepet(getContext(), petKey, uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                                    else
+                                        addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                                }
                             }else{
                                 txtpetcolor.requestFocus();
                             }
@@ -258,7 +320,10 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                 if (task.isSuccessful()) {
                     String photoUrl = task.getResult().toString();
                     Log.d(TAG, "onComplete: " + photoUrl);
-                    addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                    if(petKey != null){
+                        addPetPresenter.updatepet(getContext(), petKey, uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                    }else
+                        addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
                 }
             }
         });
@@ -308,24 +373,4 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         Intent intent = new Intent(this, PetDashboardActivity.class);
         startActivity(intent);
     }
-
-    @Override
-    public void breedsforspinner(ArrayList<String> data) {
-        Log.d("unsani?", data.toString());
-    }
-
-    @Override
-    public void addPetError(String errcode, String errmessage) {
-
-    }
-
-    @Override
-    public void setProgressVisibility(boolean visibility) {
-        if (visibility)
-            progressBar.setVisibility(View.VISIBLE);
-        else
-            progressBar.setVisibility(View.GONE);
-    }
-
-
 }

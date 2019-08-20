@@ -18,12 +18,11 @@
             android:name=".PetOwnerProfile.ChangePasswordActivity"
             />
         <activity android:name=".PetDashboard.PetDashboardActivity" />
-        <activity android:name=".AddPet.AddPetActivity" />
+        <activity android:name=".AddPet.AddPetActivity"
+            android:parentActivityName=".PetDashboard.PetDashboardActivity" />
         <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".SignUp.Personal_Information" />
-        <activity
-            android:name=".PetListView.PetListViewActivity"
-            android:parentActivityName=".MainActivity" />
+
         <activity android:name=".SignIn.SignInActivity" />
         <activity
             android:name=".MainActivity"

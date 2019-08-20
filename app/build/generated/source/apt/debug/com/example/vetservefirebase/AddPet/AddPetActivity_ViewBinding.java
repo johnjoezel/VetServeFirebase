@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -103,7 +104,8 @@ public class AddPetActivity_ViewBinding implements Unbinder {
         target.getpetDOB();
       }
     });
-    view = Utils.findRequiredView(source, R.id.btnaddpet, "method 'toadd'");
+    view = Utils.findRequiredView(source, R.id.btnaddpet, "field 'btnUpAdd' and method 'toadd'");
+    target.btnUpAdd = Utils.castView(view, R.id.btnaddpet, "field 'btnUpAdd'", Button.class);
     view7f0a0039 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
@@ -131,6 +133,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.petpicture = null;
     target.txtpetcolor = null;
     target.txtpetDOB = null;
+    target.btnUpAdd = null;
 
     ((AdapterView<?>) view7f0a0146).setOnItemSelectedListener(null);
     view7f0a0146 = null;
