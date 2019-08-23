@@ -36,6 +36,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
     public AddPetView addPetView ;
     private DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
     private ProgressDialog progressDialog;
+    String status = "active";
 
 
     public AddPetPresenterImpl() {
@@ -54,7 +55,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
 
     @Override
     public void addpet(Context context, String uId, String petname, String petspecies, String petbreed, String petgender, String petdob, String petcolor, String photoUrl) {
-        Pet pet = new Pet(petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+        Pet pet = new Pet(petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl, status);
         //Add user to firebase database
         progressDialog = new ProgressDialog(context);
         progressDialog.setIndeterminate(true);
@@ -87,6 +88,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
         map.put("dob", petdob);
         map.put("color", petcolor);
         map.put("photoUrl",photoUrl);
+        map.put("status", status);
         Log.d("children", "updatepet: " + map);
         dRef.child(petKey).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

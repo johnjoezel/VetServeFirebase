@@ -10,7 +10,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -19,18 +20,16 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Base.BaseActivity;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.Others.CircleTransform;
+import com.example.vetservefirebase.Others.ShowAlert;
 import com.example.vetservefirebase.Others.Utils;
 import com.example.vetservefirebase.Others.Validation;
-import com.example.vetservefirebase.Others.fetchData;
 import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.example.vetservefirebase.R;
 import com.google.android.gms.tasks.Continuation;
@@ -45,9 +44,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 import butterknife.BindArray;
@@ -68,7 +65,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     @BindView(R.id.spnrGender)
     MaterialSpinner spnrGender;
     @BindView(R.id.spnrBreed)
-    MaterialSpinner spnrBreed;
+    EditText spnrBreed;
     @BindView(R.id.txtpetname)
     EditText txtpetname;
     @BindView(R.id.petpicture)
@@ -82,20 +79,18 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     @BindArray(R.array.spinner_species_items)
     String[] speciesArray;
     private int petbirthDay, petbirthMonth, petbirthYear;
-    ArrayAdapter breedsadapter, genderadapter, speciesadapter;
+    ArrayAdapter genderadapter, speciesadapter;
     public String petspecies, petbreed, petgender, petname, petcolor, petdob, uId, petKey;
     private DatePickerDialog.OnDateSetListener mDateListener;
     private DatePickerDialog dialog;
     private AddPetPresenterImpl addPetPresenter = new AddPetPresenterImpl();
     private Intent intent;
     private ProgressBar progressBar;
-    public ArrayList<String> listofbreeds = new ArrayList<>();
-    private String urlString;
     Validation validation = new Validation();
     private Bitmap bitmap;
     private Uri photoPath;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
-    private String photoUrl = "nopicture";
+    private String photoUrl = "";
     Bundle extras = new Bundle();
     private DatabaseReference dRef;
 
@@ -105,19 +100,15 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
         ButterKnife.bind(this);
-        spnrBreed.setEnabled(false);
         intent = getIntent();
         extras = intent.getExtras();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        breedsadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, listofbreeds);
-        breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
         genderadapter = ArrayAdapter.createFromResource(getContext(), R.array.spinner_gender_items, R.layout.spinner_item);
         genderadapter.setDropDownViewResource(R.layout.spinner_adapter);
         speciesadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, speciesArray);
         speciesadapter.setDropDownViewResource(R.layout.spinner_adapter);
         spnrGender.setAdapter(genderadapter);
         spnrSpecies.setAdapter(speciesadapter);
-        spnrBreed.setAdapter(breedsadapter);
         if(extras != null){
             btnUpAdd.setText("Save Changes");
             setTitle("Edit Pet Information");
@@ -146,7 +137,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                 txtpetname.setText(pet.getPet_name());
                 int spcsPosition = speciesadapter.getPosition(pet.getSpecies());
                 spnrSpecies.setSelection(spcsPosition + 1);
-                petbreed = pet.getBreed();
+                spnrBreed.setText(pet.getBreed());
                 int genderPosition = genderadapter.getPosition(pet.getGender());
                 spnrGender.setSelection(genderPosition + 1);
                 txtpetDOB.setText(pet.getDob());
@@ -162,44 +153,9 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
 
     }
 
-    private void getBreeds() {
-        fetchData task = new fetchData(urlString,new fetchData.TaskListener() {
-            @Override
-            public void onFinished(ArrayList<String> result) {
-                listofbreeds = result;
-                breedsadapter = new ArrayAdapter(getContext(), R.layout.spinner_item, listofbreeds);
-                breedsadapter.setDropDownViewResource(R.layout.spinner_adapter);
-                spnrBreed.setAdapter(breedsadapter);
-                spnrBreed.setEnabled(true);
-                if(petKey != null) {
-                    int breedposition = breedsadapter.getPosition(petbreed);
-                    spnrBreed.setSelection(breedposition + 1);
-                }
-            }
-        });
-        task.execute();
-    }
-
-
-    @OnItemSelected ({R.id.spnrSpecies, R.id.spnrGender, R.id.spnrBreed}) void onItemSelected(Spinner spinner, int position){
-        if(spnrSpecies == spinner) {
+    @OnItemSelected ({R.id.spnrSpecies, R.id.spnrGender}) void onItemSelected(Spinner spinner, int position){
+        if(spnrSpecies == spinner)
             petspecies = spinner.getItemAtPosition(position).toString();
-            Log.d("petspecies", petspecies);
-            if(!petspecies.equals("Species")) {
-                if (petspecies.equals("Dog")) {
-                    urlString = "https://api.thedogapi.com/v1/breeds";
-                }
-                if (petspecies.equals("Cat")) {
-                    urlString = "https://api.thecatapi.com/v1/breeds";
-                }
-                getBreeds();
-                Log.d("urlString", urlString);
-            }
-        }
-        if(spnrBreed == spinner) {
-            if(!listofbreeds.isEmpty())
-                petbreed = spinner.getItemAtPosition(position).toString();
-        }
         if(spnrGender == spinner)
             petgender = spinner.getItemAtPosition(position).toString();
     }
@@ -258,10 +214,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         petname = txtpetname.getText().toString().trim();
         petcolor = txtpetcolor.getText().toString().trim();
         petdob = txtpetDOB.getText().toString().trim();
+        petbreed = spnrBreed.getText().toString().trim();
         Boolean testpetname=validation.validateNormalInput(txtpetname);
+        Boolean testBreed = validation.validateNormalInput(spnrBreed);
         Boolean testpetcolor=validation.validateNormalInput(txtpetcolor);
         Boolean testSpecies = validateSpinner(spnrSpecies);
-        Boolean testBreed = validateSpinner(spnrBreed);
         Boolean testGender = validateSpinner(spnrGender);
         if(petdob.isEmpty()){
             txtpetDOB.setError("Field can't be empty");
@@ -275,6 +232,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                                 if(photoPath != null)
                                     getImageUrl();
                                 else {
+                                    if(petspecies.equals("Cat")){
+                                        photoUrl = "https://firebasestorage.googleapis.com/v0/b/vetservefirebase.appspot.com/o/defaultpic%2Fcatpic.png?alt=media&token=f3b14ba3-a62b-4181-8833-eb03be6ddae2";
+                                    }else if(petspecies.equals("Dog")) {
+                                        photoUrl = "https://firebasestorage.googleapis.com/v0/b/vetservefirebase.appspot.com/o/defaultpic%2Fdogpic.png?alt=media&token=eeb7f504-43b1-4a6f-8712-cdf39f58df75";
+                                    }
                                     Log.d(TAG, "selectimage: " + petKey);
                                     if (petKey != null)
                                         addPetPresenter.updatepet(getContext(), petKey, uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
@@ -292,7 +254,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                         spnrGender.performClick();
                     }
                 }else{
-                    spnrBreed.performClick();
+                    spnrBreed.requestFocus();
                 }
             }else{
                 spnrSpecies.performClick();
@@ -341,17 +303,6 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
             }else{
                 return false;
             }
-        }else if(spinner == spnrBreed) {
-            if (petbreed != null){
-                if (!petbreed.equals("Breed"))
-                    return true;
-                else {
-                    spnrBreed.setError("Please select a breed");
-                    return false;
-                }
-            }else{
-                return false;
-            }
         }else{
             if (!petgender.equals("Gender"))
                 return true;
@@ -372,5 +323,20 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
         Utils.showMessage(this, "Pet Added Successfully");
         Intent intent = new Intent(this, PetDashboardActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(petKey != null) {
+            getMenuInflater().inflate(R.menu.removemenu, menu);
+        }
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.remove)
+            ShowAlert.alertRemovePet(this, "Are you sure you want to remove this pet?", petKey, uId);
+        return super.onOptionsItemSelected(item);
     }
 }

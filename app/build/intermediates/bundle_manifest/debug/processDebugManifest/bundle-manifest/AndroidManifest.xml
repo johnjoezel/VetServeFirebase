@@ -31,6 +31,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.vetservefirebase.ServiceProvider.ServiceProviderActivity" />
         <activity android:name="com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity" />
         <activity android:name="com.example.vetservefirebase.PetDashboard.PetDashboardActivity" />
         <activity

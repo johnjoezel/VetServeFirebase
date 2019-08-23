@@ -7,6 +7,7 @@ public class Pet {
     String breed;
     String gender;
     String color;
+    String status;
     String dob;
     String photoUrl;
 
@@ -15,7 +16,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(String pet_name, String species, String breed, String gender, String dob, String color, String photoUrl) {
+    public Pet(String pet_name, String species, String breed, String gender, String dob, String color, String photoUrl, String status) {
         this.photoUrl = photoUrl;
         this.pet_name = pet_name;
         this.species = species;
@@ -23,6 +24,7 @@ public class Pet {
         this.gender = gender;
         this.dob = dob;
         this.color = color;
+        this.status = status;
     }
 
     public void setPet_name(String pet_name) {
@@ -80,4 +82,11 @@ public class Pet {
         this.photoUrl = photoUrl;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

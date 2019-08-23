@@ -2,26 +2,20 @@ package com.example.vetservefirebase.PetDashboard;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
-
-import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -71,18 +65,23 @@ public class PetDashboardActivity extends AppCompatActivity {
                 if(dataSnapshot.exists()) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         Pet pet = ds.getValue(Pet.class);
-                        photoUrls.add(pet.getPhotoUrl());
-                        petKeys.add(ds.getKey());
-                        petnames.add(pet.getPet_name());
-
+                        if(!pet.getStatus().equals("removed")) {
+                            photoUrls.add(pet.getPhotoUrl());
+                            petKeys.add(ds.getKey());
+                            petnames.add(pet.getPet_name());
+                        }
                     }
-                    setContentView(R.layout.activity_pet_dashboard);
-                    ButterKnife.bind(PetDashboardActivity.this);
-                    viewPager = findViewById(R.id.viewPager);
-                    viewPager1 = findViewById(R.id.viewPager1);
-                    tabLayout =  findViewById(R.id.tabLayout);
-                    tabLayout.setupWithViewPager(viewPager1);
-                    setupimageslider();
+                    if(!petKeys.isEmpty()) {
+                        setContentView(R.layout.activity_pet_dashboard);
+                        ButterKnife.bind(PetDashboardActivity.this);
+                        viewPager = findViewById(R.id.viewPager);
+                        viewPager1 = findViewById(R.id.viewPager1);
+                        tabLayout = findViewById(R.id.tabLayout);
+                        tabLayout.setupWithViewPager(viewPager1);
+                        setupimageslider();
+                    }else{
+                    setContentView(R.layout.blanklayout);
+                }
                 }else{
                     setContentView(R.layout.blanklayout);
                 }

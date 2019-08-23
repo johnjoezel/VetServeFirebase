@@ -161,7 +161,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_play_arrow_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_remove_circle_outline_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -171,8 +171,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="1d8dff" />
-                            <entry key="outputName" value="rightarrow" />
+                            <entry key="color" value="ff0003" />
+                            <entry key="outputName" value="removeicon" />
                             <entry key="sourceFile" value="C:\Users\ZerahNissi" />
                           </map>
                         </option>

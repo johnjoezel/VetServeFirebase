@@ -1402,6 +1402,7 @@ drawable prof_calendar
 drawable prof_password
 drawable prof_user
 drawable profile_icon
+drawable removeicon
 drawable shadow
 drawable side_nav_bar
 drawable temporary_med_icon
@@ -1454,7 +1455,6 @@ id beginning
 id blanklayout
 id blocking
 id bottom
-id bottomnavschedule
 id breedlabel
 id breedname
 id browser_actions_header_text
@@ -1550,7 +1550,6 @@ id fragment_phone
 id fragment_register_email
 id gender
 id genderlabel
-id general
 id ghost_view
 id glide_custom_view_target_tag
 id gone
@@ -1631,7 +1630,6 @@ id logout
 id main_tos_and_pp
 id masked
 id media_actions
-id medical
 id message
 id middle
 id middlename
@@ -1641,15 +1639,10 @@ id mtrl_internal_children_alpha_tag
 id multiply
 id name
 id name_layout
-id nav_gallery
 id nav_home
 id nav_logout
 id nav_password
 id nav_profile
-id nav_send
-id nav_share
-id nav_slideshow
-id nav_tools
 id nav_view
 id navigation_header_container
 id never
@@ -1668,8 +1661,8 @@ id password
 id password_layout
 id percent
 id petColor
-id petHeight
 id petImage
+id petMicrochip
 id petPic
 id petWeight
 id petdateofbirth
@@ -1684,6 +1677,7 @@ id progressBar
 id progress_circular
 id progress_horizontal
 id radio
+id remove
 id resend_barrier
 id resend_code
 id right
@@ -1961,11 +1955,10 @@ layout spinner_item
 layout support_simple_spinner_dropdown_item
 layout view_carousel
 menu activity_main_drawer
-menu activity_navigation_drawer_drawer
-menu bottom_navigation_menu
 menu dashboard_items
 menu main
 menu navigation_drawer
+menu removemenu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals fui_error_weak_password

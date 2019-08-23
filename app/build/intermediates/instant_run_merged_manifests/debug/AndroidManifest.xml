@@ -34,12 +34,11 @@
         android:theme="@style/AppTheme" >
         <activity android:name="com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity" />
         <activity android:name="com.example.vetservefirebase.PetDashboard.PetDashboardActivity" />
-        <activity android:name="com.example.vetservefirebase.AddPet.AddPetActivity" />
+        <activity
+            android:name="com.example.vetservefirebase.AddPet.AddPetActivity"
+            android:parentActivityName="com.example.vetservefirebase.PetDashboard.PetDashboardActivity" />
         <activity android:name="com.example.vetservefirebase.SignUp.SignUpActivity" />
         <activity android:name="com.example.vetservefirebase.SignUp.Personal_Information" />
-        <activity
-            android:name="com.example.vetservefirebase.PetListView.PetListViewActivity"
-            android:parentActivityName="com.example.vetservefirebase.MainActivity" />
         <activity android:name="com.example.vetservefirebase.SignIn.SignInActivity" />
         <activity
             android:name="com.example.vetservefirebase.MainActivity"
