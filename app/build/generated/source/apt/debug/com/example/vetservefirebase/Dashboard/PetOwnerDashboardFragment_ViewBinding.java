@@ -16,9 +16,11 @@ import java.lang.Override;
 public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
   private PetOwnerDashboardFragment target;
 
-  private View view7f0a0188;
+  private View view7f0a0190;
 
-  private View view7f0a0086;
+  private View view7f0a008b;
+
+  private View view7f0a004f;
 
   @UiThread
   public PetOwnerDashboardFragment_ViewBinding(final PetOwnerDashboardFragment target,
@@ -28,7 +30,7 @@ public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.userProfpic, "field 'userProfpic' and method 'changePP'");
     target.userProfpic = Utils.castView(view, R.id.userProfpic, "field 'userProfpic'", ImageView.class);
-    view7f0a0188 = view;
+    view7f0a0190 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -37,11 +39,19 @@ public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
     });
     target.txtUsername = Utils.findRequiredViewAsType(source, R.id.displayusername, "field 'txtUsername'", TextView.class);
     view = Utils.findRequiredView(source, R.id.forpets, "method 'next'");
-    view7f0a0086 = view;
+    view7f0a008b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
-        target.next();
+        target.next(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.clinicfinder, "method 'next'");
+    view7f0a004f = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.next(p0);
       }
     });
   }
@@ -56,9 +66,11 @@ public class PetOwnerDashboardFragment_ViewBinding implements Unbinder {
     target.userProfpic = null;
     target.txtUsername = null;
 
-    view7f0a0188.setOnClickListener(null);
-    view7f0a0188 = null;
-    view7f0a0086.setOnClickListener(null);
-    view7f0a0086 = null;
+    view7f0a0190.setOnClickListener(null);
+    view7f0a0190 = null;
+    view7f0a008b.setOnClickListener(null);
+    view7f0a008b = null;
+    view7f0a004f.setOnClickListener(null);
+    view7f0a004f = null;
   }
 }

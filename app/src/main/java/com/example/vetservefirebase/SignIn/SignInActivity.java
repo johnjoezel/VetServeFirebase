@@ -50,6 +50,11 @@ public class SignInActivity extends BaseActivity implements SignInView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+        try
+        {
+            this.getSupportActionBar().hide();
+        }
+        catch (NullPointerException e){}
         setTitle("Sign In");
         ButterKnife.bind(this);
         mAuth = FirebaseAuth.getInstance();

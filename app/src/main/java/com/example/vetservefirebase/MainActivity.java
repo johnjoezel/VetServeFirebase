@@ -27,6 +27,7 @@ import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.SignIn.SignInActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private String email;
     private int state;
-    private int fragmentid = 1;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         headerDisplayname = navHeader.findViewById(R.id.headerDisplayname);
         headerBackground = navHeader.findViewById(R.id.img_header_bg);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
+        bottomNavigationView =  findViewById(R.id.bottomNav);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         //Set up an AuthStateListener that responds to changes in the user's sign-in state

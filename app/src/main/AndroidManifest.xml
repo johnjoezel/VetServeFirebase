@@ -14,7 +14,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServiceProvider.ServiceProviderActivity"></activity>
+        <activity android:name=".ServiceProvider.ServiceProviderActivity" />
         <activity android:name=".PetOwnerProfile.ChangePasswordActivity" />
         <activity android:name=".PetDashboard.PetDashboardActivity" />
         <activity

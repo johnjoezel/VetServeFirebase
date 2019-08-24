@@ -27,7 +27,26 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <RelativeLayout
+                android:id="@+id/fragment_container1"
+                android:layout_width="match_parent"
+                android:layout_height="546dp">
+
+            </RelativeLayout>
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="?android:attr/windowBackground"
+                android:foreground="?attr/selectableItemBackground"
+                app:menu="@menu/bottom_nav_items"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white" />
+        </FrameLayout>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
@@ -38,5 +57,6 @@
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

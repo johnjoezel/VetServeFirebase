@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
+            "outputFile": "C:\\Users\\TOSHIBA\\StudioProjects\\VetServeFirebase\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v14\\values-v14.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\values-v14\\dimens.xml",
+                    "source": "C:\\Users\\TOSHIBA\\StudioProjects\\VetServeFirebase\\app\\src\\main\\res\\values-v14\\dimens.xml",
                     "from": {
                         "startLines": "5,6,7,3,2",
                         "startColumns": "4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\values-v14\\drawables.xml",
+                    "source": "C:\\Users\\TOSHIBA\\StudioProjects\\VetServeFirebase\\app\\src\\main\\res\\values-v14\\drawables.xml",
                     "from": {
                         "startLines": "1,2,4,6,5,3",
                         "startColumns": "4,4,4,4,4,4",

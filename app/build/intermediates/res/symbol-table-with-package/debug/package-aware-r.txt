@@ -1306,8 +1306,11 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable bg_circle
 drawable blueediticon
+drawable bottomborder
 drawable catpic
 drawable circular
+drawable clinicbanner
+drawable clinichours
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1371,6 +1374,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable icon_background
+drawable location
 drawable logo
 drawable logout_logo
 drawable main_background
@@ -1398,13 +1402,17 @@ drawable pet_clinic2
 drawable petdefaultpic
 drawable pets
 drawable pets2
+drawable phonenumber
 drawable prof_calendar
 drawable prof_password
 drawable prof_user
 drawable profile_icon
 drawable removeicon
+drawable reqappointment
+drawable roundcorner
 drawable shadow
 drawable side_nav_bar
+drawable signinbackground
 drawable temporary_med_icon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1455,6 +1463,7 @@ id beginning
 id blanklayout
 id blocking
 id bottom
+id bottomNav
 id breedlabel
 id breedname
 id browser_actions_header_text
@@ -1484,6 +1493,10 @@ id chains
 id checkbox
 id chronometer
 id circular
+id clinicAddress
+id clinicHours
+id clinicName
+id clinicPhone
 id clinicfinder
 id clip_horizontal
 id clip_vertical
@@ -1546,6 +1559,7 @@ id flow
 id forever
 id forpets
 id fragment_container
+id fragment_container1
 id fragment_phone
 id fragment_register_email
 id gender
@@ -1624,9 +1638,9 @@ id linearLayout9
 id listMode
 id list_item
 id listofpet
+id listofprovider
 id login_button_fb
 id logo
-id logout
 id main_tos_and_pp
 id masked
 id media_actions
@@ -1637,6 +1651,7 @@ id mini
 id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
+id mypets
 id name
 id name_layout
 id nav_home
@@ -1676,8 +1691,10 @@ id profilepic
 id progressBar
 id progress_circular
 id progress_horizontal
+id providers
 id radio
 id remove
+id reqAppointment
 id resend_barrier
 id resend_code
 id right
@@ -1709,7 +1726,6 @@ id select_dialog_listview
 id selected
 id send_code
 id send_sms_tos
-id setting
 id shortcut
 id showCustom
 id showHome
@@ -1808,8 +1824,6 @@ id viewPager
 id viewPager1
 id view_container
 id view_offset_helper
-id viewpetbreed
-id viewpetname
 id visible
 id weight
 id weightlabel
@@ -1878,11 +1892,13 @@ layout activity_main
 layout activity_personal_information
 layout activity_pet_dashboard
 layout activity_pet_list_view
+layout activity_service_provider
 layout activity_signin
 layout activity_signup
 layout blanklayout
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
+layout clinic_layout
 layout custom_alert_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1945,7 +1961,6 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
-layout pet_list_layout
 layout petownerdashboardfragment
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
@@ -1955,7 +1970,7 @@ layout spinner_item
 layout support_simple_spinner_dropdown_item
 layout view_carousel
 menu activity_main_drawer
-menu dashboard_items
+menu bottom_nav_items
 menu main
 menu navigation_drawer
 menu removemenu
