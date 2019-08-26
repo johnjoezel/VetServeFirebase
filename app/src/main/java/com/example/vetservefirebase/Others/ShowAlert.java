@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -91,8 +90,6 @@ public class ShowAlert {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(context, "Pet Removed", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(context, PetDashboardActivity.class);
-                                context.startActivity(intent);
                             }
                         }
                     });

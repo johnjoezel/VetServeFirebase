@@ -1379,6 +1379,7 @@ drawable logo
 drawable logout_logo
 drawable main_background
 drawable main_border
+drawable mainbackground
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable my_background
@@ -1410,9 +1411,9 @@ drawable profile_icon
 drawable removeicon
 drawable reqappointment
 drawable roundcorner
+drawable searchclinic
 drawable shadow
 drawable side_nav_bar
-drawable signinbackground
 drawable temporary_med_icon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -1463,7 +1464,7 @@ id beginning
 id blanklayout
 id blocking
 id bottom
-id bottomNav
+id bottomnav
 id breedlabel
 id breedname
 id browser_actions_header_text
@@ -1559,7 +1560,6 @@ id flow
 id forever
 id forpets
 id fragment_container
-id fragment_container1
 id fragment_phone
 id fragment_register_email
 id gender
@@ -1567,7 +1567,6 @@ id genderlabel
 id ghost_view
 id glide_custom_view_target_tag
 id gone
-id google_login
 id group_divider
 id groups
 id header
@@ -1596,6 +1595,7 @@ id imageView3
 id imageView4
 id imageView5
 id imageView6
+id imageView7
 id imgProfpic
 id img_header_bg
 id indicator
@@ -1639,7 +1639,6 @@ id listMode
 id list_item
 id listofpet
 id listofprovider
-id login_button_fb
 id logo
 id main_tos_and_pp
 id masked
@@ -1654,10 +1653,8 @@ id multiply
 id mypets
 id name
 id name_layout
-id nav_home
 id nav_logout
 id nav_password
-id nav_profile
 id nav_view
 id navigation_header_container
 id never
@@ -1680,6 +1677,7 @@ id petImage
 id petMicrochip
 id petPic
 id petWeight
+id pet_fragment_container1
 id petdateofbirth
 id petpicture
 id petpictures
@@ -1687,6 +1685,7 @@ id phone_button
 id phone_layout
 id phone_number
 id pin
+id profile
 id profilepic
 id progressBar
 id progress_circular
@@ -1712,6 +1711,7 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchClinic
 id search_badge
 id search_bar
 id search_button
@@ -1890,9 +1890,7 @@ layout activity_add_pet
 layout activity_change_password
 layout activity_main
 layout activity_personal_information
-layout activity_pet_dashboard
 layout activity_pet_list_view
-layout activity_service_provider
 layout activity_signin
 layout activity_signup
 layout blanklayout
@@ -1914,10 +1912,13 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout fragment_blank
 layout fragment_general
 layout fragment_medication
+layout fragment_pet_dashboard
 layout fragment_profile
 layout fragment_schedules
+layout fragment_service_provider
 layout fui_activity_invisible
 layout fui_activity_register_email
 layout fui_activity_register_phone
@@ -1970,10 +1971,12 @@ layout spinner_item
 layout support_simple_spinner_dropdown_item
 layout view_carousel
 menu activity_main_drawer
+menu addpet
 menu bottom_nav_items
 menu main
 menu navigation_drawer
 menu removemenu
+menu searchlinic
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals fui_error_weak_password
@@ -2170,8 +2173,9 @@ string mtrl_chip_close_icon_content_description
 string nav_header_desc
 string nav_header_subtitle
 string nav_header_title
-string nav_home
+string nav_mypets
 string nav_profile
+string nav_providers
 string navigation_drawer_close
 string navigation_drawer_open
 string open

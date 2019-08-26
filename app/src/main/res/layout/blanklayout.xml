@@ -4,12 +4,36 @@
     android:layout_height="wrap_content"
     android:id="@+id/blanklayout">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pets2"
+        android:layout_gravity="center"/>
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="Press the + button above to add pet"
+        android:layout_height="wrap_content"
+        android:text="You haven't added any pets"
         android:textSize="25dp"
         android:fontFamily="@font/champagne"
         android:textColor="#000"
         android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add your pets and create their profile"
+        android:textSize="15dp"
+        android:fontFamily="@font/champagne"
+        android:textColor="@color/material_gray_700"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/addpet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/final_button"
+        android:fontFamily="@font/champagne"
+        android:layout_marginTop="32dp"
+        android:text="Add Pet"
+        android:layout_gravity="center"/>
 </LinearLayout>

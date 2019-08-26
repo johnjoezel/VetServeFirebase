@@ -1,6 +1,10 @@
 package com.example.vetservefirebase.Model;
 
-public class Pet {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class Pet  implements Parcelable  {
 
     String pet_name;
     String species;
@@ -10,10 +14,23 @@ public class Pet {
     String status;
     String dob;
     String photoUrl;
+    String petKey;
 
 
 
     public Pet() {
+    }
+
+    public Pet(String petKey, String pet_name, String species, String breed, String gender, String dob, String color, String photoUrl, String status) {
+        this.petKey = petKey;
+        this.photoUrl = photoUrl;
+        this.pet_name = pet_name;
+        this.species = species;
+        this.breed = breed;
+        this.gender = gender;
+        this.dob = dob;
+        this.color = color;
+        this.status = status;
     }
 
     public Pet(String pet_name, String species, String breed, String gender, String dob, String color, String photoUrl, String status) {
@@ -25,6 +42,18 @@ public class Pet {
         this.dob = dob;
         this.color = color;
         this.status = status;
+    }
+
+    public Pet(Parcel in) {
+        petKey = in.readString();
+        photoUrl = in.readString();
+        pet_name = in.readString();
+        species = in.readString();
+        breed = in.readString();
+        gender = in.readString();
+        dob = in.readString();
+        color = in.readString();
+        status = in.readString();
     }
 
     public void setPet_name(String pet_name) {
@@ -89,4 +118,35 @@ public class Pet {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public static final Parcelable.Creator<Pet> CREATOR = new Parcelable.Creator<Pet>() {
+        @Override
+        public Pet createFromParcel(Parcel in) {
+            return new Pet(in);
+        }
+
+        @Override
+        public Pet[] newArray(int size) {
+            return new Pet[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(petKey);
+        parcel.writeString(photoUrl);
+        parcel.writeString(pet_name);
+        parcel.writeString(species);
+        parcel.writeString(breed);
+        parcel.writeString(gender);
+        parcel.writeString(dob);
+        parcel.writeString(color);
+        parcel.writeString(status);
+    }
+
 }

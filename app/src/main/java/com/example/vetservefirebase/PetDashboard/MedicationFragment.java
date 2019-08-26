@@ -31,10 +31,6 @@ public class MedicationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_medication, container, false);
-        arguments = getArguments();
-        uId = ((PetDashboardActivity)this.getActivity()).passUid();
-        petKey = arguments.getString("petKey");
-        Log.d(TAG, "onCreateView: " + petKey);
         return view;
     }
 

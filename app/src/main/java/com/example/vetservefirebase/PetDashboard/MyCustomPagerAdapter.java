@@ -1,12 +1,10 @@
 package com.example.vetservefirebase.PetDashboard;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -14,6 +12,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.R;
 
@@ -24,21 +23,19 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 
 public class MyCustomPagerAdapter extends PagerAdapter {
     Context context;
-    ArrayList<String> photoUrls;
-    ArrayList<String> petnames;
+    ArrayList<Pet> pets;
     LayoutInflater layoutInflater;
 
 
-    public MyCustomPagerAdapter(Context context, ArrayList<String> photoUrls, ArrayList<String> petnames) {
+    public MyCustomPagerAdapter(LayoutInflater inflater, Context context, ArrayList<Pet> pets) {
         this.context = context;
-        this.photoUrls = photoUrls;
-        this.petnames = petnames;
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.pets = pets;
+        layoutInflater = inflater;
     }
 
     @Override
     public int getCount() {
-        return photoUrls.size();
+        return pets.size();
     }
 
     @Override
@@ -51,14 +48,14 @@ public class MyCustomPagerAdapter extends PagerAdapter {
         View itemView = layoutInflater.inflate(R.layout.item, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.petpictures);
         TextView displaypetname = itemView.findViewById(R.id.displaypetname);
-        Glide.with(context).load(photoUrls.get(position))
+        Glide.with(context).load(pets.get(position).getPhotoUrl())
                 .transition(withCrossFade())
                 .thumbnail(0.5f)
                 .transform(new CircleTransform())
                 .circleCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);
-        displaypetname.setText(petnames.get(position));
+        displaypetname.setText(pets.get(position).getPet_name());
         container.addView(itemView);
         return itemView;
     }

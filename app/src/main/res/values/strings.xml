@@ -13,12 +13,14 @@
     <string name="facebook_app_id">698277223661750</string>
     <string name="fb_login_protocol_scheme">fb698277223661750</string>
     <!-- Navigation Drawer menu labels -->
-    <string name="nav_home">Home</string>
+    <string name="nav_mypets">My Pets</string>
+    <string name="nav_providers">Service Providers</string>
     <string name="nav_profile">User Profile</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">
-        <item>Home</item>
+        <item>My Pets</item>
+        <item>Service Providers</item>
         <item>User Profile</item>
     </string-array>
 

@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,11 +22,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.vetservefirebase.AddPet.AddPetActivity;
+import com.example.vetservefirebase.Base.BaseView;
 import com.example.vetservefirebase.Dashboard.PetOwnerDashboardFragment;
+import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
+import com.example.vetservefirebase.PetDashboard.PetDashboardFragment;
 import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
+import com.example.vetservefirebase.ServiceProvider.ServiceProviderFragment;
 import com.example.vetservefirebase.SignIn.SignInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -37,9 +43,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BaseView {
 
     private static final String TAG = "Main Activity";
     public NavigationView navigationView;
@@ -49,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DrawerLayout drawer;
     public static int navItemIndex = 0;
-    private static final String TAG_HOME = "Home";
+    private static final String TAG_HOME = "My Pets";
+    private static final String TAG_PROVIDERS = "Service Providers";
     private static final String TAG_PROFILE = "User Profile";
     public static String CURRENT_TAG = TAG_HOME;
     private Handler mHandler;
@@ -58,9 +67,12 @@ public class MainActivity extends AppCompatActivity {
     private View navHeader;
     private String[] activityTitles;
     private Toolbar toolbar;
-    private String email;
+    private String email, petKey;
     private int state;
-    private BottomNavigationView bottomNavigationView;
+    Bundle arguments;
+    Bundle extras;
+    ArrayList<Pet> pets = new ArrayList<Pet>();
+    ArrayList<String> petKeys = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         state = 0;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        arguments = new Bundle();
         mHandler = new Handler();
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -77,9 +90,10 @@ public class MainActivity extends AppCompatActivity {
         headerDisplayname = navHeader.findViewById(R.id.headerDisplayname);
         headerBackground = navHeader.findViewById(R.id.img_header_bg);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-        bottomNavigationView =  findViewById(R.id.bottomNav);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
+        //get data if there's extra
+
         //Set up an AuthStateListener that responds to changes in the user's sign-in state
         if (user != null) {
             email = user.getEmail();
@@ -97,12 +111,34 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+            dRef = FirebaseDatabase.getInstance().getReference("pets").child(user.getUid());
+            dRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Pet pet = ds.getValue(Pet.class);
+                            if(!pet.getStatus().equals("remove")) {
+                                pets.add(pet);
+                                petKeys.add(ds.getKey());
+                                arguments.putStringArrayList("petKeys", petKeys);
+                                arguments.putParcelableArrayList("pets", pets);
+                            }
+                        }
+                    }
+                    if (savedInstanceState == null) {
+                        navItemIndex = 0;
+                        CURRENT_TAG = TAG_HOME;
+                        loadHomeFragment();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
             setUpNavigationView();
-            if (savedInstanceState == null) {
-                navItemIndex = 0;
-                CURRENT_TAG = TAG_HOME;
-                loadHomeFragment();
-            }
         } else {
                 startActivity(new Intent(MainActivity.this, SignInActivity.class));
         }
@@ -151,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
                         android.R.anim.fade_out);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.replace(R.id.fragment_container, fragment, CURRENT_TAG);
                 fragmentTransaction.commitAllowingStateLoss();
             }
@@ -189,13 +226,24 @@ public class MainActivity extends AppCompatActivity {
         switch (navItemIndex) {
             case 0:
                 // home
-                PetOwnerDashboardFragment petOwnerDashboardFragment = new PetOwnerDashboardFragment();
-                return petOwnerDashboardFragment;
+                BlankFragment blankFragment = new BlankFragment();
+                if(getIntent().hasExtra("petKey")){
+                    petKey = getIntent().getStringExtra("petKey");
+                    arguments.putString("petKey", petKey);
+                }
+                arguments.putInt("index", 0);
+                blankFragment.setArguments(arguments);
+                return blankFragment;
             case 1:
+                BlankFragment blankFragment1 = new BlankFragment();
+                arguments.putInt("index", 1);
+                blankFragment1.setArguments(arguments);
+                return blankFragment1;
+            case 2:
                 ProfileFragment profileFragment = new ProfileFragment();
                 return profileFragment;
             default:
-                return new PetOwnerDashboardFragment();
+                return new BlankFragment();
         }
     }
 
@@ -213,12 +261,16 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     //Replacing the main content with ContentFragment Which is our Inbox View;
-                    case R.id.nav_home:
+                    case R.id.mypets:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_HOME;
                         break;
-                    case R.id.nav_profile:
+                    case R.id.providers:
                         navItemIndex = 1;
+                        CURRENT_TAG = TAG_PROVIDERS;
+                        break;
+                    case R.id.profile:
+                        navItemIndex = 2;
                         CURRENT_TAG = TAG_PROFILE;
                         break;
                     case R.id.nav_password:
@@ -266,4 +318,22 @@ public class MainActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.addpet:
+                intent = new Intent(this, AddPetActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.searchClinic:
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public Context getContext() {
+        return getContext();
+    }
 }

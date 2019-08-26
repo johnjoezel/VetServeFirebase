@@ -17,12 +17,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
-import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.example.vetservefirebase.R;
-import com.example.vetservefirebase.ServiceProvider.ServiceProviderActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +32,6 @@ import java.io.IOException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
 import static android.app.Activity.RESULT_OK;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -120,16 +116,7 @@ public class PetOwnerDashboardFragment extends Fragment implements DashboardView
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, IMG_REQUEST);
     }
-    @OnClick({R.id.forpets, R.id.clinicfinder}) void next(View view){
-        if(view.getId() == R.id.forpets) {
-            Intent intent = new Intent(getContext(), PetDashboardActivity.class);
-            startActivity(intent);
-        }
-        if(view.getId() == R.id.clinicfinder){
-            Intent intent = new Intent(getContext(), ServiceProviderActivity.class);
-            startActivity(intent);
-        }
-    }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

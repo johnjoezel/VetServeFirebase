@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +37,7 @@ public class GeneralFragment extends Fragment {
     String petname, breedname, gender,weight, height;
     private OnFragmentInteractionListener mListener;
     Bundle arguments = new Bundle();
-    String petKey;
+    Pet pet;
     String uId;
     private DatabaseReference dRef;
 
@@ -56,28 +57,16 @@ public class GeneralFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_general, container, false);
         ButterKnife.bind(this, view);
         arguments = getArguments();
-        uId = ((PetDashboardActivity)this.getActivity()).passUid();
-        petKey = arguments.getString("petKey");
-        dRef = FirebaseDatabase.getInstance().getReference("pets").child(uId).child(petKey);
+        uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        pet = arguments.getParcelable("pet");
         setInformation();
         return view;
 
     }
 
     private void setInformation() {
-        dRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Pet pet = dataSnapshot.getValue(Pet.class);
-                    displaybreed.setText(breedname = pet.getBreed());
-                    displaygender.setText(gender = pet.getGender());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+        displaybreed.setText(breedname = pet.getBreed());
+        displaygender.setText(gender = pet.getGender());
     }
 
 

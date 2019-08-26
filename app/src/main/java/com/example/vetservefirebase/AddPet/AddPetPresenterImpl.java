@@ -3,31 +3,14 @@ package com.example.vetservefirebase.AddPet;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import com.example.vetservefirebase.Model.Pet;
-import com.example.vetservefirebase.PetDashboard.PetDashboardActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +51,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful())
-                    addPetView.addPetSuccess();
+                    addPetView.addPetSuccess("Pet Added Successfully");
             }
         });
     }
@@ -77,7 +60,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
     public void updatepet(Context context, String petKey, String uId, String petname, String petspecies, String petbreed, String petgender, String petdob, String petcolor, String photoUrl) {
         progressDialog = new ProgressDialog(context);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Adding Pet");
+        progressDialog.setMessage("Updating Pet Profile");
         progressDialog.show();
         DatabaseReference dRef = mDatabase.child("pets").child(uId);
         Map<String, Object> map = new HashMap();
@@ -95,10 +78,9 @@ public class AddPetPresenterImpl implements AddPetPresenter {
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
-                    Toast.makeText(context, "Pet Information Updated", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(context, PetDashboardActivity.class);
-                    intent.putExtra("petKey", petKey);
-                    context.startActivity(intent);
+                    map.clear();
+                    addPetView.addPetSuccess("Pet Profile Updated");
+//                    Toast.makeText(context, "Pet Information Updated", Toast.LENGTH_SHORT).show();
                 }
             }
         });
