@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Aug 14 20:54:38 CST 2019
+#Tue Aug 27 12:04:35 CST 2019
 0.baseType=DIRECTORY
 0.base=C\:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\merged_assets\\debug\\out
 0.path=crashlytics-build.properties

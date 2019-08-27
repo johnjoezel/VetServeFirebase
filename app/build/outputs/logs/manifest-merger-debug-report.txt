@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:2:1-109:12
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\521681a000f26d75a0300467476b2454\AndroidManifest.xml:17:1-24:12
 MERGED from [me.srodrigo:androidhintspinner:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\07d954f281d5eea43cc5f35f1ba7355b\AndroidManifest.xml:2:1-16:12
@@ -84,22 +84,22 @@ MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\ZerahNissi\.gradle\
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\e86d1a1cbf542c581374987835c3a6ee\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:protolite-well-known-types:16.0.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\3ae3040a30bd383f28c718b534e3c149\AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.16.1] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2e062c8264f3bb7fca64a1bfd0c28e31\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
+INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
 	package
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:4:5-43
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	xmlns:dist
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:3:5-61
 	android:versionCode
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:1-38:12
 		INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:2:11-69
@@ -136,7 +136,7 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.0.0] C:
 	android:name
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:8:22-64
 application
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:10:5-35:19
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:10:5-36:19
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:15:5-107:19
 MERGED from [com.firebaseui:firebase-ui-auth:5.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\2eb6e192af6cff6d5fadf4d7fe9d7816\AndroidManifest.xml:15:5-107:19
 MERGED from [com.google.android.material:material:1.0.0] C:\Users\ZerahNissi\.gradle\caches\transforms-2\files-2.1\521681a000f26d75a0300467476b2454\AndroidManifest.xml:22:5-20
@@ -223,52 +223,56 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\ZerahNissi\.gr
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:11:9-35
 	android:theme
 		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:16:9-40
+activity#com.example.vetservefirebase.ServiceProvider.ServiceProvidersList
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:9-83
+	android:name
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:19-71
 activity#com.example.vetservefirebase.ServiceProvider.ServiceProviderActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:9-77
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:9-77
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:17:19-74
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:19-74
 activity#com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:9-76
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:9-76
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:18:19-73
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:19-73
 activity#com.example.vetservefirebase.PetDashboard.PetDashboardActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:9-71
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:9-71
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:19:19-68
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:19-68
 activity#com.example.vetservefirebase.AddPet.AddPetActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:20:9-22:79
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:9-23:79
 	android:parentActivityName
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:22:13-76
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:13-76
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:21:13-50
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:22:13-50
 activity#com.example.vetservefirebase.SignUp.SignUpActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:9-59
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:9-59
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:23:19-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:19-56
 activity#com.example.vetservefirebase.SignUp.Personal_Information
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:9-65
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:9-65
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:24:19-62
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:19-62
 activity#com.example.vetservefirebase.SignIn.SignInActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:9-59
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:26:9-59
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:25:19-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:26:19-56
 activity#com.example.vetservefirebase.MainActivity
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:26:9-34:20
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:27:9-35:20
 	android:theme
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:28:13-56
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:29:13-56
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:27:13-41
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:28:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:29:13-33:29
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:13-34:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:31:17-69
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:31:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:17-77
+ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:33:17-77
 	android:name
-		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:32:27-74
+		ADDED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml:33:27-74
 uses-sdk
 INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\ZerahNissi\Downloads\VetServeFirebase\app\src\main\AndroidManifest.xml

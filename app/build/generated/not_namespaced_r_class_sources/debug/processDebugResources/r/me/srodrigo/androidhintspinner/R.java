@@ -388,28 +388,28 @@ public final class R {
         public static final int progress_circular = 0x7f0a010d;
         public static final int progress_horizontal = 0x7f0a010e;
         public static final int radio = 0x7f0a0110;
-        public static final int search_badge = 0x7f0a0125;
-        public static final int search_bar = 0x7f0a0126;
-        public static final int search_button = 0x7f0a0127;
-        public static final int search_close_btn = 0x7f0a0128;
-        public static final int search_edit_frame = 0x7f0a0129;
-        public static final int search_go_btn = 0x7f0a012a;
-        public static final int search_mag_icon = 0x7f0a012b;
-        public static final int search_plate = 0x7f0a012c;
-        public static final int search_src_text = 0x7f0a012d;
-        public static final int search_voice_btn = 0x7f0a012e;
-        public static final int shortcut = 0x7f0a0133;
-        public static final int showCustom = 0x7f0a0134;
-        public static final int showHome = 0x7f0a0135;
-        public static final int showTitle = 0x7f0a0136;
-        public static final int split_action_bar = 0x7f0a0143;
-        public static final int submit_area = 0x7f0a0157;
-        public static final int tabMode = 0x7f0a0159;
-        public static final int title = 0x7f0a016e;
-        public static final int up = 0x7f0a018d;
-        public static final int useLogo = 0x7f0a018e;
-        public static final int withText = 0x7f0a019d;
-        public static final int wrap_content = 0x7f0a019f;
+        public static final int search_badge = 0x7f0a0126;
+        public static final int search_bar = 0x7f0a0127;
+        public static final int search_button = 0x7f0a0128;
+        public static final int search_close_btn = 0x7f0a0129;
+        public static final int search_edit_frame = 0x7f0a012a;
+        public static final int search_go_btn = 0x7f0a012b;
+        public static final int search_mag_icon = 0x7f0a012c;
+        public static final int search_plate = 0x7f0a012d;
+        public static final int search_src_text = 0x7f0a012e;
+        public static final int search_voice_btn = 0x7f0a012f;
+        public static final int shortcut = 0x7f0a0134;
+        public static final int showCustom = 0x7f0a0135;
+        public static final int showHome = 0x7f0a0136;
+        public static final int showTitle = 0x7f0a0137;
+        public static final int split_action_bar = 0x7f0a0144;
+        public static final int submit_area = 0x7f0a0158;
+        public static final int tabMode = 0x7f0a015a;
+        public static final int title = 0x7f0a016f;
+        public static final int up = 0x7f0a018e;
+        public static final int useLogo = 0x7f0a018f;
+        public static final int withText = 0x7f0a01a1;
+        public static final int wrap_content = 0x7f0a01a3;
     }
     public static final class integer {
         private integer() {}
@@ -440,7 +440,7 @@ public final class R {
         public static final int abc_screen_toolbar = 0x7f0d0017;
         public static final int abc_search_dropdown_item_icons_2line = 0x7f0d0018;
         public static final int abc_search_view = 0x7f0d0019;
-        public static final int support_simple_spinner_dropdown_item = 0x7f0d006e;
+        public static final int support_simple_spinner_dropdown_item = 0x7f0d0070;
     }
     public static final class string {
         private string() {}

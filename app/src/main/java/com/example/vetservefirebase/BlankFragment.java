@@ -110,7 +110,7 @@ public class BlankFragment extends Fragment{
                 ServiceProviderFragment serviceProviderFragment = new ServiceProviderFragment();
                 return serviceProviderFragment;
             default:
-                return new BlankFragment();
+                return new PetDashboardFragment();
         }
     }
 

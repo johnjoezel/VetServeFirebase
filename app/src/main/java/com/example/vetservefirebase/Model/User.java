@@ -5,18 +5,13 @@ import android.os.Parcelable;
 
 public class User implements Parcelable{
 
-    String uId;
     String firstname;
     String middlename;
     String lastname;
     String contact;
     String displayname;
     String bday;
-
-
-
     String address;
-    String phoneNumber;
     String photoUrl;
 
     //Default Constructor
@@ -37,20 +32,18 @@ public class User implements Parcelable{
 
 
 
-    protected User(Parcel in) {
+    public User(Parcel in) {
         contact = in.readString();
-        uId = in.readString();
         firstname = in.readString();
         middlename = in.readString();
         lastname = in.readString();
-        bday = in.readString();
-        displayname = in.readString();
         address = in.readString();
-        phoneNumber = in.readString();
         photoUrl = in.readString();
+        displayname = in.readString();
+        bday = in.readString();
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
         @Override
         public User createFromParcel(Parcel in) {
             return new User(in);
@@ -62,24 +55,12 @@ public class User implements Parcelable{
         }
     };
 
-
-
-
-
     public String getPhotoUrl() {
         return photoUrl;
     }
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
-    }
-
-    public String getuId() {
-        return uId;
-    }
-
-    public void setuId(String uid) {
-        uId = uid;
     }
 
     public String getFirstname() {
@@ -144,14 +125,12 @@ public class User implements Parcelable{
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(contact);
-        parcel.writeString(uId);
         parcel.writeString(firstname);
         parcel.writeString(middlename);
         parcel.writeString(lastname);
-        parcel.writeString(bday);
-        parcel.writeString(displayname);
         parcel.writeString(address);
-        parcel.writeString(phoneNumber);
         parcel.writeString(photoUrl);
+        parcel.writeString(displayname);
+        parcel.writeString(bday);
     }
 }

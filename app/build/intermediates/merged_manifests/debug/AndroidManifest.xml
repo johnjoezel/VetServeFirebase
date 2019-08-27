@@ -32,6 +32,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.vetservefirebase.ServiceProvider.ServiceProvidersList" />
         <activity android:name="com.example.vetservefirebase.ServiceProvider.ServiceProviderActivity" />
         <activity android:name="com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity" />
         <activity android:name="com.example.vetservefirebase.PetDashboard.PetDashboardActivity" />
@@ -234,6 +235,10 @@
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
             android:authorities="com.example.vetservefirebase.lifecycle-process"
             android:exported="false"
+            android:multiprocess="true" />
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.example.vetservefirebase.com.android.tools.ir.server.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 

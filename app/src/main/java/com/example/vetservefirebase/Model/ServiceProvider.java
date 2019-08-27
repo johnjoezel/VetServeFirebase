@@ -2,60 +2,60 @@ package com.example.vetservefirebase.Model;
 
 public class ServiceProvider {
 
-    String clinicName;
-    String clinicAddress;
-    String opening;
-    String closing;
-    String clinicPhone;
+    String clinicname;
+    String location;
+    String firstname;
+    String lastname;
+    String phonenumber;
 
     public ServiceProvider() {
     }
 
-    public ServiceProvider(String clinicName, String clinicAddress, String opening, String closing, String clinicPhone) {
-        this.clinicName = clinicName;
-        this.clinicAddress = clinicAddress;
-        this.opening = opening;
-        this.closing = closing;
-        this.clinicPhone = clinicPhone;
+    public ServiceProvider(String clinicname, String location, String firstname, String lastname, String phonenumber) {
+        this.clinicname = clinicname;
+        this.location = location;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phonenumber = phonenumber;
     }
 
-    public String getClinicName() {
-        return clinicName;
+    public String getClinicname() {
+        return clinicname;
     }
 
-    public String getClinicAddress() {
-        return clinicAddress;
+    public void setClinicname(String clinicname) {
+        this.clinicname = clinicname;
     }
 
-    public String getOpening() {
-        return opening;
+    public String getLocation() {
+        return location;
     }
 
-    public String getClosing() {
-        return closing;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getClinicPhone() {
-        return clinicPhone;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setClinicName(String clinicName) {
-        this.clinicName = clinicName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setClinicAddress(String clinicAddress) {
-        this.clinicAddress = clinicAddress;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setOpening(String opening) {
-        this.opening = opening;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setClosing(String closing) {
-        this.closing = closing;
+    public String getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setClinicPhone(String clinicPhone) {
-        this.clinicPhone = clinicPhone;
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
     }
 }

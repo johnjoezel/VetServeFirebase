@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -78,6 +79,8 @@ public class ProfileFragment extends Fragment {
     String newfirstname, newmiddlename, newlastname, newcontact, newaddress, newphotoUrl;
     String oldfirstname, oldmiddlename, oldlastname, oldcontact, oldaddress, oldphotoUrl;
     private ProgressDialog progressDialog;
+    Bundle userarguments;
+    User currentuser;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -97,40 +100,30 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         this.inflater = inflater;
         ButterKnife.bind(this, view);
+        userarguments = getArguments();
+        currentuser = userarguments.getParcelable("currentuser");
         user = FirebaseAuth.getInstance().getCurrentUser();
         uId = user.getUid();
         dRef = FirebaseDatabase.getInstance().getReference("users").child(uId);
-        if(user != null){
-            dRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
-                    Glide.with(getActivity()).load(user.getPhotoUrl())
-                            .transition(withCrossFade())
-                            .thumbnail(0.5f)
-                            .transform(new CircleTransform())
-                            .circleCrop()
-                            .diskCacheStrategy(DiskCacheStrategy.ALL)
-                            .into(profilepic);
-                    oldphotoUrl = user.getPhotoUrl();
-                    firstname.setText(user.getFirstname());
-                    oldfirstname = firstname.getText().toString().trim();
-                    middlename.setText(user.getMiddlename());
-                    oldmiddlename = middlename.getText().toString().trim();
-                    lastname.setText(user.getLastname());
-                    oldlastname = lastname.getText().toString().trim();
-                    contact.setText(user.getContact());
-                    oldcontact = contact.getText().toString().trim();
-                    address.setText(user.getAddress());
-                    oldaddress = address.getText().toString().trim();
-                }
+        Glide.with(getActivity()).load(currentuser.getPhotoUrl())
+                .transition(withCrossFade())
+                .thumbnail(0.5f)
+                .transform(new CircleTransform())
+                .circleCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(profilepic);
+//        oldphotoUrl = user.getPhotoUrl();
+        firstname.setText(currentuser.getFirstname());
+//        oldfirstname = firstname.getText().toString().trim();
+        middlename.setText(currentuser.getMiddlename());
+//        oldmiddlename = middlename.getText().toString().trim();
+        lastname.setText(currentuser.getLastname());
+//        oldlastname = lastname.getText().toString().trim();
+        contact.setText(currentuser.getContact());
+//        oldcontact = contact.getText().toString().trim();
+        address.setText(currentuser.getAddress());
+//        oldaddress = address.getText().toString().trim();
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        }
         return view;
     }
 
@@ -141,22 +134,22 @@ public class ProfileFragment extends Fragment {
                 selectimage();
                 break;
             case R.id.imageView2:
-                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Firstname ",oldfirstname, firstname);
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Firstname ",currentuser.getFirstname(), firstname);
                 break;
             case R.id.imageView3:
-                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Middlename ",oldmiddlename, middlename);
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Middlename ",currentuser.getMiddlename(), middlename);
                 Log.d(TAG, "toedit: "+ newmiddlename);
                 break;
             case R.id.imageView4:
-                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Lastname ",oldlastname, lastname);
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Lastname ",currentuser.getLastname(), lastname);
                 Log.d(TAG, "toedit: "+ newlastname);
                 break;
             case R.id.imageView5:
-                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Contact No: ",oldcontact, contact);
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Contact No: ",currentuser.getContact(), contact);
                 Log.d(TAG, "toedit: "+ newcontact);
                 break;
             case R.id.imageView6:
-                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Address ",oldaddress, address);
+                ShowAlert.showAlertwithreturn(inflater, getContext(), "Edit Address ",currentuser.getAddress(), address);
                 Log.d(TAG, "toedit: "+ newaddress);
                 break;
             case R.id.btnUpdate:
@@ -228,71 +221,39 @@ public class ProfileFragment extends Fragment {
         newlastname = lastname.getText().toString().trim();
         newcontact = contact.getText().toString().trim();
         newaddress = address.getText().toString().trim();
-
         if(newphotoUrl != null){
             dRef.child("photoUrl").setValue(newphotoUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     progressDialog.dismiss();
                     if(task.isSuccessful())
-                        newphotoUrl = "";
+                        updateSuccessful();
                 }
             });
         }
-        if(!newfirstname.equals(oldfirstname))
-                dRef.child("firstname").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        progressDialog.dismiss();
-                        if(task.isSuccessful())
-                            oldfirstname = newfirstname;
-                    }
-                });
-        if(!newmiddlename.equals(oldmiddlename))
-            dRef.child("middlename").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    progressDialog.dismiss();
-                    if(task.isSuccessful())
-                        oldmiddlename = newmiddlename;
-                }
-            });
-        if(!newlastname.equals(oldlastname))
-            dRef.child("lastname").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    progressDialog.dismiss();
-                    if(task.isSuccessful())
-                        oldlastname = newlastname;
-                }
-            });
-        if(!newcontact.equals(oldcontact))
-            dRef.child("contact").setValue(firstname.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    progressDialog.dismiss();
-                    if(task.isSuccessful())
-                        oldcontact = newcontact;
-                }
-            });
-        if(!newaddress.equals(oldaddress))
-            dRef.child("address").setValue(address.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    progressDialog.dismiss();
-                    if(task.isSuccessful())
-                        oldaddress = newaddress;
-
-                }
-            });
-        if(newfirstname.equals(oldfirstname) && newmiddlename.equals(oldmiddlename)
-                && newlastname.equals(oldlastname) && newcontact.equals(oldcontact) &&
-                newaddress.equals(oldaddress) && newphotoUrl == null){
+        if(!newfirstname.equals(currentuser.getFirstname()))
+                dRef.child("firstname").setValue(newfirstname);
+        if(!newmiddlename.equals(currentuser.getMiddlename()))
+            dRef.child("middlename").setValue(newmiddlename);
+        if(!newlastname.equals(currentuser.getLastname()))
+            dRef.child("lastname").setValue(newlastname);
+        if(!newcontact.equals(currentuser.getContact()))
+            dRef.child("contact").setValue(newcontact);
+        if(!newaddress.equals(currentuser.getAddress()))
+            dRef.child("address").setValue(newaddress);
+        updateSuccessful();
+    }
+    void updateSuccessful(){
+        progressDialog.dismiss();
+        if(newfirstname.equals(currentuser.getFirstname()) && newmiddlename.equals(currentuser.getMiddlename())
+                && newlastname.equals(currentuser.getLastname()) && newcontact.equals(currentuser.getContact()) &&
+                newaddress.equals(currentuser.getAddress()) && newphotoUrl == null){
             ShowAlert.showAlert(getContext(),"You haven't made any changes yet");
             progressDialog.dismiss();
         }else{
             ((MainActivity)getActivity()).loadNavHeader(newphotoUrl, user.getEmail());
             Utils.showMessage(getContext(), "Profile Updated");
+            Utils.setIntent(getContext(), MainActivity.class);
         }
     }
 }

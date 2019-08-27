@@ -32,6 +32,7 @@ import com.example.vetservefirebase.PetDashboard.PetDashboardFragment;
 import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.ServiceProvider.ServiceProviderFragment;
+import com.example.vetservefirebase.ServiceProvider.ServiceProvidersList;
 import com.example.vetservefirebase.SignIn.SignInActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements BaseView {
     private Toolbar toolbar;
     private String email, petKey;
     private int state;
-    Bundle arguments;
+    Bundle arguments, userarguments;
     Bundle extras;
     ArrayList<Pet> pets = new ArrayList<Pet>();
     ArrayList<String> petKeys = new ArrayList<>();
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements BaseView {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         arguments = new Bundle();
+        userarguments = new Bundle();
         mHandler = new Handler();
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -101,9 +103,10 @@ public class MainActivity extends AppCompatActivity implements BaseView {
             dRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    User user = dataSnapshot.getValue(User.class);
-                    String photoUrl = user.getPhotoUrl();
+                    User currentuser = dataSnapshot.getValue(User.class);
+                    String photoUrl = currentuser.getPhotoUrl();
                     loadNavHeader(photoUrl, email);
+                    userarguments.putParcelable("currentuser", currentuser);
                 }
 
                 @Override
@@ -169,11 +172,11 @@ public class MainActivity extends AppCompatActivity implements BaseView {
 
         // if user select the current navigation menu again, don't do anything
         // just close the navigation drawer
-        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
-            drawer.closeDrawers();
-            // show or hide the fab button
-            return;
-        }
+//        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+//            drawer.closeDrawers();
+//            // show or hide the fab button
+//            return;
+//        }
 
         // Sometimes, when fragment has huge data, screen seems hanging
         // when switching between navigation menus
@@ -241,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements BaseView {
                 return blankFragment1;
             case 2:
                 ProfileFragment profileFragment = new ProfileFragment();
+                profileFragment.setArguments(userarguments);
                 return profileFragment;
             default:
                 return new BlankFragment();
@@ -327,6 +331,9 @@ public class MainActivity extends AppCompatActivity implements BaseView {
                 startActivity(intent);
                 return true;
             case R.id.searchClinic:
+                intent = new Intent(this, ServiceProvidersList.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

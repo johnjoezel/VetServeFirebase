@@ -46,10 +46,9 @@ public class ServiceProviderFragment extends Fragment {
         FirebaseRecyclerAdapter<ServiceProvider, RequestViewHolder> adapter = new FirebaseRecyclerAdapter<ServiceProvider, RequestViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull RequestViewHolder requestViewHolder, int i, @NonNull ServiceProvider provider) {
-                requestViewHolder.clinicName.setText(provider.getClinicName());
-                requestViewHolder.clinicAddress.setText(provider.getClinicAddress());
-                requestViewHolder.clinicHours.setText(provider.getOpening() + " - " + provider.getClosing());
-                requestViewHolder.clinicPhone.setText(provider.getClinicPhone());
+                requestViewHolder.clinicName.setText(provider.getClinicname());
+                requestViewHolder.clinicAddress.setText(provider.getLocation());
+                requestViewHolder.clinicPhone.setText(provider.getPhonenumber());
                 requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
