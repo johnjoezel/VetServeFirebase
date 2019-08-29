@@ -8,6 +8,6 @@
     <item android:id="@+id/providers"
         android:enabled="true"
         android:icon="@drawable/temporary_med_icon"
-        android:title="Providers">
+        android:title="My Providers">
     </item>
 </menu>

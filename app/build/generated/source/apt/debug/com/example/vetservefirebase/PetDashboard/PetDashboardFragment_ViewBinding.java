@@ -15,7 +15,7 @@ import java.lang.Override;
 public class PetDashboardFragment_ViewBinding implements Unbinder {
   private PetDashboardFragment target;
 
-  private View view7f0a0118;
+  private View view7f0a011d;
 
   private View view7f0a00c8;
 
@@ -28,7 +28,7 @@ public class PetDashboardFragment_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.rightarrow, "field 'rightarrow' and method 'leftandright'");
     target.rightarrow = Utils.castView(view, R.id.rightarrow, "field 'rightarrow'", ImageView.class);
-    view7f0a0118 = view;
+    view7f0a011d = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -65,8 +65,8 @@ public class PetDashboardFragment_ViewBinding implements Unbinder {
     target.rightarrow = null;
     target.leftarrow = null;
 
-    view7f0a0118.setOnClickListener(null);
-    view7f0a0118 = null;
+    view7f0a011d.setOnClickListener(null);
+    view7f0a011d = null;
     view7f0a00c8.setOnClickListener(null);
     view7f0a00c8 = null;
     view7f0a0073.setOnClickListener(null);

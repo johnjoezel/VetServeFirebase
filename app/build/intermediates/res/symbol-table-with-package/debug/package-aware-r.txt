@@ -1374,12 +1374,14 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable icon_background
+drawable listview
 drawable location
 drawable logo
 drawable logout_logo
 drawable main_background
 drawable main_border
 drawable mainbackground
+drawable mapview
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable my_background
@@ -1639,8 +1641,11 @@ id listMode
 id list_item
 id listofpet
 id listofprovider
+id listview
 id logo
 id main_tos_and_pp
+id map
+id mapview
 id masked
 id media_actions
 id message
@@ -1685,12 +1690,14 @@ id phone_button
 id phone_layout
 id phone_number
 id pin
+id pisti
 id profile
 id profilepic
 id progressBar
 id progress_circular
 id progress_horizontal
 id providers
+id providers_container
 id radio
 id remove
 id reqAppointment
@@ -1892,6 +1899,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_pet
 layout activity_change_password
+layout activity_locate_clinic
 layout activity_main
 layout activity_personal_information
 layout activity_pet_list_view
@@ -1922,6 +1930,8 @@ layout fragment_general
 layout fragment_medication
 layout fragment_pet_dashboard
 layout fragment_profile
+layout fragment_providers_list_view
+layout fragment_providers_map_view
 layout fragment_schedules
 layout fragment_service_provider
 layout fui_activity_invisible
@@ -1952,6 +1962,7 @@ layout menu_dot
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout nav_header_main
+layout no_providers
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1979,7 +1990,9 @@ layout view_carousel
 menu activity_main_drawer
 menu addpet
 menu bottom_nav_items
+menu listview
 menu main
+menu mapview
 menu navigation_drawer
 menu removemenu
 menu searchlinic
@@ -2165,6 +2178,7 @@ string github_client_secret
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
+string google_maps_api
 string google_storage_bucket
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior

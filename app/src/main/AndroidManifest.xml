@@ -3,6 +3,9 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.example.vetservefirebase">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <dist:module dist:instant="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,13 +17,15 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServiceProvider.ServiceProvidersList"></activity>
-        <activity android:name=".ServiceProvider.ServiceProviderActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD3E48J-Ze8go3MoXFZJq6mTzHPWX5p2x0"/>
+        <activity android:name=".LocateClinic"></activity>
+        <activity android:name=".ServiceProvider.ServiceProvidersList" />
         <activity android:name=".PetOwnerProfile.ChangePasswordActivity" />
-        <activity android:name=".PetDashboard.PetDashboardActivity" />
         <activity
             android:name=".AddPet.AddPetActivity"
-            android:parentActivityName=".PetDashboard.PetDashboardActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".SignUp.SignUpActivity" />
         <activity android:name=".SignUp.Personal_Information" />
         <activity android:name=".SignIn.SignInActivity" />

@@ -52,6 +52,10 @@
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\d564384df449ab89605b592436137f3b\\res\\drawable\\common_google_signin_btn_icon_disabled.xml"
     },
     {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mapview.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\drawable\\mapview.xml"
+    },
+    {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
     },
@@ -128,12 +132,12 @@
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2eb6e192af6cff6d5fadf4d7fe9d7816\\res\\layout\\fui_provider_button_email.xml"
     },
     {
-        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_fui_phone_layout.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2eb6e192af6cff6d5fadf4d7fe9d7816\\res\\layout\\fui_phone_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-ldrtl-xhdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -220,12 +224,12 @@
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-hdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logout_logo.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\drawable\\logout_logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-xxxhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility.png.flat",
@@ -286,6 +290,10 @@
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-hdpi-v4\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_listview.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\drawable\\listview.xml"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_background_transition_holo_light.xml.flat",
@@ -394,6 +402,10 @@
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ratingbar_small_material.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\menu_listview.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\menu\\listview.xml"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_ic_star_half_black_48dp.png.flat",
@@ -1212,6 +1224,10 @@
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_light.9.png"
     },
     {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_locate_clinic.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\layout\\activity_locate_clinic.xml"
+    },
+    {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_expanded_menu_layout.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\layout\\abc_expanded_menu_layout.xml"
     },
@@ -1402,6 +1418,10 @@
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal.9.png.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2987d1381a2a9c125f7ff6914f97ca58\\res\\drawable-mdpi-v4\\notification_bg_normal.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\menu_mapview.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\menu\\mapview.xml"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_common_google_signin_btn_text_dark_normal_background.9.png.flat",
@@ -1672,6 +1692,10 @@
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\2eb6e192af6cff6d5fadf4d7fe9d7816\\res\\drawable\\fui_ic_googleg_color_24dp.xml"
     },
     {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_providers_list_view.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\layout\\fragment_providers_list_view.xml"
+    },
+    {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-nodpi_final_button.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\drawable-nodpi\\final_button.xml"
     },
@@ -1734,6 +1758,10 @@
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_no_providers.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\layout\\no_providers.xml"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_tile_bg.xml.flat",
@@ -2066,6 +2094,10 @@
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\color_switch_thumb_material_dark.xml.flat",
         "source": "C:\\Users\\ZerahNissi\\.gradle\\caches\\transforms-2\\files-2.1\\70b03e53a2dff5b04553bfa0b66b1e5c\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_providers_map_view.xml.flat",
+        "source": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\src\\main\\res\\layout\\fragment_providers_map_view.xml"
     },
     {
         "merged": "C:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17_abc_spinner_mtrl_am_alpha.9.png.flat",

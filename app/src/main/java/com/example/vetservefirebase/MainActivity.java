@@ -11,10 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,17 +22,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Base.BaseView;
-import com.example.vetservefirebase.Dashboard.PetOwnerDashboardFragment;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
-import com.example.vetservefirebase.PetDashboard.PetDashboardFragment;
+import com.example.vetservefirebase.Others.ConnectionDetector;
+import com.example.vetservefirebase.Others.ShowAlert;
 import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
-import com.example.vetservefirebase.ServiceProvider.ServiceProviderFragment;
 import com.example.vetservefirebase.ServiceProvider.ServiceProvidersList;
 import com.example.vetservefirebase.SignIn.SignInActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,9 +39,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class MainActivity extends AppCompatActivity implements BaseView {
@@ -74,11 +68,21 @@ public class MainActivity extends AppCompatActivity implements BaseView {
     Bundle extras;
     ArrayList<Pet> pets = new ArrayList<Pet>();
     ArrayList<String> petKeys = new ArrayList<>();
+//    ConnectionDetector cd;
+//    Boolean isInternetPresent = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        cd = new ConnectionDetector(getApplicationContext());
+//        // Check if Internet present
+//        isInternetPresent = cd.isConnectingToInternet();
+//        if (!isInternetPresent) {
+//            // Internet Connection is not present
+//            ShowAlert.showAlert(this,"No Internet Connection, Please connect a Working Network");
+//            return;
+//        }
         state = 0;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

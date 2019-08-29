@@ -49,8 +49,6 @@ public class PetDashboardFragment extends Fragment {
     String uId, petKey;
     Pet pet;
     Bundle arguments;
-    ArrayList<String> photoUrls = new ArrayList<>();
-    ArrayList<String> petnames = new ArrayList<>();
     ArrayList<Pet> pets;
     ArrayList<String> petKeys = new ArrayList<>();
     MyCustomPagerAdapter myCustomPagerAdapter;

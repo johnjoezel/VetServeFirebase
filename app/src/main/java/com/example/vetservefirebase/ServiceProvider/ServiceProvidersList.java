@@ -1,78 +1,60 @@
 package com.example.vetservefirebase.ServiceProvider;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
-import com.example.vetservefirebase.MainActivity;
-import com.example.vetservefirebase.Model.ServiceProvider;
+import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.R;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class ServiceProvidersList extends AppCompatActivity {
 
-    private DatabaseReference dRef;
-    @BindView(R.id.searchProviders)
-    RecyclerView searchProviders;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_service_providers_list);
-        ButterKnife.bind(this);
-        searchProviders.setLayoutManager(new LinearLayoutManager(this));
-        dRef = FirebaseDatabase.getInstance().getReference("providers");
-        FirebaseRecyclerOptions<ServiceProvider> options = new FirebaseRecyclerOptions.Builder<ServiceProvider>()
-                .setQuery(dRef, ServiceProvider.class)
-                .build();
-        FirebaseRecyclerAdapter<ServiceProvider, ServiceProvidersList.RequestViewHolder> adapter = new FirebaseRecyclerAdapter<ServiceProvider, ServiceProvidersList.RequestViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull ServiceProvidersList.RequestViewHolder requestViewHolder, int i, @NonNull ServiceProvider provider) {
-                requestViewHolder.viewClinicname.setText(provider.getClinicname());
-                requestViewHolder.viewCliniclocation.setText(provider.getLocation());
-                requestViewHolder.viewClinicphone.setText(provider.getPhonenumber());
-                requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                    }
-                });
+        loadDefaultfragment();
 
-            }
-            @NonNull
-            @Override
-            public ServiceProvidersList.RequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.providers_item, parent, false);
-                ServiceProvidersList.RequestViewHolder holder = new ServiceProvidersList.RequestViewHolder(view);
-                return holder;
-            }
-        };
-        searchProviders.setAdapter(adapter);
-        adapter.startListening();
     }
 
-    public static class RequestViewHolder extends RecyclerView.ViewHolder{
+    private void loadDefaultfragment() {
+        Fragment fragment = new ProvidersListView();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                android.R.anim.fade_out);
+        fragmentTransaction.replace(R.id.providers_container, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
 
-        @BindView(R.id.viewClinicname)
-        TextView viewClinicname;
-        @BindView(R.id.viewCliniclocation)
-        TextView viewCliniclocation;
-        @BindView(R.id.viewClinicphone)
-        TextView viewClinicphone;
-        public RequestViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.listview:
+                Fragment fragment = new ProvidersListView();
+                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction.replace(R.id.providers_container, fragment);
+                fragmentTransaction.commitAllowingStateLoss();
+                return true;
+            case R.id.mapview:
+                Fragment fragment1 = new ProvidersMapView();
+                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                fragmentTransaction1.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out);
+                fragmentTransaction1.replace(R.id.providers_container, fragment1);
+                fragmentTransaction1.commitAllowingStateLoss();
+                return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }
