@@ -21,7 +21,7 @@ public class ProvidersListView$RequestViewHolder_ViewBinding implements Unbinder
 
     target.viewClinicname = Utils.findRequiredViewAsType(source, R.id.viewClinicname, "field 'viewClinicname'", TextView.class);
     target.viewCliniclocation = Utils.findRequiredViewAsType(source, R.id.viewCliniclocation, "field 'viewCliniclocation'", TextView.class);
-    target.viewClinicphone = Utils.findRequiredViewAsType(source, R.id.viewClinicphone, "field 'viewClinicphone'", TextView.class);
+    target.linkToClinicProfile = Utils.findRequiredViewAsType(source, R.id.linkToClinicProfile, "field 'linkToClinicProfile'", TextView.class);
   }
 
   @Override
@@ -33,6 +33,6 @@ public class ProvidersListView$RequestViewHolder_ViewBinding implements Unbinder
 
     target.viewClinicname = null;
     target.viewCliniclocation = null;
-    target.viewClinicphone = null;
+    target.linkToClinicProfile = null;
   }
 }

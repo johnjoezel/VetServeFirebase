@@ -8,7 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.vetservefirebase.Model.ServiceProvider;
+
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,7 +19,7 @@ public class GeocodingLocation {
 
     private static final String TAG = "GeocodingLocation";
 
-    public static void getAddressFromLocation(final String locationAddress, final String clinicname,
+    public static void getAddressFromLocation(final ServiceProvider provider, final String providerKey,
                                               final Context context, final Handler handler) {
         Thread thread = new Thread() {
             @Override
@@ -26,7 +29,7 @@ public class GeocodingLocation {
                 double latit = 0;
                 double longit = 0;
                 try {
-                    List<Address> addressList = geocoder.getFromLocationName(locationAddress, 1);
+                    List<Address> addressList = geocoder.getFromLocationName(provider.getLocation(), 1);
                     if (addressList != null && addressList.size() > 0) {
                         Address address = addressList.get(0);
                         StringBuilder sb = new StringBuilder();
@@ -44,17 +47,18 @@ public class GeocodingLocation {
                     if (result != null) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
+                        result = "Address: " + provider.getLocation() +
                                 "\n\nLatitude and Longitude :\n" + result;
                         bundle.putString("address", result);
                         bundle.putDouble("latit", latit);
                         bundle.putDouble("longit", longit);
-                        bundle.putString("clinicname", clinicname);
+                        bundle.putString("providerKey", providerKey);
+                        bundle.putParcelable("provider", provider);
                         message.setData(bundle);
                     } else {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
+                        result = "Address: " + provider.getLocation() +
                                 "\n Unable to get Latitude and Longitude for this address location.";
                         bundle.putString("address", result);
                         message.setData(bundle);

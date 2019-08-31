@@ -105,9 +105,11 @@ public class BlankFragment extends Fragment{
                 arguments.putStringArrayList("petKeys", petKeys);
                 arguments.putParcelableArrayList("pets", pets);
                 petDashboardFragment.setArguments(arguments);
+                ((MainActivity) getActivity()).setActionBarTitle("My Pets");
                 return petDashboardFragment;
             case 1:
                 ServiceProviderFragment serviceProviderFragment = new ServiceProviderFragment();
+                ((MainActivity) getActivity()).setActionBarTitle("My Providers");
                 return serviceProviderFragment;
             default:
                 return new PetDashboardFragment();

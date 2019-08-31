@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -22,6 +23,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Base.BaseActivity;
@@ -101,6 +104,15 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_pet);
+        Toolbar mToolbar= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ButterKnife.bind(this);
         intent = getIntent();
         extras = intent.getExtras();
@@ -229,7 +241,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
                                     }
                                     Log.d(TAG, "selectimage: " + petKey);
                                     if (pet != null)
-                                        addPetPresenter.updatepet(getContext(), petKey, uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
+                                        addPetPresenter.updatepet(getContext(), petKey, uId, petname, petspecies, petbreed, petgender, petdob, petcolor, pet.getPhotoUrl());
                                     else
                                         addPetPresenter.addpet(getContext(), uId, petname, petspecies, petbreed, petgender, petdob, petcolor, photoUrl);
                                 }

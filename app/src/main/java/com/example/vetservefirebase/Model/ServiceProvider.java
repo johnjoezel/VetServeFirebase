@@ -1,6 +1,9 @@
 package com.example.vetservefirebase.Model;
 
-public class ServiceProvider {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class ServiceProvider implements Parcelable  {
 
     String clinicname;
     String location;
@@ -57,5 +60,39 @@ public class ServiceProvider {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public ServiceProvider(Parcel in) {
+        clinicname = in.readString();
+        location = in.readString();
+        firstname = in.readString();
+        lastname = in.readString();
+        phonenumber = in.readString();
+    }
+
+    public static final Parcelable.Creator<ServiceProvider> CREATOR = new Parcelable.Creator<ServiceProvider>() {
+        @Override
+        public ServiceProvider createFromParcel(Parcel in) {
+            return new ServiceProvider(in);
+        }
+
+        @Override
+        public ServiceProvider[] newArray(int size) {
+            return new ServiceProvider[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(clinicname);
+        parcel.writeString(location);
+        parcel.writeString(firstname);
+        parcel.writeString(lastname);
+        parcel.writeString(phonenumber);
     }
 }

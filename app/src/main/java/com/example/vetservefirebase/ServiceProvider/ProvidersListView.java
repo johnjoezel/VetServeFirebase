@@ -1,6 +1,8 @@
 package com.example.vetservefirebase.ServiceProvider;
 
 
+import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,6 +25,9 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -34,7 +40,6 @@ public class ProvidersListView extends Fragment {
     @BindView(R.id.searchProviders)
     RecyclerView searchProviders;
     private DatabaseReference dRef;
-
     public ProvidersListView() {
         // Required empty public constructor
     }
@@ -53,14 +58,19 @@ public class ProvidersListView extends Fragment {
                 .setQuery(dRef, ServiceProvider.class)
                 .build();
         FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder> adapter = new FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder>(options) {
+
             @Override
             protected void onBindViewHolder(@NonNull ProvidersListView.RequestViewHolder requestViewHolder, int i, @NonNull ServiceProvider provider) {
                 requestViewHolder.viewClinicname.setText(provider.getClinicname());
                 requestViewHolder.viewCliniclocation.setText(provider.getLocation());
-                requestViewHolder.viewClinicphone.setText(provider.getPhonenumber());
+                requestViewHolder.linkToClinicProfile.setPaintFlags(requestViewHolder.linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                requestViewHolder.linkToClinicProfile.setText("View Details");
                 requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
+                        intent.putExtra("provider", provider);
+                        startActivity(intent);
                     }
                 });
 
@@ -84,8 +94,8 @@ public class ProvidersListView extends Fragment {
         TextView viewClinicname;
         @BindView(R.id.viewCliniclocation)
         TextView viewCliniclocation;
-        @BindView(R.id.viewClinicphone)
-        TextView viewClinicphone;
+        @BindView(R.id.linkToClinicProfile)
+        TextView linkToClinicProfile;
         public RequestViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

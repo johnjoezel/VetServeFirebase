@@ -42,7 +42,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
-public class MainActivity extends AppCompatActivity implements BaseView {
+public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "Main Activity";
     public NavigationView navigationView;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements BaseView {
     private DrawerLayout drawer;
     public static int navItemIndex = 0;
     private static final String TAG_HOME = "My Pets";
-    private static final String TAG_PROVIDERS = "Service Providers";
+    private static final String TAG_PROVIDERS = "My Providers";
     private static final String TAG_PROFILE = "User Profile";
     public static String CURRENT_TAG = TAG_HOME;
     private Handler mHandler;
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements BaseView {
 //            ShowAlert.showAlert(this,"No Internet Connection, Please connect a Working Network");
 //            return;
 //        }
+
         state = 0;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -255,6 +256,10 @@ public class MainActivity extends AppCompatActivity implements BaseView {
         }
     }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
+
     private void setToolbarTitle() {
         getSupportActionBar().setTitle(activityTitles[navItemIndex]);
     }
@@ -282,14 +287,14 @@ public class MainActivity extends AppCompatActivity implements BaseView {
                         CURRENT_TAG = TAG_PROFILE;
                         break;
                     case R.id.nav_password:
-                        startActivity(new Intent(getApplicationContext(), ChangePasswordActivity.class));
+                        startActivity(new Intent(MainActivity.this, ChangePasswordActivity.class));
                         drawer.closeDrawers();
                         return true;
                     case R.id.nav_logout:
                         // launch new intent instead of loading fragment
                         mAuth.signOut();
-                        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
-                        break;
+                        startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                        return true;
                     default:
                         navItemIndex = 0;
                 }
@@ -340,11 +345,5 @@ public class MainActivity extends AppCompatActivity implements BaseView {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-
-    @Override
-    public Context getContext() {
-        return getContext();
     }
 }
