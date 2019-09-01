@@ -40,6 +40,7 @@ public class ProvidersListView extends Fragment {
     @BindView(R.id.searchProviders)
     RecyclerView searchProviders;
     private DatabaseReference dRef;
+    FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder> adapter;
     public ProvidersListView() {
         // Required empty public constructor
     }
@@ -57,7 +58,7 @@ public class ProvidersListView extends Fragment {
         FirebaseRecyclerOptions<ServiceProvider> options = new FirebaseRecyclerOptions.Builder<ServiceProvider>()
                 .setQuery(dRef, ServiceProvider.class)
                 .build();
-        FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder> adapter = new FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<ServiceProvider, ProvidersListView.RequestViewHolder>(options) {
 
             @Override
             protected void onBindViewHolder(@NonNull ProvidersListView.RequestViewHolder requestViewHolder, int i, @NonNull ServiceProvider provider) {
@@ -68,8 +69,10 @@ public class ProvidersListView extends Fragment {
                 requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String providerKey = adapter.getRef(searchProviders.getChildLayoutPosition(view)).getKey();
                         Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
                         intent.putExtra("provider", provider);
+                        intent.putExtra("providerKey", providerKey);
                         startActivity(intent);
                     }
                 });

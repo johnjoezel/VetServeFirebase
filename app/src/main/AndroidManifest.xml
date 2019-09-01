@@ -18,18 +18,22 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ServiceProvider.ProviderProfileActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Appointments.AppointmentsActivity" />
+        <activity
+            android:name=".ServiceProvider.ProviderProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD3E48J-Ze8go3MoXFZJq6mTzHPWX5p2x0" />
 
         <activity android:name=".LocateClinic" />
-        <activity android:name=".ServiceProvider.ServiceProvidersList"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".PetOwnerProfile.ChangePasswordActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".ServiceProvider.ServiceProvidersList"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PetOwnerProfile.ChangePasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddPet.AddPetActivity"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -21,8 +21,9 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:elevation="4dp"
+            android:layout_gravity="right"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -84,8 +85,8 @@
                 android:fontFamily="@font/champagne"
                 android:gravity="center_vertical"
                 android:padding="8dp"
-                android:text=" 9:00 AM - 5:00 PM"
                 android:textColor="#000"
+                android:text=" 9:00 AM - 5:00 PM"
                 android:textSize="15dp" />
 
             <TextView
@@ -103,19 +104,14 @@
                 android:textColor="#000"
                 android:textSize="15dp" />
 
-            <TextView
+            <ExpandableListView
                 android:id="@+id/clinicServices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:drawableStart="@drawable/reqappointment"
-                android:fontFamily="@font/champagne"
-                android:gravity="center_vertical"
-                android:padding="8dp"
-                android:text=" Services"
-                android:textColor="#000"
-                android:textSize="15dp" />
+                android:background="@drawable/bottomborder"
+                android:groupIndicator="@null" />
         </LinearLayout>
     </LinearLayout>
 

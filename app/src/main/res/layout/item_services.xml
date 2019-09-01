@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/main_border"
+    android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/servicename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/champagne"
+            android:padding="5dp"
+            android:text="Pet Clinic Services"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+</androidx.cardview.widget.CardView>

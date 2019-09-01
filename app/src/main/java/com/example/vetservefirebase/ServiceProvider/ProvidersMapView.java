@@ -200,6 +200,7 @@ public class ProvidersMapView extends Fragment implements OnMapReadyCallback, Go
             cardviewclinic.setVisibility(View.VISIBLE);
             ClinicMarker clinicMarker = (ClinicMarker) marker.getTag();
             ServiceProvider provider = clinicMarker.getProvider();
+            String providerKey = clinicMarker.getProviderKey();
             clinicName.setText(provider.getClinicname());
             clinicLocation.setText(provider.getLocation());
             linkToClinicProfile.setPaintFlags(linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -218,6 +219,7 @@ public class ProvidersMapView extends Fragment implements OnMapReadyCallback, Go
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
                     intent.putExtra("provider", provider);
+                    intent.putExtra("providerKey", providerKey);
                     startActivity(intent);
                 }
             });
@@ -281,7 +283,7 @@ public class ProvidersMapView extends Fragment implements OnMapReadyCallback, Go
         LatLng gg = new LatLng(latit, longit);
         MarkerOptions markerOptions = new MarkerOptions().position(gg).title(provider.getClinicname());
         Marker marker = mMap.addMarker(markerOptions);
-        ClinicMarker clinicMarker = new ClinicMarker(provider, marker);
+        ClinicMarker clinicMarker = new ClinicMarker(provider, marker, providerKey);
         marker.setTag(clinicMarker);
     }
 

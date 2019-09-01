@@ -17,6 +17,7 @@ import android.view.View;
 
 import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Model.ServiceProvider;
+import com.example.vetservefirebase.Model.Services;
 import com.example.vetservefirebase.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,6 +32,7 @@ public class ServiceProvidersList extends AppCompatActivity {
     private DatabaseReference dRef;
     ArrayList<ServiceProvider> providers = new ArrayList<ServiceProvider>();
     ArrayList<String> providerKeys = new ArrayList<>();
+    ArrayList<Services> services = new ArrayList<Services>();
     Bundle arguments = new Bundle();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class ServiceProvidersList extends AppCompatActivity {
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     providerKeys.add(ds.getKey());
                     providers.add(ds.getValue(ServiceProvider.class));
+//                    Log.d("Services", "onDataChange: " + ds.getValue(ServiceProvider.class).getServices());
                 }
                 arguments.putParcelableArrayList("providers",providers);
                 arguments.putStringArrayList("providerKeys",providerKeys);

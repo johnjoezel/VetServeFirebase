@@ -36,6 +36,7 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.vetservefirebase.Appointments.AppointmentsActivity" />
         <activity
             android:name="com.example.vetservefirebase.ServiceProvider.ProviderProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -250,6 +251,10 @@
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
             android:authorities="com.example.vetservefirebase.lifecycle-process"
             android:exported="false"
+            android:multiprocess="true" />
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.example.vetservefirebase.com.android.tools.ir.server.InstantRunContentProvider"
             android:multiprocess="true" />
     </application>
 

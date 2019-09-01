@@ -18,7 +18,7 @@ public class Personal_Information_ViewBinding implements Unbinder {
 
   private View view7f0a0064;
 
-  private View view7f0a003a;
+  private View view7f0a003b;
 
   @UiThread
   public Personal_Information_ViewBinding(Personal_Information target) {
@@ -45,7 +45,7 @@ public class Personal_Information_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btncontinue, "method 'toContinue'");
-    view7f0a003a = view;
+    view7f0a003b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -70,7 +70,7 @@ public class Personal_Information_ViewBinding implements Unbinder {
 
     view7f0a0064.setOnClickListener(null);
     view7f0a0064 = null;
-    view7f0a003a.setOnClickListener(null);
-    view7f0a003a = null;
+    view7f0a003b.setOnClickListener(null);
+    view7f0a003b = null;
   }
 }

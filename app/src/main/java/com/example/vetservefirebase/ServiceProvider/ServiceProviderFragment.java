@@ -20,6 +20,7 @@ import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -34,6 +35,7 @@ public class ServiceProviderFragment extends Fragment {
     RecyclerView listofprovider;
     private DatabaseReference dRef;
     ArrayList<String> petproviders = new ArrayList<>();
+    private String uId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,8 @@ public class ServiceProviderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view;
-        dRef = FirebaseDatabase.getInstance().getReference("providers");
+        uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        dRef = FirebaseDatabase.getInstance().getReference("user_provider").child(uId);
         if(!petproviders.isEmpty()) {
             view = inflater.inflate(R.layout.fragment_service_provider, container, false);
             listofprovider.setLayoutManager(new LinearLayoutManager((MainActivity) getActivity()));

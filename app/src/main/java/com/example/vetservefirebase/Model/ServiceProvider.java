@@ -3,6 +3,9 @@ package com.example.vetservefirebase.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class ServiceProvider implements Parcelable  {
 
     String clinicname;
@@ -61,6 +64,7 @@ public class ServiceProvider implements Parcelable  {
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+
 
     public ServiceProvider(Parcel in) {
         clinicname = in.readString();

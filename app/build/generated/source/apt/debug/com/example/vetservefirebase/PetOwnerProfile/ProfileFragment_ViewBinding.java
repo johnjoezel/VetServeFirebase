@@ -16,19 +16,19 @@ import java.lang.Override;
 public class ProfileFragment_ViewBinding implements Unbinder {
   private ProfileFragment target;
 
-  private View view7f0a0114;
+  private View view7f0a0108;
 
-  private View view7f0a00af;
+  private View view7f0a00a8;
 
-  private View view7f0a00b0;
+  private View view7f0a00a9;
 
-  private View view7f0a00b1;
+  private View view7f0a00aa;
 
-  private View view7f0a00b2;
+  private View view7f0a00ab;
 
-  private View view7f0a00b3;
+  private View view7f0a00ac;
 
-  private View view7f0a0037;
+  private View view7f0a0038;
 
   @UiThread
   public ProfileFragment_ViewBinding(final ProfileFragment target, View source) {
@@ -42,7 +42,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = Utils.findRequiredViewAsType(source, R.id.address, "field 'address'", TextView.class);
     view = Utils.findRequiredView(source, R.id.profilepic, "field 'profilepic' and method 'toedit'");
     target.profilepic = Utils.castView(view, R.id.profilepic, "field 'profilepic'", ImageView.class);
-    view7f0a0114 = view;
+    view7f0a0108 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,7 +50,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView2, "method 'toedit'");
-    view7f0a00af = view;
+    view7f0a00a8 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -58,7 +58,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView3, "method 'toedit'");
-    view7f0a00b0 = view;
+    view7f0a00a9 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -66,7 +66,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView4, "method 'toedit'");
-    view7f0a00b1 = view;
+    view7f0a00aa = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -74,7 +74,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView5, "method 'toedit'");
-    view7f0a00b2 = view;
+    view7f0a00ab = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -82,7 +82,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView6, "method 'toedit'");
-    view7f0a00b3 = view;
+    view7f0a00ac = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -90,7 +90,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btnUpdate, "method 'toedit'");
-    view7f0a0037 = view;
+    view7f0a0038 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -113,19 +113,19 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = null;
     target.profilepic = null;
 
-    view7f0a0114.setOnClickListener(null);
-    view7f0a0114 = null;
-    view7f0a00af.setOnClickListener(null);
-    view7f0a00af = null;
-    view7f0a00b0.setOnClickListener(null);
-    view7f0a00b0 = null;
-    view7f0a00b1.setOnClickListener(null);
-    view7f0a00b1 = null;
-    view7f0a00b2.setOnClickListener(null);
-    view7f0a00b2 = null;
-    view7f0a00b3.setOnClickListener(null);
-    view7f0a00b3 = null;
-    view7f0a0037.setOnClickListener(null);
-    view7f0a0037 = null;
+    view7f0a0108.setOnClickListener(null);
+    view7f0a0108 = null;
+    view7f0a00a8.setOnClickListener(null);
+    view7f0a00a8 = null;
+    view7f0a00a9.setOnClickListener(null);
+    view7f0a00a9 = null;
+    view7f0a00aa.setOnClickListener(null);
+    view7f0a00aa = null;
+    view7f0a00ab.setOnClickListener(null);
+    view7f0a00ab = null;
+    view7f0a00ac.setOnClickListener(null);
+    view7f0a00ac = null;
+    view7f0a0038.setOnClickListener(null);
+    view7f0a0038 = null;
   }
 }

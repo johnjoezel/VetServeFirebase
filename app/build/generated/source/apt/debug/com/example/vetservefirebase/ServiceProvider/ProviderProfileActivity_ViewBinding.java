@@ -2,6 +2,7 @@
 package com.example.vetservefirebase.ServiceProvider;
 
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
@@ -27,6 +28,7 @@ public class ProviderProfileActivity_ViewBinding implements Unbinder {
     target.clinicAddress = Utils.findRequiredViewAsType(source, R.id.clinicAddress, "field 'clinicAddress'", TextView.class);
     target.clinicHours = Utils.findRequiredViewAsType(source, R.id.clinicHours, "field 'clinicHours'", TextView.class);
     target.clinicPhone = Utils.findRequiredViewAsType(source, R.id.clinicPhone, "field 'clinicPhone'", TextView.class);
+    target.clinicServices = Utils.findRequiredViewAsType(source, R.id.clinicServices, "field 'clinicServices'", ExpandableListView.class);
   }
 
   @Override
@@ -40,5 +42,6 @@ public class ProviderProfileActivity_ViewBinding implements Unbinder {
     target.clinicAddress = null;
     target.clinicHours = null;
     target.clinicPhone = null;
+    target.clinicServices = null;
   }
 }

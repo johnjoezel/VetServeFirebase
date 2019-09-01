@@ -17,7 +17,7 @@ import java.lang.Override;
 public class SignUpActivity_ViewBinding implements Unbinder {
   private SignUpActivity target;
 
-  private View view7f0a00b5;
+  private View view7f0a00ae;
 
   private View view7f0a0036;
 
@@ -38,7 +38,7 @@ public class SignUpActivity_ViewBinding implements Unbinder {
     target.displayname = Utils.findRequiredViewAsType(source, R.id.txtdisplayname, "field 'displayname'", EditText.class);
     view = Utils.findRequiredView(source, R.id.imgProfpic, "field 'imgProfpic' and method 'uploadpicture'");
     target.imgProfpic = Utils.castView(view, R.id.imgProfpic, "field 'imgProfpic'", ImageView.class);
-    view7f0a00b5 = view;
+    view7f0a00ae = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,8 +69,8 @@ public class SignUpActivity_ViewBinding implements Unbinder {
     target.displayname = null;
     target.imgProfpic = null;
 
-    view7f0a00b5.setOnClickListener(null);
-    view7f0a00b5 = null;
+    view7f0a00ae.setOnClickListener(null);
+    view7f0a00ae = null;
     view7f0a0036.setOnClickListener(null);
     view7f0a0036 = null;
   }

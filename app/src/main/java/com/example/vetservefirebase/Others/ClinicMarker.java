@@ -6,10 +6,12 @@ import com.google.android.gms.maps.model.Marker;
 public class ClinicMarker {
     ServiceProvider provider;
     Marker marker;
+    String providerKey;
 
-    public ClinicMarker(ServiceProvider provider, Marker marker) {
+    public ClinicMarker(ServiceProvider provider, Marker marker, String providerKey) {
         this.provider = provider;
         this.marker = marker;
+        this.providerKey = providerKey;
     }
 
     public ServiceProvider getProvider() {
@@ -26,5 +28,13 @@ public class ClinicMarker {
 
     public void setMarker(Marker marker) {
         this.marker = marker;
+    }
+
+    public String getProviderKey() {
+        return providerKey;
+    }
+
+    public void setProviderKey(String providerKey) {
+        this.providerKey = providerKey;
     }
 }

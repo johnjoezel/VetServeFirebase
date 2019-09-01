@@ -109,4 +109,40 @@ public class ShowAlert {
         }
 
     }
+
+    public static void alertAddProvider(Context context, String msg, String providerKey, String uId){
+        try{
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setTitle("Alert");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Confirm adding " + msg + " as provider?");
+            alertDialog.setNegativeButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
+                    DatabaseReference dRef = mDatabase.child("user_provider").child(uId).child(providerKey);
+                    dRef.setValue(providerKey).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(context, "You added " + msg + "as provider", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.setPositiveButton("Cancel",  new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            alertDialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
 }
