@@ -3,8 +3,6 @@ package com.example.vetservefirebase.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ServiceProvider implements Parcelable  {
 

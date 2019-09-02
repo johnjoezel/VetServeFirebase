@@ -11,12 +11,12 @@ import com.example.vetservefirebase.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
-public class ServiceProviderFragment$RequestViewHolder_ViewBinding implements Unbinder {
-  private ServiceProviderFragment.RequestViewHolder target;
+public class MyRecyclerviewAdapter$MyViewHolder_ViewBinding implements Unbinder {
+  private MyRecyclerviewAdapter.MyViewHolder target;
 
   @UiThread
-  public ServiceProviderFragment$RequestViewHolder_ViewBinding(
-      ServiceProviderFragment.RequestViewHolder target, View source) {
+  public MyRecyclerviewAdapter$MyViewHolder_ViewBinding(MyRecyclerviewAdapter.MyViewHolder target,
+      View source) {
     this.target = target;
 
     target.clinicName = Utils.findRequiredViewAsType(source, R.id.clinicName, "field 'clinicName'", TextView.class);
@@ -28,7 +28,7 @@ public class ServiceProviderFragment$RequestViewHolder_ViewBinding implements Un
   @Override
   @CallSuper
   public void unbind() {
-    ServiceProviderFragment.RequestViewHolder target = this.target;
+    MyRecyclerviewAdapter.MyViewHolder target = this.target;
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 

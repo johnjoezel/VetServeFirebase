@@ -120,11 +120,15 @@ public class ShowAlert {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
-                    DatabaseReference dRef = mDatabase.child("user_provider").child(uId).child(providerKey);
-                    dRef.setValue(providerKey).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    DatabaseReference dRef = mDatabase.child("user_provider").child(uId);
+                    Map<String, Object> map = new HashMap();
+                    map.put("providerID", providerKey);
+                    String id = dRef.push().getKey();
+                    dRef.child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
+                                map.clear();
                                 Toast.makeText(context, "You added " + msg + "as provider", Toast.LENGTH_SHORT).show();
                             }
                         }

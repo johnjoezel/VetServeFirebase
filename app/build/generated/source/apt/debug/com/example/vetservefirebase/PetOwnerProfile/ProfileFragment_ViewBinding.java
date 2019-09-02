@@ -16,9 +16,7 @@ import java.lang.Override;
 public class ProfileFragment_ViewBinding implements Unbinder {
   private ProfileFragment target;
 
-  private View view7f0a0108;
-
-  private View view7f0a00a8;
+  private View view7f0a0109;
 
   private View view7f0a00a9;
 
@@ -27,6 +25,8 @@ public class ProfileFragment_ViewBinding implements Unbinder {
   private View view7f0a00ab;
 
   private View view7f0a00ac;
+
+  private View view7f0a00ad;
 
   private View view7f0a0038;
 
@@ -42,7 +42,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = Utils.findRequiredViewAsType(source, R.id.address, "field 'address'", TextView.class);
     view = Utils.findRequiredView(source, R.id.profilepic, "field 'profilepic' and method 'toedit'");
     target.profilepic = Utils.castView(view, R.id.profilepic, "field 'profilepic'", ImageView.class);
-    view7f0a0108 = view;
+    view7f0a0109 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,14 +50,6 @@ public class ProfileFragment_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.imageView2, "method 'toedit'");
-    view7f0a00a8 = view;
-    view.setOnClickListener(new DebouncingOnClickListener() {
-      @Override
-      public void doClick(View p0) {
-        target.toedit(p0);
-      }
-    });
-    view = Utils.findRequiredView(source, R.id.imageView3, "method 'toedit'");
     view7f0a00a9 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
@@ -65,7 +57,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
         target.toedit(p0);
       }
     });
-    view = Utils.findRequiredView(source, R.id.imageView4, "method 'toedit'");
+    view = Utils.findRequiredView(source, R.id.imageView3, "method 'toedit'");
     view7f0a00aa = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
@@ -73,7 +65,7 @@ public class ProfileFragment_ViewBinding implements Unbinder {
         target.toedit(p0);
       }
     });
-    view = Utils.findRequiredView(source, R.id.imageView5, "method 'toedit'");
+    view = Utils.findRequiredView(source, R.id.imageView4, "method 'toedit'");
     view7f0a00ab = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
@@ -81,8 +73,16 @@ public class ProfileFragment_ViewBinding implements Unbinder {
         target.toedit(p0);
       }
     });
-    view = Utils.findRequiredView(source, R.id.imageView6, "method 'toedit'");
+    view = Utils.findRequiredView(source, R.id.imageView5, "method 'toedit'");
     view7f0a00ac = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.toedit(p0);
+      }
+    });
+    view = Utils.findRequiredView(source, R.id.imageView6, "method 'toedit'");
+    view7f0a00ad = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -113,10 +113,8 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     target.address = null;
     target.profilepic = null;
 
-    view7f0a0108.setOnClickListener(null);
-    view7f0a0108 = null;
-    view7f0a00a8.setOnClickListener(null);
-    view7f0a00a8 = null;
+    view7f0a0109.setOnClickListener(null);
+    view7f0a0109 = null;
     view7f0a00a9.setOnClickListener(null);
     view7f0a00a9 = null;
     view7f0a00aa.setOnClickListener(null);
@@ -125,6 +123,8 @@ public class ProfileFragment_ViewBinding implements Unbinder {
     view7f0a00ab = null;
     view7f0a00ac.setOnClickListener(null);
     view7f0a00ac = null;
+    view7f0a00ad.setOnClickListener(null);
+    view7f0a00ad = null;
     view7f0a0038.setOnClickListener(null);
     view7f0a0038 = null;
   }

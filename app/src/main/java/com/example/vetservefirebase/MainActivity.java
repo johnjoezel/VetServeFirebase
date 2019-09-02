@@ -23,6 +23,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Base.BaseView;
 import com.example.vetservefirebase.Model.Pet;
+import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.Others.ConnectionDetector;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public NavigationView navigationView;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private DatabaseReference dRef;
+    private DatabaseReference dRef, dRef1;
     private FirebaseUser user;
     private DrawerLayout drawer;
     public static int navItemIndex = 0;
@@ -67,7 +68,10 @@ public class MainActivity extends AppCompatActivity {
     Bundle arguments, userarguments;
     Bundle extras;
     ArrayList<Pet> pets = new ArrayList<Pet>();
+    ArrayList<ServiceProvider> providers = new ArrayList<ServiceProvider>();
     ArrayList<String> petKeys = new ArrayList<>();
+    ArrayList<String> providerKey = new ArrayList<>();
+
 //    ConnectionDetector cd;
 //    Boolean isInternetPresent = false;
 
