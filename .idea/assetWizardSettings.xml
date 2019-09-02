@@ -161,7 +161,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_arrow_drop_up_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/notification/ic_event_note_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -172,7 +172,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="2196f3" />
-                            <entry key="outputName" value="arrow_up" />
+                            <entry key="outputName" value="notes_icon" />
                             <entry key="sourceFile" value="C:\Users\ZerahNissi" />
                           </map>
                         </option>

@@ -5,9 +5,4 @@
     android:gravity="center_vertical"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="6dp"
-        android:layout_height="6dp"
-        android:background="@drawable/bg_circle"></LinearLayout>
-
 </LinearLayout>

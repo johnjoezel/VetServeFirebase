@@ -1,5 +1,6 @@
 package com.example.vetservefirebase.ServiceProvider;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,8 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.clinicName)
         TextView clinicName;
-        @BindView(R.id.clinicAddress)
-        TextView clinicAddress;
-        @BindView(R.id.clinicHours)
-        TextView clinicHours;
-        @BindView(R.id.clinicPhone)
-        TextView clinicPhone;
-
+        @BindView(R.id.reqAppointment)
+        TextView reqAppointment;
         public MyViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
@@ -51,8 +47,6 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerviewAdapter.MyViewHolder holder, int position) {
         holder.clinicName.setText(providers.get(position).getClinicname());
-        holder.clinicAddress.setText(providers.get(position).getLocation());
-        holder.clinicPhone.setText(providers.get(position).getPhonenumber());
     }
 
     @Override

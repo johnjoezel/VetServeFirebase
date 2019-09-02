@@ -19,10 +19,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.vetservefirebase.AddPet.AddPetActivity;
+import com.example.vetservefirebase.Appointments.AppointmentsActivity;
 import com.example.vetservefirebase.LocateClinic;
 import com.example.vetservefirebase.MainActivity;
 import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.UserProvider;
+import com.example.vetservefirebase.Others.ShowAlert;
 import com.example.vetservefirebase.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -51,6 +53,7 @@ public class ServiceProviderFragment extends Fragment {
     private DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("user_provider");
     private DatabaseReference providerRef = FirebaseDatabase.getInstance().getReference("providers");
     ArrayList<ServiceProvider> providers = new ArrayList<>();
+    ArrayList<String> userprovKey = new ArrayList<>();
     MyRecyclerviewAdapter mAdapter;
     private String uId;
 
@@ -83,6 +86,18 @@ public class ServiceProviderFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        listofprovider.addOnItemTouchListener(new MyRecyclerTouchListener(getContext(), listofprovider, new MyRecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent intent = new Intent(getContext(), AppointmentsActivity.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                ShowAlert.alertRemoveProvider(getContext(), providers.get(position).getClinicname(), userprovKey.get(position), uId);
+            }
+        }));
         return view;
     }
 
@@ -92,6 +107,7 @@ public class ServiceProviderFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 UserProvider userProvider = dataSnapshot.getValue(UserProvider.class);
+                userprovKey.add(dataSnapshot.getKey());
                 String providerID = userProvider.getProviderID();
                 Log.d(TAG, "onChildAdded: " + providerID);
                 providerRef.child(providerID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -118,7 +134,15 @@ public class ServiceProviderFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+                String key = dataSnapshot.getKey();
+                for (int i = 0; i < userprovKey.size(); i++) {
+                    if(userprovKey.get(i).equals(key)){
+                        providers.remove(i);
+                        break;
+                    }
+                }
+                Log.d(TAG, "onChildRemoved: " + key);
+                mAdapter.notifyDataSetChanged();
             }
 
             @Override

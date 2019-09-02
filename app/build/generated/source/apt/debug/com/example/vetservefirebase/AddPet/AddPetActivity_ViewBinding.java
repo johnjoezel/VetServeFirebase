@@ -23,15 +23,15 @@ import java.lang.Override;
 public class AddPetActivity_ViewBinding implements Unbinder {
   private AddPetActivity target;
 
-  private View view7f0a0148;
+  private View view7f0a014b;
 
-  private View view7f0a0147;
+  private View view7f0a014a;
 
-  private View view7f0a0101;
+  private View view7f0a0105;
 
-  private View view7f0a0100;
+  private View view7f0a0103;
 
-  private View view7f0a003a;
+  private View view7f0a003e;
 
   @UiThread
   public AddPetActivity_ViewBinding(AddPetActivity target) {
@@ -45,7 +45,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.spnrSpecies, "field 'spnrSpecies' and method 'onItemSelected'");
     target.spnrSpecies = Utils.castView(view, R.id.spnrSpecies, "field 'spnrSpecies'", MaterialSpinner.class);
-    view7f0a0148 = view;
+    view7f0a014b = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -58,7 +58,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.spnrGender, "field 'spnrGender' and method 'onItemSelected'");
     target.spnrGender = Utils.castView(view, R.id.spnrGender, "field 'spnrGender'", MaterialSpinner.class);
-    view7f0a0147 = view;
+    view7f0a014a = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -73,7 +73,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetname = Utils.findRequiredViewAsType(source, R.id.txtpetname, "field 'txtpetname'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petpicture, "field 'petpicture' and method 'addpetpic'");
     target.petpicture = Utils.castView(view, R.id.petpicture, "field 'petpicture'", ImageView.class);
-    view7f0a0101 = view;
+    view7f0a0105 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -83,7 +83,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = Utils.findRequiredViewAsType(source, R.id.petColor, "field 'txtpetcolor'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petdateofbirth, "field 'txtpetDOB' and method 'getpetDOB'");
     target.txtpetDOB = Utils.castView(view, R.id.petdateofbirth, "field 'txtpetDOB'", TextView.class);
-    view7f0a0100 = view;
+    view7f0a0103 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -92,7 +92,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.btnaddpet, "field 'btnUpAdd' and method 'toadd'");
     target.btnUpAdd = Utils.castView(view, R.id.btnaddpet, "field 'btnUpAdd'", Button.class);
-    view7f0a003a = view;
+    view7f0a003e = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -121,15 +121,15 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetDOB = null;
     target.btnUpAdd = null;
 
-    ((AdapterView<?>) view7f0a0148).setOnItemSelectedListener(null);
-    view7f0a0148 = null;
-    ((AdapterView<?>) view7f0a0147).setOnItemSelectedListener(null);
-    view7f0a0147 = null;
-    view7f0a0101.setOnClickListener(null);
-    view7f0a0101 = null;
-    view7f0a0100.setOnClickListener(null);
-    view7f0a0100 = null;
-    view7f0a003a.setOnClickListener(null);
-    view7f0a003a = null;
+    ((AdapterView<?>) view7f0a014b).setOnItemSelectedListener(null);
+    view7f0a014b = null;
+    ((AdapterView<?>) view7f0a014a).setOnItemSelectedListener(null);
+    view7f0a014a = null;
+    view7f0a0105.setOnClickListener(null);
+    view7f0a0105 = null;
+    view7f0a0103.setOnClickListener(null);
+    view7f0a0103 = null;
+    view7f0a003e.setOnClickListener(null);
+    view7f0a003e = null;
   }
 }

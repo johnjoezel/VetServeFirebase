@@ -18,6 +18,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Appointments.SelectPetActivity"></activity>
         <activity android:name=".Appointments.AppointmentsActivity" />
         <activity
             android:name=".ServiceProvider.ProviderProfileActivity"

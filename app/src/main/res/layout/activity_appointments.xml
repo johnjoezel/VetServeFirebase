@@ -1,104 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:focusableInTouchMode="true">
 
-        <ImageView
-            android:id="@+id/petpicture"
-            android:layout_width="@dimen/petprofile_width"
-            android:layout_height="@dimen/petprofile_height"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="32dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/petdefaultpic" >
-        </ImageView>
-
-        <EditText
-            android:id="@+id/txtpetname"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:autoSizeTextType="uniform"
-            android:ems="10"
-            android:fontFamily="@font/champagne"
-            android:hint="Pet Name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/selectVet"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petpicture" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <fr.ganfra.materialspinner.MaterialSpinner
-            android:id="@+id/selectVet"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:ms_arrowSize="16dp"
-            app:ms_floatingLabelText="Select Preferred Vet Doctor"
-            app:ms_hint="Gender"
-            app:ms_hintColor="#a8a8a8"
-            app:ms_multiline="true"
-            app:layout_constraintBottom_toTopOf="@+id/petdateofbirth"
-            app:layout_constraintEnd_toEndOf="@+id/txtpetname"
-            app:layout_constraintStart_toStartOf="@+id/txtpetname"
-            app:layout_constraintTop_toBottomOf="@+id/spnrBreed" />
+            <ImageView
+                android:id="@+id/petpicture"
+                android:layout_width="@dimen/petprofile_width"
+                android:layout_height="@dimen/petprofile_height"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/petdefaultpic" />
+
+            <TextView
+                android:id="@+id/petname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bottomborder"
+                android:fontFamily="@font/champagne"
+                android:gravity="center"
+                android:padding="15dp"
+                android:text="Select Pet"
+                android:textColor="#000"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
         <TextView
-            android:id="@+id/petdateofbirth"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:drawableEnd="@drawable/prof_calendar"
-            android:textColor="?attr/editTextColor"
-            android:background="?attr/editTextBackground"
-            android:gravity="center_vertical"
-            android:textAppearance="?android:attr/textAppearanceMediumInverse"
-            android:ems="10"
-            android:focusableInTouchMode="false"
-            android:fontFamily="@font/champagne"
-            android:hint="Date of Birth"
-            app:layout_constraintBottom_toTopOf="@+id/petColor"
-            app:layout_constraintEnd_toEndOf="@+id/txtpetname"
-            app:layout_constraintHorizontal_bias="0.50"
-            app:layout_constraintStart_toStartOf="@+id/txtpetname"
-            app:layout_constraintTop_toBottomOf="@+id/spnrGender" />
-
-        <EditText
-            android:id="@+id/petColor"
+            android:id="@+id/appointmentServices"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:ems="10"
+            android:background="?attr/editTextBackground"
+            android:drawableStart="@drawable/med_icon"
+            android:drawablePadding="10dp"
             android:fontFamily="@font/champagne"
-            android:hint="Color"
+            android:gravity="center_vertical"
+            android:hint="Select Service/s"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/btnRequest"
-            app:layout_constraintEnd_toEndOf="@+id/txtpetname"
-            app:layout_constraintStart_toStartOf="@+id/txtpetname"
-            app:layout_constraintTop_toBottomOf="@+id/petdateofbirth" />
+            android:padding="15dp"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="?attr/editTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        <TextView
+            android:id="@+id/appointmentDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="?attr/editTextBackground"
+            android:drawableStart="@drawable/reqappointment"
+            android:drawablePadding="10dp"
+            android:focusableInTouchMode="false"
+            android:fontFamily="@font/champagne"
+            android:gravity="center_vertical"
+            android:hint="Pick a Date"
+            android:padding="15dp"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="?attr/editTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentServices" />
+
+        <TextView
+            android:id="@+id/appointmentTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="?attr/editTextBackground"
+            android:drawableStart="@drawable/clinichours"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/champagne"
+            android:gravity="center_vertical"
+            android:hint="Set Appointment Time"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textAppearance="?android:attr/textAppearanceMediumInverse"
+            android:textColor="?attr/editTextColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentDate" />
+
+        <EditText
+            android:id="@+id/appointmentNotes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autoSizeTextType="uniform"
+            android:drawableStart="@drawable/notes_icon"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/champagne"
+            android:gravity="center_vertical"
+            android:hint="Additional Notes"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentTime" />
+
 
         <Button
             android:id="@+id/btnRequest"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/final_button"
             android:fontFamily="@font/champagne"
             android:text="Submit Request"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/txtpetname"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/txtpetname"
-            app:layout_constraintTop_toBottomOf="@+id/petMicrochip"
-            app:layout_constraintVertical_bias="0.51" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appointmentNotes" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

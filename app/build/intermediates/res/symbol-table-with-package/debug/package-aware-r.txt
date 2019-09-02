@@ -72,11 +72,9 @@ attr allowStacking
 attr alpha
 attr alphabeticModifiers
 attr ambientEnabled
-attr animateOnBoundary
 attr arrowHeadLength
 attr arrowShaftLength
 attr autoCompleteTextViewStyle
-attr autoPlay
 attr autoSizeMaxTextSize
 attr autoSizeMinTextSize
 attr autoSizePresetSizes
@@ -138,7 +136,6 @@ attr cardMaxElevation
 attr cardPreventCornerOverlap
 attr cardUseCompatPadding
 attr cardViewStyle
-attr centered
 attr chainUseRtl
 attr checkboxStyle
 attr checkedChip
@@ -224,7 +221,6 @@ attr defaultQueryHint
 attr dialogCornerRadius
 attr dialogPreferredPadding
 attr dialogTheme
-attr disableAutoPlayOnUserInteraction
 attr displayOptions
 attr divider
 attr dividerHorizontal
@@ -267,7 +263,6 @@ attr fastScrollHorizontalThumbDrawable
 attr fastScrollHorizontalTrackDrawable
 attr fastScrollVerticalThumbDrawable
 attr fastScrollVerticalTrackDrawable
-attr fillColor
 attr firstBaselineToTopHeight
 attr floatingActionButtonStyle
 attr font
@@ -311,11 +306,6 @@ attr imageAspectRatio
 attr imageAspectRatioAdjust
 attr imageButtonStyle
 attr indeterminateProgressStyle
-attr indicatorGravity
-attr indicatorMarginHorizontal
-attr indicatorMarginVertical
-attr indicatorOrientation
-attr indicatorVisibility
 attr initialActivityCount
 attr insetForeground
 attr isLightTheme
@@ -472,9 +462,6 @@ attr paddingBottomNoButtons
 attr paddingEnd
 attr paddingStart
 attr paddingTopNoTitle
-attr pageColor
-attr pageTransformInterval
-attr pageTransformer
 attr panelBackground
 attr panelMenuListTheme
 attr panelMenuListWidth
@@ -493,7 +480,6 @@ attr progressBarStyle
 attr queryBackground
 attr queryHint
 attr radioButtonStyle
-attr radius
 attr ratingBarStyle
 attr ratingBarStyleIndicator
 attr ratingBarStyleSmall
@@ -517,10 +503,8 @@ attr showTitle
 attr singleChoiceItemLayout
 attr singleLine
 attr singleSelection
-attr slideInterval
 attr snackbarButtonStyle
 attr snackbarStyle
-attr snap
 attr spacingProportion
 attr spanCount
 attr spinBars
@@ -644,7 +628,6 @@ attr useCompatPadding
 attr useViewLifecycle
 attr viewInflaterClass
 attr voiceIcon
-attr vpiCirclePageIndicatorStyle
 attr windowActionBar
 attr windowActionBarOverlay
 attr windowActionModeOverlay
@@ -659,8 +642,6 @@ attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
-bool default_circle_indicator_centered
-bool default_circle_indicator_snap
 bool mtrl_btn_textappearance_all_caps
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -722,9 +703,6 @@ color common_google_signin_btn_text_light_disabled
 color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
-color default_circle_indicator_fill_color
-color default_circle_indicator_page_color
-color default_circle_indicator_stroke_color
 color design_bottom_navigation_shadow_color
 color design_default_color_primary
 color design_default_color_primary_dark
@@ -952,14 +930,6 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color tooltip_background_dark
 color tooltip_background_light
-color vpi__background_holo_dark
-color vpi__background_holo_light
-color vpi__bright_foreground_disabled_holo_dark
-color vpi__bright_foreground_disabled_holo_light
-color vpi__bright_foreground_holo_dark
-color vpi__bright_foreground_holo_light
-color vpi__bright_foreground_inverse_holo_dark
-color vpi__bright_foreground_inverse_holo_light
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1049,10 +1019,6 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
-dimen default_circle_indicator_radius
-dimen default_circle_indicator_stroke_width
-dimen default_indicator_margin_horizontal
-dimen default_indicator_margin_vertical
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -1306,11 +1272,9 @@ drawable arrow_down
 drawable arrow_up
 drawable avd_hide_password
 drawable avd_show_password
-drawable bg_circle
 drawable blueediticon
 drawable bottomborder
 drawable catpic
-drawable circular
 drawable clinicbanner
 drawable clinichours
 drawable common_full_open_on_phone
@@ -1339,12 +1303,8 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dogpic
-drawable editicon
 drawable editpetbutton
-drawable edittext_border
-drawable example_appwidget_preview
 drawable final_button
-drawable forimage
 drawable fui_ic_anonymous_white_24dp
 drawable fui_ic_check_circle_black_128dp
 drawable fui_ic_facebook_white_22dp
@@ -1363,7 +1323,6 @@ drawable fui_idp_button_background_twitter
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable header_backgroud
-drawable home
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_menu_camera
@@ -1380,17 +1339,16 @@ drawable listview
 drawable location
 drawable logo
 drawable logout_logo
-drawable main_background
 drawable main_border
 drawable mainbackground
 drawable mapview
+drawable med_icon
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable my_background
 drawable my_location
-drawable nav_setting
 drawable navigation_empty_icon
-drawable near_me
+drawable notes_icon
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1404,12 +1362,9 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable pet_clinic
-drawable pet_clinic2
 drawable petdefaultpic
-drawable pets
 drawable pets2
 drawable phonenumber
-drawable prof_calendar
 drawable prof_password
 drawable prof_user
 drawable profile_icon
@@ -1418,8 +1373,6 @@ drawable reqappointment
 drawable roundcorner
 drawable searchclinic
 drawable shadow
-drawable side_nav_bar
-drawable temporary_med_icon
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable veterinarian
@@ -1462,6 +1415,10 @@ id alertTitle
 id all
 id always
 id anonymous_button
+id appointmentDate
+id appointmentNotes
+id appointmentServices
+id appointmentTime
 id async
 id auto
 id barrier
@@ -1502,6 +1459,7 @@ id checkbox
 id chronometer
 id circular
 id clinicAddress
+id clinicBanner
 id clinicHours
 id clinicName
 id clinicPhone
@@ -1515,7 +1473,6 @@ id confirmation_code
 id confirmation_code_layout
 id contact
 id container
-id containerViewPager
 id content
 id contentPanel
 id coordinator
@@ -1527,7 +1484,6 @@ id dark
 id dateofbirth
 id decor_content_parent
 id default_activity_button
-id depth
 id design_bottom_sheet
 id design_menu_item_action_area
 id design_menu_item_action_area_stub
@@ -1564,7 +1520,6 @@ id fill_vertical
 id filled
 id firstname
 id fixed
-id flow
 id forever
 id fragment_container
 id fragment_phone
@@ -1601,7 +1556,6 @@ id imageView6
 id imageView7
 id imgProfpic
 id img_header_bg
-id indicator
 id info
 id invisible
 id invisible_frame
@@ -1632,11 +1586,13 @@ id linearLayout
 id linearLayout10
 id linearLayout11
 id linearLayout12
+id linearLayout2
 id linearLayout8
 id linearLayout9
 id linkToClinicProfile
 id listMode
 id list_item
+id listofpets
 id listofprovider
 id listview
 id logo
@@ -1681,6 +1637,7 @@ id petPic
 id petWeight
 id pet_fragment_container1
 id petdateofbirth
+id petname
 id petpicture
 id petpictures
 id phone_button
@@ -1697,6 +1654,7 @@ id providers
 id providers_container
 id radio
 id remove
+id removeProvider
 id reqAppointment
 id resend_barrier
 id resend_code
@@ -1727,7 +1685,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id selectVet
 id select_dialog_listview
 id selected
 id send_code
@@ -1742,7 +1699,6 @@ id signInPassword
 id sign_in_email_sent_header_text
 id sign_in_email_sent_text
 id signup
-id slide_over
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -1819,13 +1775,14 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id vertical
 id viewCliniclocation
 id viewClinicname
 id viewPager
 id viewPager1
 id view_container
 id view_offset_helper
+id viewpetbreed
+id viewpetname
 id visible
 id weight
 id weightlabel
@@ -1837,14 +1794,12 @@ id wide
 id withText
 id wrap
 id wrap_content
-id zoom
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
 integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
 integer config_tooltipAnimTime
-integer default_circle_indicator_orientation
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
 integer fui_min_password_length
@@ -1895,6 +1850,7 @@ layout activity_locate_clinic
 layout activity_main
 layout activity_personal_information
 layout activity_provider_profile
+layout activity_select_pet
 layout activity_service_providers_list
 layout activity_signin
 layout activity_signup
@@ -1977,10 +1933,10 @@ layout providers_item
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout select_pet_layout
 layout spinner_adapter
 layout spinner_item
 layout support_simple_spinner_dropdown_item
-layout view_carousel
 menu activity_main_drawer
 menu addpet
 menu bottom_nav_items
@@ -2787,11 +2743,9 @@ styleable BottomNavigationView elevation itemBackground itemHorizontalTranslatio
 styleable BottomSheetBehavior_Layout behavior_fitToContents behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
-styleable CarouselView animateOnBoundary autoPlay disableAutoPlayOnUserInteraction fillColor indicatorGravity indicatorMarginHorizontal indicatorMarginVertical indicatorOrientation indicatorVisibility pageColor pageTransformInterval pageTransformer radius slideInterval snap strokeColor strokeWidth
 styleable Chip android_textAppearance android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipStartPadding chipStrokeColor chipStrokeWidth closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible hideMotionSpec iconEndPadding iconStartPadding rippleColor showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
 styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color civ_fill_color
-styleable CirclePageIndicator android_orientation android_background centered fillColor pageColor radius snap strokeColor strokeWidth
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha
@@ -2850,5 +2804,4 @@ styleable ThemeEnforcement android_textAppearance enforceMaterialTheme enforceTe
 styleable Toolbar android_gravity android_minHeight buttonGravity collapseContentDescription collapseIcon contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation logo logoDescription maxButtonHeight navigationContentDescription navigationIcon popupTheme subtitle subtitleTextAppearance subtitleTextColor title titleMargin titleMarginBottom titleMarginEnd titleMarginStart titleMarginTop titleMargins titleTextAppearance titleTextColor
 styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
-styleable ViewPagerIndicator vpiCirclePageIndicatorStyle
 styleable ViewStubCompat android_id android_layout android_inflatedId

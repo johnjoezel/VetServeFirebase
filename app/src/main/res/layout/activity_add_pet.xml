@@ -121,7 +121,7 @@
                 android:id="@+id/petdateofbirth"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/prof_calendar"
+                android:drawableEnd="@drawable/reqappointment"
                 android:textColor="?attr/editTextColor"
                 android:background="?attr/editTextBackground"
                 android:gravity="center_vertical"

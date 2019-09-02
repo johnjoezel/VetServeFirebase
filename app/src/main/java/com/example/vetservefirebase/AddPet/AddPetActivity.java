@@ -330,6 +330,11 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     }
 
     @Override
+    public void removePetSuccess(String msg) {
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if(pet != null) {
             getMenuInflater().inflate(R.menu.removemenu, menu);

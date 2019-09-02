@@ -20,9 +20,7 @@ public class MyRecyclerviewAdapter$MyViewHolder_ViewBinding implements Unbinder 
     this.target = target;
 
     target.clinicName = Utils.findRequiredViewAsType(source, R.id.clinicName, "field 'clinicName'", TextView.class);
-    target.clinicAddress = Utils.findRequiredViewAsType(source, R.id.clinicAddress, "field 'clinicAddress'", TextView.class);
-    target.clinicHours = Utils.findRequiredViewAsType(source, R.id.clinicHours, "field 'clinicHours'", TextView.class);
-    target.clinicPhone = Utils.findRequiredViewAsType(source, R.id.clinicPhone, "field 'clinicPhone'", TextView.class);
+    target.reqAppointment = Utils.findRequiredViewAsType(source, R.id.reqAppointment, "field 'reqAppointment'", TextView.class);
   }
 
   @Override
@@ -33,8 +31,6 @@ public class MyRecyclerviewAdapter$MyViewHolder_ViewBinding implements Unbinder 
     this.target = null;
 
     target.clinicName = null;
-    target.clinicAddress = null;
-    target.clinicHours = null;
-    target.clinicPhone = null;
+    target.reqAppointment = null;
   }
 }

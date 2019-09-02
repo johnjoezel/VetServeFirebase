@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadNavHeader(String photoUrl, String email) {
         headerDisplayname.setText(email);
-        Glide.with(this).load(R.drawable.main_background)
+        Glide.with(this).load(R.drawable.header_backgroud)
                 .transition(withCrossFade())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(headerBackground);

@@ -1,6 +1,7 @@
 package com.example.vetservefirebase.Others;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,8 +14,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.vetservefirebase.MainActivity;
 import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
 import com.example.vetservefirebase.R;
+import com.example.vetservefirebase.ServiceProvider.ProviderProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -130,6 +133,47 @@ public class ShowAlert {
                             if(task.isSuccessful()){
                                 map.clear();
                                 Toast.makeText(context, "You added " + msg + "as provider", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, MainActivity.class);
+                                context.startActivity(intent);
+                            }
+                        }
+                    });
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.setPositiveButton("Cancel",  new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            alertDialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void alertRemoveProvider(Context context, String msg, String userprovKey, String uId){
+        try{
+            final ProgressDialog progressDialog = new ProgressDialog(context);;
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setTitle("Alert");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Remove " + msg + " as provider?");
+            alertDialog.setNegativeButton("Confirm", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
+                    DatabaseReference dRef = mDatabase.child("user_provider").child(uId);
+                    progressDialog.setIndeterminate(true);
+                    progressDialog.show();
+                    dRef.child(userprovKey).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                progressDialog.dismiss();
                             }
                         }
                     });

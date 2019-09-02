@@ -4,4 +4,5 @@ import com.example.vetservefirebase.Base.BaseView;
 
 public interface AddPetView extends BaseView {
     void addPetSuccess(String msg);
+    void removePetSuccess(String msg);
 }
