@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.example.vetservefirebase.AddPet.AddPetActivity;
+import com.example.vetservefirebase.Model.Appointment;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.R;
 import com.google.android.material.tabs.TabLayout;
@@ -54,12 +55,12 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
     Bundle arguments;
     ArrayList<Pet> pets = new ArrayList<Pet>();
     ArrayList<String> petKeys = new ArrayList<>();
+    ArrayList<Appointment> appointments;
     MyCustomPagerAdapter myCustomPagerAdapter;
     MyTabLayoutAdapter myTabLayoutAdapter;
     private ViewPager petInfoViewPager,petViewPager;
     private TabLayout tabLayout;
-    private DatabaseReference dRef;
-
+    private DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("pets");
     GeneralFragment generalFragment;
     MedicationFragment medicationFragment;
     SchedulesFragment schedulesFragment;
@@ -90,13 +91,25 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
         tabLayout = view.findViewById(R.id.tabLayout);
         myCustomPagerAdapter = new MyCustomPagerAdapter(this.getActivity(), pets);
         petViewPager.setAdapter(myCustomPagerAdapter);
-        myTabLayoutAdapter = new MyTabLayoutAdapter(getChildFragmentManager());
-        petInfoViewPager.setAdapter(myTabLayoutAdapter);
-        tabLayout.setupWithViewPager(petInfoViewPager);
         petViewPager.addOnPageChangeListener(this);
+        setupViewPager(petInfoViewPager);
+        tabLayout.setupWithViewPager(petInfoViewPager);
         getPets();
         return view;
     }
+
+
+
+
+
+    private void setupViewPager(ViewPager petInfoViewPager) {
+        myTabLayoutAdapter = new MyTabLayoutAdapter(getChildFragmentManager());
+        myTabLayoutAdapter.addFragment(generalFragment,"General");
+        myTabLayoutAdapter.addFragment(medicationFragment, "Medication");
+        myTabLayoutAdapter.addFragment(schedulesFragment, "Schedule");
+        petInfoViewPager.setAdapter(myTabLayoutAdapter);
+    }
+
 
     private void checkList() {
         if (pets.isEmpty()) {
@@ -112,7 +125,6 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
     }
 
     private void getPets() {
-        dRef = FirebaseDatabase.getInstance().getReference("pets");
         dRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -125,30 +137,21 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
                                 petKeys.add(dataSnapshot.getKey());
                                 pets.add(pet);
                                 myCustomPagerAdapter.notifyDataSetChanged();
-                                if (pets.size() > 0 && pets.size() == 1) {
+                                if (pets.size() == 1) {
                                     rightarrow.setVisibility(View.INVISIBLE);
                                     leftarrow.setVisibility(View.INVISIBLE);
-                                    arguments.putParcelable("pet", pets.get(0));
                                     mypet = pets.get(0);
                                     petKey = dataSnapshot.getKey();
-                                    arguments.putString("petKey", petKey);
-                                    generalFragment.setArguments(arguments);
-                                    medicationFragment.setArguments(arguments);
-                                    schedulesFragment.setArguments(arguments);
-                                    myTabLayoutAdapter.addFragment(generalFragment, "General");
-                                    myTabLayoutAdapter.addFragment(medicationFragment, "Medication");
-                                    myTabLayoutAdapter.addFragment(schedulesFragment, "Schedule");
-                                    petInfoViewPager.setAdapter(myTabLayoutAdapter);
-                                    tabLayout.setupWithViewPager(petInfoViewPager);
                                 } else {
                                     rightarrow.setVisibility(View.VISIBLE);
                                     if (arguments.getString("petKey") != null) {
                                         petKey = arguments.getString("petKey");
                                         petViewPager.setCurrentItem(petKeys.indexOf(petKey));
                                     }
+                                    petKey = petKeys.get(petViewPager.getCurrentItem());
+                                    mypet = pets.get(petViewPager.getCurrentItem());
                                 }
                             }
-
                             checkList();
                         }
 
@@ -159,6 +162,8 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
 
                         @Override
                         public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                            myTabLayoutAdapter.notifyDataSetChanged();
+                            myCustomPagerAdapter.notifyDataSetChanged();
 
                         }
 
@@ -223,19 +228,10 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
             leftarrow.setVisibility(View.INVISIBLE);
             rightarrow.setVisibility(View.VISIBLE);
         }
-        myTabLayoutAdapter = new MyTabLayoutAdapter(getChildFragmentManager());
         mypet = pets.get(position);
         petKey = petKeys.get(position);
-        arguments.putParcelable("pet", pets.get(position));
-        arguments.putString("petKey", petKey);
-        generalFragment.setArguments(arguments);
-        medicationFragment.setArguments(arguments);
-        schedulesFragment.setArguments(arguments);
-        myTabLayoutAdapter.addFragment(generalFragment,"General");
-        myTabLayoutAdapter.addFragment(medicationFragment, "Medication");
-        myTabLayoutAdapter.addFragment(schedulesFragment, "Schedule");
-        petInfoViewPager.setAdapter(myTabLayoutAdapter);
-        tabLayout.setupWithViewPager(petInfoViewPager);
+        myTabLayoutAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -243,7 +239,10 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
 
     }
 
-
-
-
+    public Pet setPet(){
+        return mypet;
+    }
+    public String setPetKey(){
+        return petKey;
+    }
 }

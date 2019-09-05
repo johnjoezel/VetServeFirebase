@@ -1654,7 +1654,6 @@ id progress_circular
 id progress_horizontal
 id providerName
 id providers
-id providersName
 id providers_container
 id radio
 id remove

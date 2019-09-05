@@ -10,24 +10,19 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.vetservefirebase.Model.ServiceProvider;
+import com.example.vetservefirebase.Model.Appointment;
 import com.example.vetservefirebase.R;
-import com.example.vetservefirebase.ServiceProvider.PetAppointmentAdapter;
-import com.example.vetservefirebase.ServiceProvider.ProvidersListView;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -43,9 +38,9 @@ public class SchedulesFragment extends Fragment {
     RecyclerView petAppointmentList;
     private DatabaseReference appointmentRef = FirebaseDatabase.getInstance().getReference("appointments");
     private PetAppointmentAdapter mAdapter;
-    ArrayList<String> appointmentsInfo = new ArrayList<>();
-    ArrayList<String> appointments = new ArrayList<>();
+    ArrayList<Appointment> appointments = new ArrayList<>();
     private String uId;
+    private String petKey;
 
     public SchedulesFragment() {
         // Required empty public constructor
@@ -58,22 +53,40 @@ public class SchedulesFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_schedules, container, false);
         ButterKnife.bind(this, view);
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
         mAdapter = new PetAppointmentAdapter(appointments);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         petAppointmentList.setLayoutManager(mLayoutManager);
         petAppointmentList.setItemAnimator(new DefaultItemAnimator());
         petAppointmentList.setAdapter(mAdapter);
-        getAppointments();
         return view;
     }
 
+    private void checkAppointments() {
+        appointmentRef.child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    getAppointments();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
     private void getAppointments() {
         appointmentRef.child(uId).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    Log.d("try", "onChildAdded: " + ds.getChildren());
-                }
+                Appointment appointment = dataSnapshot.getValue(Appointment.class);
+                appointment.getPetKey();
+                if(appointment.getPetKey().equals(petKey))
+                    appointments.add(appointment);
+
             }
 
             @Override
@@ -83,7 +96,6 @@ public class SchedulesFragment extends Fragment {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
             }
 
             @Override
@@ -97,5 +109,12 @@ public class SchedulesFragment extends Fragment {
             }
         });
     }
+
+
+
+
+
+
+
 
 }

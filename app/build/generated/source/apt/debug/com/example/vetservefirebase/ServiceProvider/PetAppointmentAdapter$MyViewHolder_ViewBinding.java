@@ -7,6 +7,8 @@ import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
+
+import com.example.vetservefirebase.PetDashboard.PetAppointmentAdapter;
 import com.example.vetservefirebase.R;
 import java.lang.IllegalStateException;
 import java.lang.Override;

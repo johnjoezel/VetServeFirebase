@@ -38,7 +38,6 @@ public class GeneralFragment extends Fragment {
     TextView displaypetage;
     String petname, breedname, gender;
     private OnFragmentInteractionListener mListener;
-    Bundle arguments = new Bundle();
     Pet pet;
     String uId;
     private DatabaseReference dRef;
@@ -58,9 +57,8 @@ public class GeneralFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_general, container, false);
         ButterKnife.bind(this, view);
-        arguments = getArguments();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        pet = arguments.getParcelable("pet");
+        pet = ((PetDashboardFragment) getParentFragment()).setPet();
         setInformation();
         return view;
 

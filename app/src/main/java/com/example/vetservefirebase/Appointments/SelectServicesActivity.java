@@ -69,7 +69,7 @@ public class SelectServicesActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                        if(b){
-                           selectedServices.add(new Services(services.getServicename()));
+                           selectedServices.add(services);
                        }else{
                            selectedServices.remove(i);
                        }
