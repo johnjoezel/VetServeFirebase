@@ -20,8 +20,7 @@ public class GeneralFragment_ViewBinding implements Unbinder {
 
     target.displaybreed = Utils.findRequiredViewAsType(source, R.id.breedname, "field 'displaybreed'", TextView.class);
     target.displaygender = Utils.findRequiredViewAsType(source, R.id.gender, "field 'displaygender'", TextView.class);
-    target.displayweight = Utils.findRequiredViewAsType(source, R.id.weight, "field 'displayweight'", TextView.class);
-    target.displayheight = Utils.findRequiredViewAsType(source, R.id.height, "field 'displayheight'", TextView.class);
+    target.displaypetage = Utils.findRequiredViewAsType(source, R.id.displaypetage, "field 'displaypetage'", TextView.class);
   }
 
   @Override
@@ -33,7 +32,6 @@ public class GeneralFragment_ViewBinding implements Unbinder {
 
     target.displaybreed = null;
     target.displaygender = null;
-    target.displayweight = null;
-    target.displayheight = null;
+    target.displaypetage = null;
   }
 }

@@ -22,7 +22,7 @@ public class ServiceProviderFragment_ViewBinding implements Unbinder {
 
     target.listofprovider = Utils.findRequiredViewAsType(source, R.id.listofprovider, "field 'listofprovider'", RecyclerView.class);
     target.searchProviders = Utils.findRequiredViewAsType(source, R.id.searchProviders, "field 'searchProviders'", Button.class);
-    target.emptyview = Utils.findRequiredViewAsType(source, R.id.emptyview, "field 'emptyview'", LinearLayout.class);
+    target.empty_view = Utils.findRequiredViewAsType(source, R.id.empty_view, "field 'empty_view'", LinearLayout.class);
   }
 
   @Override
@@ -34,6 +34,6 @@ public class ServiceProviderFragment_ViewBinding implements Unbinder {
 
     target.listofprovider = null;
     target.searchProviders = null;
-    target.emptyview = null;
+    target.empty_view = null;
   }
 }

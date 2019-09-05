@@ -56,6 +56,14 @@ public class Pet  implements Parcelable  {
         status = in.readString();
     }
 
+    public String getPetKey() {
+        return petKey;
+    }
+
+    public void setPetKey(String petKey) {
+        this.petKey = petKey;
+    }
+
     public void setPet_name(String pet_name) {
         this.pet_name = pet_name;
     }

@@ -17,9 +17,9 @@ import java.lang.Override;
 public class SignUpActivity_ViewBinding implements Unbinder {
   private SignUpActivity target;
 
-  private View view7f0a00b1;
+  private View view7f0a00b2;
 
-  private View view7f0a003a;
+  private View view7f0a003b;
 
   @UiThread
   public SignUpActivity_ViewBinding(SignUpActivity target) {
@@ -38,7 +38,7 @@ public class SignUpActivity_ViewBinding implements Unbinder {
     target.displayname = Utils.findRequiredViewAsType(source, R.id.txtdisplayname, "field 'displayname'", EditText.class);
     view = Utils.findRequiredView(source, R.id.imgProfpic, "field 'imgProfpic' and method 'uploadpicture'");
     target.imgProfpic = Utils.castView(view, R.id.imgProfpic, "field 'imgProfpic'", ImageView.class);
-    view7f0a00b1 = view;
+    view7f0a00b2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class SignUpActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btnRegister, "method 'onSignUpButtonClick'");
-    view7f0a003a = view;
+    view7f0a003b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,9 +69,9 @@ public class SignUpActivity_ViewBinding implements Unbinder {
     target.displayname = null;
     target.imgProfpic = null;
 
-    view7f0a00b1.setOnClickListener(null);
-    view7f0a00b1 = null;
-    view7f0a003a.setOnClickListener(null);
-    view7f0a003a = null;
+    view7f0a00b2.setOnClickListener(null);
+    view7f0a00b2 = null;
+    view7f0a003b.setOnClickListener(null);
+    view7f0a003b = null;
   }
 }

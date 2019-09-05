@@ -76,7 +76,9 @@ public class SelectPetActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent returnIntent = new Intent();
-                        returnIntent.putExtra("pet",pet);
+                        returnIntent.putExtra("petKey", getRef(i).getKey());
+                        returnIntent.putExtra("photoUrl", pet.getPhotoUrl());
+                        returnIntent.putExtra("petname", pet.getPet_name());
                         setResult(RESULT_OK, returnIntent);
                         finish();
                     }

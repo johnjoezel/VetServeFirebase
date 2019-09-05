@@ -11,14 +11,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="64dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="10dp"
         app:layout_constraintEnd_toStartOf="@+id/layout2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/petPic">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/breedlabel"
@@ -64,7 +63,7 @@
             android:textSize="18dp" />
 
         <TextView
-            android:id="@+id/age"
+            android:id="@+id/displaypetage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/champagne"
@@ -116,47 +115,10 @@
         android:gravity="center_vertical"
         android:orientation="vertical"
         android:padding="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/layout6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/layout2"
         app:layout_constraintTop_toTopOf="@+id/layout3"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TextView
-            android:id="@+id/statuslabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/champagne"
-            android:text="Status"
-            android:textColor="@color/material_gray_700"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/champagne"
-            android:text="Neutered"
-            android:textColor="#000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout5"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/layout3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout3"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -173,41 +135,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/champagne"
-            android:text="32kg"
-            android:textColor="#000"
-            android:textSize="18dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout6"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/layout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/layout4"
-        app:layout_constraintTop_toTopOf="@+id/layout5">
-
-        <TextView
-            android:id="@+id/heightlabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/champagne"
-            android:text="Height"
-            android:textColor="@color/material_gray_700"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/height"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/champagne"
-            android:text="50cm"
+            android:text="--"
             android:textColor="#000"
             android:textSize="18dp"
             android:textStyle="bold" />

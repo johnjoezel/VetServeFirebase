@@ -9,17 +9,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.vetservefirebase.R;
 
 import java.util.ResourceBundle;
 
+import butterknife.BindDimen;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MedicationFragment extends Fragment {
 
     private static final String TAG = "Medical Fragment";
     private String petKey;
-    private Bundle arguments = new Bundle();
     private String uId;
+
+    @BindView(R.id.medication)
+    TextView medication;
 
     public MedicationFragment() {
         // Required empty public constructor
@@ -31,6 +38,9 @@ public class MedicationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_medication, container, false);
+        ButterKnife.bind(this, view);
+        petKey = getArguments().getString("petKey");
+
         return view;
     }
 

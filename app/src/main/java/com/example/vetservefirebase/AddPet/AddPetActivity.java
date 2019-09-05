@@ -82,7 +82,7 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     Button btnUpAdd;
     @BindArray(R.array.spinner_species_items)
     String[] speciesArray;
-    private int petbirthDay, petbirthMonth, petbirthYear;
+    private int dayOfMonth, month, year;
     ArrayAdapter genderadapter, speciesadapter;
     public String petspecies, petbreed, petgender, petname, petcolor, petdob, uId, petKey;
     Pet pet;
@@ -98,6 +98,8 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     private String photoUrl = "";
     Bundle extras = new Bundle();
     private DatabaseReference dRef;
+    private Calendar calendar;
+    private DatePickerDialog datePickerDialog;
 
 
     @Override
@@ -165,26 +167,19 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
 
     @OnClick(R.id.petdateofbirth)
     public void getpetDOB() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        mDateListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                petbirthDay = day;
-                month = month + 1;
-                petbirthMonth = month;
-                petbirthYear = year;
-                String date = month + "/" + day + "/" + year;
-                txtpetDOB.setText(date);
-            }
-        };
-        dialog = new DatePickerDialog(
-                this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateListener,year,month,day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        txtpetDOB.setText(day + "/" + (month + 1) + "/" + year);
+                    }
+                }, year, month, dayOfMonth);
+        datePickerDialog.getDatePicker();
+        datePickerDialog.show();
     }
 
     @OnClick(R.id.petpicture) void addpetpic(){
@@ -321,17 +316,19 @@ public class AddPetActivity extends BaseActivity implements AddPetView {
     }
 
     @Override
-    public void addPetSuccess(String msg) {
+    public void editPetSuccess(String msg) {
         Utils.showMessage(this, msg);
-        finish();
         Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("petKey",  petKey);
+        intent.putExtra("petKey",  this.petKey);
         startActivity(intent);
     }
 
     @Override
-    public void removePetSuccess(String msg) {
-
+    public void addPetSuccess(String msg, String petKey) {
+        Utils.showMessage(this, msg);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("petKey",  petKey);
+        startActivity(intent);
     }
 
     @Override

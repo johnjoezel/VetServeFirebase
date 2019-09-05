@@ -43,9 +43,10 @@ public class Personal_Information extends AppCompatActivity{
     @BindView(R.id.dateofbirth)
     TextView dateofbirth;
     DatePickerDialog dialog;
-    private DatePickerDialog.OnDateSetListener mDateListener;
     Validation validation = new Validation();
-    private int birthDay, birthMonth, birthYear;
+    private int dayofmonth, birthmonth, birthyear;
+    private Calendar calendar;
+    private DatePickerDialog datePickerDialog;
 
 
     @Override
@@ -55,29 +56,23 @@ public class Personal_Information extends AppCompatActivity{
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.dateofbirth)
-    public void getDOB() {
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        Log.d("datekuno","date has been set");
-        mDateListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                birthDay = day;
-                month = month + 1;
-                birthMonth = month;
-                birthYear = year;
-                String date = month + "/" + day + "/" + year;
-                dateofbirth.setText(date);
-            }
-        };
-        dialog = new DatePickerDialog(
-                this,
-                android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateListener,year,month,day);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
+    @OnClick(R.id.dateofbirth) public void getDOB() {
+        calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        birthyear = year;
+                        birthmonth = month;
+                        dayofmonth = day;
+                        dateofbirth.setText(day + "/" + (month + 1) + "/" + year);
+                    }
+                }, year, month, dayOfMonth);
+        datePickerDialog.getDatePicker();
+        datePickerDialog.show();
     }
     @OnClick (R.id.btncontinue)
     public void toContinue() {
@@ -92,7 +87,7 @@ public class Personal_Information extends AppCompatActivity{
         Boolean testLast=validation.validateNormalInput(txtlastname);
         Boolean testContact= validation.validateNumber(txtcontact);
         Boolean testAddress= validation.validateNormalInput(txtaddress);
-        Boolean testBdayAge=getAge(birthYear,birthMonth,birthDay);
+        Boolean testBdayAge=getAge(birthyear,birthmonth,dayofmonth);
         if(!testBdayAge){
             dateofbirth.setError("Should be 18 years old or above");
         }else if(birthday.isEmpty()){

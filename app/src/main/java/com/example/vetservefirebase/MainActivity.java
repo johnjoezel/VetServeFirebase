@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
 //            return;
 //        }
 
+
+
         state = 0;
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -104,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         //get data if there's extra
-
         //Set up an AuthStateListener that responds to changes in the user's sign-in state
         if (user != null) {
             email = user.getEmail();
@@ -123,36 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-            dRef = FirebaseDatabase.getInstance().getReference("pets").child(user.getUid());
-            dRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.exists()) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            Pet pet = ds.getValue(Pet.class);
-                            if(!pet.getStatus().equals("remove")) {
-                                pets.add(pet);
-                                petKeys.add(ds.getKey());
-                                arguments.putStringArrayList("petKeys", petKeys);
-                                arguments.putParcelableArrayList("pets", pets);
-                            }
-                        }
-                    }
-                    if (savedInstanceState == null) {
-                        navItemIndex = 0;
-                        CURRENT_TAG = TAG_HOME;
-                        loadHomeFragment();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            if (savedInstanceState == null) {
+                navItemIndex = 0;
+                CURRENT_TAG = TAG_HOME;
+                loadHomeFragment();
+            }
             setUpNavigationView();
         } else {
-                startActivity(new Intent(MainActivity.this, SignInActivity.class));
+                startActivity(  new Intent(MainActivity.this, SignInActivity.class));
         }
 
     }
@@ -160,8 +139,6 @@ public class MainActivity extends AppCompatActivity {
     public void loadNavHeader(String photoUrl, String email) {
         headerDisplayname.setText(email);
         Glide.with(this).load(R.drawable.header_backgroud)
-                .transition(withCrossFade())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(headerBackground);
         Glide.with(this).load(photoUrl)
                 .transition(withCrossFade())
@@ -235,6 +212,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Fragment getHomeFragment() {
+        if(getIntent().hasExtra("index"))
+            navItemIndex = getIntent().getIntExtra("index", 1);
         switch (navItemIndex) {
             case 0:
                 // home

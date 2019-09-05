@@ -3,20 +3,20 @@ package com.example.vetservefirebase.Model;
 public class UserProvider {
 
 
-    String providerID;
+    String providerKey;
 
     public UserProvider() {
     }
 
-    public UserProvider(String providerID) {
-        this.providerID = providerID;
+    public UserProvider(String providerKey) {
+        this.providerKey = providerKey;
     }
 
-    public String getProviderID() {
-        return providerID;
+    public String getProviderKey() {
+        return providerKey;
     }
 
-    public void setProviderID(String providerID) {
-        this.providerID = providerID;
+    public void setProviderKey(String providerKey) {
+        this.providerKey = providerKey;
     }
 }

@@ -20,6 +20,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
+import java.util.Calendar;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -30,11 +34,9 @@ public class GeneralFragment extends Fragment {
     TextView displaybreed;
     @BindView(R.id.gender)
     TextView displaygender;
-    @BindView(R.id.weight)
-    TextView displayweight;
-    @BindView(R.id.height)
-    TextView displayheight;
-    String petname, breedname, gender,weight, height;
+    @BindView(R.id.displaypetage)
+    TextView displaypetage;
+    String petname, breedname, gender;
     private OnFragmentInteractionListener mListener;
     Bundle arguments = new Bundle();
     Pet pet;
@@ -67,8 +69,27 @@ public class GeneralFragment extends Fragment {
     private void setInformation() {
         displaybreed.setText(breedname = pet.getBreed());
         displaygender.setText(gender = pet.getGender());
+        displaypetage.setText(getPetAge() + " months");
     }
 
+    private int getPetAge() {
+        String birthdate = pet.getDob();
+        String[] calend = birthdate.split("/");
+        int day = Integer.parseInt(calend[0]);
+        int month = Integer.parseInt(calend[1]);
+        int year = Integer.parseInt(calend[2]);
+        Calendar today = Calendar.getInstance();
+        int monthToday = today.get(Calendar.MONTH) + 1;
+        int yeartomonths = (today.get(Calendar.YEAR) - year) * 12;
+        if(yeartomonths == 0) {
+            yeartomonths = yeartomonths + 12;
+        }
+        if (monthToday > month) {
+            yeartomonths = yeartomonths - (month - monthToday);
+        } else
+            yeartomonths = yeartomonths + (monthToday - month);
+        return yeartomonths;
+    }
 
     @Override
     public void onDetach() {

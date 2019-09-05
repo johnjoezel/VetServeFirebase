@@ -13,13 +13,15 @@ public class User implements Parcelable{
     String bday;
     String address;
     String photoUrl;
+    String usertype;
 
     //Default Constructor
     public User(){
 
     }
 
-    public User( String firstname, String middlename, String lastname, String bday, String contact, String address, String displayname, String photoUrl){
+    public User( String firstname, String middlename, String lastname, String bday,
+                 String contact, String address, String displayname, String photoUrl, String usertype){
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -28,6 +30,7 @@ public class User implements Parcelable{
         this.address = address;
         this.displayname = displayname;
         this.photoUrl = photoUrl;
+        this.usertype = usertype;
     }
 
 
@@ -105,6 +108,14 @@ public class User implements Parcelable{
 
     public String getDisplayname() {
         return displayname;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
     }
 
     public void setDisplayname(String displayname) {

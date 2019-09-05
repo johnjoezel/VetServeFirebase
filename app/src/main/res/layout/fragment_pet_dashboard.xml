@@ -7,6 +7,49 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/blanklayout">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pets2"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You haven't added any pets"
+            android:textSize="25dp"
+            android:fontFamily="@font/champagne"
+            android:textColor="#000"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add your pets and create their profile"
+            android:textSize="15dp"
+            android:fontFamily="@font/champagne"
+            android:textColor="@color/material_gray_700"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/addpet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/final_button"
+            android:fontFamily="@font/champagne"
+            android:layout_marginTop="32dp"
+            android:text="Add Pet"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
     <Button
         android:id="@+id/editpet"
         android:layout_width="40dp"
@@ -18,14 +61,14 @@
         android:textAllCaps="false"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/viewPager1"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/petInfoViewPager"
+        app:layout_constraintEnd_toEndOf="@+id/swiperLayout"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="@+id/swiperLayout"
+        app:layout_constraintTop_toTopOf="@+id/swiperLayout"
         app:layout_constraintVertical_bias="0.0" />
     <RelativeLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/swiperLayout"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:layout_marginStart="8dp"
@@ -44,16 +87,16 @@
             android:layout_width="125dp"
             android:layout_height="227dp"
             android:layout_above="@+id/tabLayout"
-            android:layout_alignLeft="@+id/viewPager"
+            android:layout_alignLeft="@+id/petViewPager"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="-50dp"
-            android:layout_toStartOf="@+id/viewPager"
+            android:layout_toStartOf="@+id/petViewPager"
             android:rotation="180"
             android:src="@drawable/arrow" />
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/petViewPager"
             android:layout_width="wrap_content"
             android:layout_height="145dp"
             android:layout_above="@+id/tabLayout"
@@ -71,12 +114,12 @@
             android:layout_width="125dp"
             android:layout_height="227dp"
             android:layout_above="@+id/tabLayout"
-            android:layout_alignRight="@+id/viewPager"
+            android:layout_alignRight="@+id/petViewPager"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="-50dp"
             android:layout_marginTop="1dp"
-            android:layout_toEndOf="@+id/viewPager"
+            android:layout_toEndOf="@+id/petViewPager"
             android:elevation="1dp"
             android:src="@drawable/arrow" />
 
@@ -93,12 +136,10 @@
             app:tabIndicatorHeight="4dp"
             app:tabMode="fixed"
             app:tabTextAppearance="@style/CustomViewAllTab" />
-
-
     </RelativeLayout>
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager1"
+        android:id="@+id/petInfoViewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -108,6 +149,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/swiperLayout"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

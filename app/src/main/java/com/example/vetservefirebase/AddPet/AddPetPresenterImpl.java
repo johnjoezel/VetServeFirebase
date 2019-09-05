@@ -20,6 +20,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
     private DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
     private ProgressDialog progressDialog;
     String status = "active";
+    String id;
 
 
     public AddPetPresenterImpl() {
@@ -45,13 +46,13 @@ public class AddPetPresenterImpl implements AddPetPresenter {
         progressDialog.setMessage("Adding Pet");
         progressDialog.show();
         DatabaseReference userRef = mDatabase.child("pets");
-        String id = userRef.push().getKey();
+        id = userRef.push().getKey();
         userRef.child(uId).child(id).setValue(pet).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 progressDialog.dismiss();
                 if(task.isSuccessful())
-                    addPetView.addPetSuccess("Pet Added Successfully");
+                    addPetView.addPetSuccess("Pet Added Successfully", id);
             }
         });
     }
@@ -79,7 +80,7 @@ public class AddPetPresenterImpl implements AddPetPresenter {
                 progressDialog.dismiss();
                 if(task.isSuccessful()){
                     map.clear();
-                    addPetView.addPetSuccess("Pet Profile Updated");
+                    addPetView.editPetSuccess("Pet Profile Updated");
 //                    Toast.makeText(context, "Pet Information Updated", Toast.LENGTH_SHORT).show();
                 }
             }

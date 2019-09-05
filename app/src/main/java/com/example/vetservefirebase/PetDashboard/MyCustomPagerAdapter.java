@@ -27,10 +27,10 @@ public class MyCustomPagerAdapter extends PagerAdapter {
     LayoutInflater layoutInflater;
 
 
-    public MyCustomPagerAdapter(LayoutInflater inflater, Context context, ArrayList<Pet> pets) {
+    public MyCustomPagerAdapter(Context context, ArrayList<Pet> pets) {
         this.context = context;
         this.pets = pets;
-        layoutInflater = inflater;
+        layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
@@ -66,4 +66,7 @@ public class MyCustomPagerAdapter extends PagerAdapter {
         container.removeView((RelativeLayout) object);
     }
 
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
 }

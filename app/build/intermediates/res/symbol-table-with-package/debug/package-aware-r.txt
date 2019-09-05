@@ -1265,6 +1265,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable add_provder_icon
 drawable addicon
 drawable appointment
 drawable arrow
@@ -1409,15 +1410,16 @@ id addpet
 id address
 id adjust_height
 id adjust_width
-id age
 id agelabel
 id alertTitle
 id all
 id always
 id anonymous_button
 id appointmentDate
+id appointmentDateTime
 id appointmentNotes
 id appointmentServices
+id appointmentStatus
 id appointmentTime
 id async
 id auto
@@ -1455,6 +1457,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id checkBox
 id checkbox
 id chronometer
 id circular
@@ -1492,6 +1495,7 @@ id design_navigation_view
 id dimensions
 id direct
 id disableHome
+id displaypetage
 id displaypetname
 id drawer_layout
 id dynamic
@@ -1505,7 +1509,7 @@ id email_footer_tos_and_pp_text
 id email_layout
 id email_top_layout
 id email_tos_and_pp_text
-id emptyview
+id empty_view
 id end
 id end_padder
 id enterAlways
@@ -1536,8 +1540,6 @@ id headerDisplayname
 id headerDisplaypic
 id header_text
 id heading
-id height
-id heightlabel
 id home
 id homeAsUp
 id horizontal
@@ -1568,8 +1570,6 @@ id layout1
 id layout2
 id layout3
 id layout4
-id layout5
-id layout6
 id lblAddress
 id lblContact
 id lblFirstname
@@ -1601,6 +1601,7 @@ id map
 id mapview
 id masked
 id media_actions
+id medication
 id message
 id middle
 id middlename
@@ -1630,11 +1631,12 @@ id parent_matrix
 id password
 id password_layout
 id percent
+id petAppointmentList
 id petColor
 id petImage
+id petInfoViewPager
 id petMicrochip
-id petPic
-id petWeight
+id petViewPager
 id pet_fragment_container1
 id petdateofbirth
 id petname
@@ -1650,7 +1652,9 @@ id profilepic
 id progressBar
 id progress_circular
 id progress_horizontal
+id providerName
 id providers
+id providersName
 id providers_container
 id radio
 id remove
@@ -1690,6 +1694,7 @@ id selected
 id send_code
 id send_sms_tos
 id servicename
+id services
 id shortcut
 id showCustom
 id showHome
@@ -1716,12 +1721,12 @@ id src_in
 id src_over
 id standard
 id start
-id status
 id status_bar_latest_event_content
-id statuslabel
 id stretch
 id submenuarrow
+id submitServices
 id submit_area
+id swiperLayout
 id tabLayout
 id tabMode
 id tag_transition_group
@@ -1777,8 +1782,6 @@ id up
 id useLogo
 id viewCliniclocation
 id viewClinicname
-id viewPager
-id viewPager1
 id view_container
 id view_offset_helper
 id viewpetbreed
@@ -1844,13 +1847,14 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_pet
-layout activity_appointments
 layout activity_change_password
 layout activity_locate_clinic
 layout activity_main
 layout activity_personal_information
 layout activity_provider_profile
+layout activity_request_appointments
 layout activity_select_pet
+layout activity_select_services
 layout activity_service_providers_list
 layout activity_signin
 layout activity_signup
@@ -1906,6 +1910,7 @@ layout fui_welcome_back_email_link_prompt_layout
 layout fui_welcome_back_idp_prompt_layout
 layout fui_welcome_back_password_prompt_layout
 layout item
+layout item_appointment
 layout item_services
 layout list_group
 layout list_item
@@ -1913,7 +1918,6 @@ layout menu_dot
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout nav_header_main
-layout no_providers
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action

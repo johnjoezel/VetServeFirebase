@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShowAlert {
+    public static void reminder(Context context, String msg, String petKey){
+        try{
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage(msg);
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.putExtra("petKey", petKey);
+                    context.startActivity(intent);
+                }
+            });
+            alertDialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
     public static void showAlert(Context context, String msg){
         try{
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -93,6 +115,8 @@ public class ShowAlert {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(context, "Pet Removed", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, MainActivity.class);
+                                context.startActivity(intent);
                             }
                         }
                     });
@@ -125,7 +149,7 @@ public class ShowAlert {
                     DatabaseReference mDatabase  = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference dRef = mDatabase.child("user_provider").child(uId);
                     Map<String, Object> map = new HashMap();
-                    map.put("providerID", providerKey);
+                    map.put("providerKey", providerKey);
                     String id = dRef.push().getKey();
                     dRef.child(id).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -134,6 +158,7 @@ public class ShowAlert {
                                 map.clear();
                                 Toast.makeText(context, "You added " + msg + "as provider", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(context, MainActivity.class);
+                                intent.putExtra("index", 1);
                                 context.startActivity(intent);
                             }
                         }
@@ -174,6 +199,7 @@ public class ShowAlert {
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
+                                Toast.makeText(context, "You remove " + msg + "as provider", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
