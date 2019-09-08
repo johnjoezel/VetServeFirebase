@@ -11,7 +11,13 @@ public class Services implements Parcelable{
     private String servicename;
     private boolean isChecked = false;
 
-    public Services() {
+    public Services(){
+
+    }
+
+    public Services(String servicename, Boolean isChecked) {
+        this.servicename = servicename;
+        this.isChecked = isChecked;
     }
 
     public Services(String servicename) {

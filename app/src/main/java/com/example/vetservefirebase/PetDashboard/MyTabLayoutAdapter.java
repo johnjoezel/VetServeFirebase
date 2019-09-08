@@ -1,5 +1,7 @@
 package com.example.vetservefirebase.PetDashboard;
 
+import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -11,10 +13,12 @@ public class MyTabLayoutAdapter extends FragmentPagerAdapter {
 
     ArrayList<Fragment> fragmentArrayList;
     ArrayList<String> titles;
-    public MyTabLayoutAdapter(FragmentManager fm) {
+    String petKey;
+    public MyTabLayoutAdapter(FragmentManager fm, String petKey) {
         super(fm);
         this.fragmentArrayList = new ArrayList<>();
         this.titles = new ArrayList<>();
+        this.petKey = petKey;
     }
 
     @Override
@@ -30,6 +34,7 @@ public class MyTabLayoutAdapter extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment, String title){
         fragmentArrayList.add(fragment);
         titles.add(title);
+
     }
 
     @Nullable

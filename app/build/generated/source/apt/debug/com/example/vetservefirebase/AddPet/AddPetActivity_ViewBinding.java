@@ -23,13 +23,13 @@ import java.lang.Override;
 public class AddPetActivity_ViewBinding implements Unbinder {
   private AddPetActivity target;
 
+  private View view7f0a014f;
+
   private View view7f0a014e;
 
-  private View view7f0a014d;
+  private View view7f0a0107;
 
-  private View view7f0a0106;
-
-  private View view7f0a0104;
+  private View view7f0a0105;
 
   private View view7f0a003f;
 
@@ -45,7 +45,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.spnrSpecies, "field 'spnrSpecies' and method 'onItemSelected'");
     target.spnrSpecies = Utils.castView(view, R.id.spnrSpecies, "field 'spnrSpecies'", MaterialSpinner.class);
-    view7f0a014e = view;
+    view7f0a014f = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -58,7 +58,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.spnrGender, "field 'spnrGender' and method 'onItemSelected'");
     target.spnrGender = Utils.castView(view, R.id.spnrGender, "field 'spnrGender'", MaterialSpinner.class);
-    view7f0a014d = view;
+    view7f0a014e = view;
     ((AdapterView<?>) view).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
       @Override
       public void onItemSelected(AdapterView<?> p0, View p1, int p2, long p3) {
@@ -73,7 +73,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetname = Utils.findRequiredViewAsType(source, R.id.txtpetname, "field 'txtpetname'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petpicture, "field 'petpicture' and method 'addpetpic'");
     target.petpicture = Utils.castView(view, R.id.petpicture, "field 'petpicture'", ImageView.class);
-    view7f0a0106 = view;
+    view7f0a0107 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -83,7 +83,7 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetcolor = Utils.findRequiredViewAsType(source, R.id.petColor, "field 'txtpetcolor'", EditText.class);
     view = Utils.findRequiredView(source, R.id.petdateofbirth, "field 'txtpetDOB' and method 'getpetDOB'");
     target.txtpetDOB = Utils.castView(view, R.id.petdateofbirth, "field 'txtpetDOB'", TextView.class);
-    view7f0a0104 = view;
+    view7f0a0105 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -121,14 +121,14 @@ public class AddPetActivity_ViewBinding implements Unbinder {
     target.txtpetDOB = null;
     target.btnUpAdd = null;
 
+    ((AdapterView<?>) view7f0a014f).setOnItemSelectedListener(null);
+    view7f0a014f = null;
     ((AdapterView<?>) view7f0a014e).setOnItemSelectedListener(null);
     view7f0a014e = null;
-    ((AdapterView<?>) view7f0a014d).setOnItemSelectedListener(null);
-    view7f0a014d = null;
-    view7f0a0106.setOnClickListener(null);
-    view7f0a0106 = null;
-    view7f0a0104.setOnClickListener(null);
-    view7f0a0104 = null;
+    view7f0a0107.setOnClickListener(null);
+    view7f0a0107 = null;
+    view7f0a0105.setOnClickListener(null);
+    view7f0a0105 = null;
     view7f0a003f.setOnClickListener(null);
     view7f0a003f = null;
   }

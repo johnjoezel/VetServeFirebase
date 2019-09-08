@@ -140,14 +140,14 @@ public class RequestAppointmentActivity extends AppCompatActivity {
     }
 
     private void submitAppointmentRequest() {
-        dRef = FirebaseDatabase.getInstance().getReference("appointments").child(uId);
+        dRef = FirebaseDatabase.getInstance().getReference("appointments").child(uId).child(petKey);
         String id = dRef.push().getKey();
         String appDate = appointmentDate.getText().toString();
         String appTime = appointmentTime.getText().toString();
         String appExtraNotes = appointmentNotes.getText().toString();
         String appointmentRequestCreated = getTimestamp();
         String status = "pending";
-        Appointment appointment = new Appointment(id, appDate, appTime, appExtraNotes, providerKey, petKey, selectedServices, status);
+        Appointment appointment = new Appointment(petKey, appDate, appTime, appExtraNotes, providerKey, selectedServices, status, appointmentRequestCreated);
         Map<String, Object> appointmentValues = appointment.toMap();
         dRef.child(id).setValue(appointmentValues).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

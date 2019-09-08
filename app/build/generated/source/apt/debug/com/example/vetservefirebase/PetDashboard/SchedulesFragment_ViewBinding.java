@@ -2,6 +2,7 @@
 package com.example.vetservefirebase.PetDashboard;
 
 import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ public class SchedulesFragment_ViewBinding implements Unbinder {
     this.target = target;
 
     target.petAppointmentList = Utils.findRequiredViewAsType(source, R.id.petAppointmentList, "field 'petAppointmentList'", RecyclerView.class);
+    target.noappointments = Utils.findRequiredViewAsType(source, R.id.noappointments, "field 'noappointments'", TextView.class);
   }
 
   @Override
@@ -29,5 +31,6 @@ public class SchedulesFragment_ViewBinding implements Unbinder {
     this.target = null;
 
     target.petAppointmentList = null;
+    target.noappointments = null;
   }
 }

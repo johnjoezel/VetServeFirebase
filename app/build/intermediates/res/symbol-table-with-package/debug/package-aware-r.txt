@@ -1617,6 +1617,7 @@ id nav_password
 id nav_view
 id navigation_header_container
 id never
+id noappointments
 id none
 id normal
 id notification_background
@@ -1849,6 +1850,7 @@ layout activity_add_pet
 layout activity_change_password
 layout activity_locate_clinic
 layout activity_main
+layout activity_notification
 layout activity_personal_information
 layout activity_provider_profile
 layout activity_request_appointments
@@ -1952,6 +1954,7 @@ menu searchlinic
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals fui_error_weak_password
+raw notification
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description
@@ -2032,6 +2035,8 @@ string facebook_app_id
 string facebook_application_id
 string facebook_login_protocol_scheme
 string fb_login_protocol_scheme
+string fcm_fallback_notification_channel_label
+string fcm_token
 string firebase_database_url
 string firebase_web_host
 string fui_accessibility_logo
@@ -2136,12 +2141,6 @@ string google_storage_bucket
 string hello_blank_fragment
 string hide_bottom_view_on_scroll_behavior
 string item_picker
-string menu_gallery
-string menu_home
-string menu_send
-string menu_share
-string menu_slideshow
-string menu_tools
 string mtrl_chip_close_icon_content_description
 string nav_header_desc
 string nav_header_subtitle

@@ -21,12 +21,14 @@ import com.example.vetservefirebase.AddPet.AddPetActivity;
 import com.example.vetservefirebase.Model.Appointment;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.R;
+import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -52,6 +54,8 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
     private static final String TAG = "PetDashboardActivity";
     String uId, petKey;
     Pet mypet;
+    Bundle generalArguments = new Bundle();
+    Bundle scheduleArguments = new Bundle();
     Bundle arguments;
     ArrayList<Pet> pets = new ArrayList<Pet>();
     ArrayList<String> petKeys = new ArrayList<>();
@@ -61,17 +65,11 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
     private ViewPager petInfoViewPager,petViewPager;
     private TabLayout tabLayout;
     private DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("pets");
-    GeneralFragment generalFragment;
-    MedicationFragment medicationFragment;
-    SchedulesFragment schedulesFragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         arguments = getArguments();
-        generalFragment = new GeneralFragment();
-        medicationFragment = new MedicationFragment();
-        schedulesFragment = new SchedulesFragment();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         super.onCreate(savedInstanceState);
     }
@@ -92,22 +90,17 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
         myCustomPagerAdapter = new MyCustomPagerAdapter(this.getActivity(), pets);
         petViewPager.setAdapter(myCustomPagerAdapter);
         petViewPager.addOnPageChangeListener(this);
-        setupViewPager(petInfoViewPager);
-        tabLayout.setupWithViewPager(petInfoViewPager);
         getPets();
         return view;
     }
 
-
-
-
-
-    private void setupViewPager(ViewPager petInfoViewPager) {
-        myTabLayoutAdapter = new MyTabLayoutAdapter(getChildFragmentManager());
-        myTabLayoutAdapter.addFragment(generalFragment,"General");
-        myTabLayoutAdapter.addFragment(medicationFragment, "Medication");
-        myTabLayoutAdapter.addFragment(schedulesFragment, "Schedule");
+    private void setupViewPager() {
+        myTabLayoutAdapter = new MyTabLayoutAdapter(getChildFragmentManager(), petKey);
+        myTabLayoutAdapter.addFragment(new GeneralFragment(),"General");
+        myTabLayoutAdapter.addFragment(new MedicationFragment(), "Medication");
+        myTabLayoutAdapter.addFragment(new SchedulesFragment(), "Schedule");
         petInfoViewPager.setAdapter(myTabLayoutAdapter);
+        tabLayout.setupWithViewPager(petInfoViewPager);
     }
 
 
@@ -125,68 +118,58 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
     }
 
     private void getPets() {
-        dRef.addValueEventListener(new ValueEventListener() {
+        dRef.child(uId).addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if (dataSnapshot.exists()) {
-                    dRef.child(uId).addChildEventListener(new ChildEventListener() {
-                        @Override
-                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            Pet pet = dataSnapshot.getValue(Pet.class);
-                            if (!pet.getStatus().equals("removed")) {
-                                petKeys.add(dataSnapshot.getKey());
-                                pets.add(pet);
-                                myCustomPagerAdapter.notifyDataSetChanged();
-                                if (pets.size() == 1) {
-                                    rightarrow.setVisibility(View.INVISIBLE);
-                                    leftarrow.setVisibility(View.INVISIBLE);
-                                    mypet = pets.get(0);
-                                    petKey = dataSnapshot.getKey();
-                                } else {
-                                    rightarrow.setVisibility(View.VISIBLE);
-                                    if (arguments.getString("petKey") != null) {
-                                        petKey = arguments.getString("petKey");
-                                        petViewPager.setCurrentItem(petKeys.indexOf(petKey));
-                                    }
-                                    petKey = petKeys.get(petViewPager.getCurrentItem());
-                                    mypet = pets.get(petViewPager.getCurrentItem());
-                                }
-                            }
-                            checkList();
-                        }
-
-                        @Override
-                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                            myCustomPagerAdapter.notifyDataSetChanged();
-                        }
-
-                        @Override
-                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                            myTabLayoutAdapter.notifyDataSetChanged();
-                            myCustomPagerAdapter.notifyDataSetChanged();
-
-                        }
-
-                        @Override
-                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                }else{
-                    checkList();
+                    Pet pet = dataSnapshot.getValue(Pet.class);
+                    if(!pet.getStatus().equals("removed")) {
+                        petKeys.add(dataSnapshot.getKey());
+                        pets.add(pet);
+                        myCustomPagerAdapter.notifyDataSetChanged();
+                        checkList();
+                    }
+                }
+                if (pets.size() == 1) {
+                    rightarrow.setVisibility(View.INVISIBLE);
+                    leftarrow.setVisibility(View.INVISIBLE);
+                    mypet = pets.get(0);
+                    petKey = dataSnapshot.getKey();
+                } else {
+                    rightarrow.setVisibility(View.VISIBLE);
+                    if (arguments.getString("petKey") != null) {
+                        petKey = arguments.getString("petKey");
+                        petViewPager.setCurrentItem(petKeys.indexOf(petKey));
+                        return;
+                    }
+                    petKey = petKeys.get(petViewPager.getCurrentItem());
+                    mypet = pets.get(petViewPager.getCurrentItem());
+                    setupViewPager();
                 }
             }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                myCustomPagerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                myTabLayoutAdapter.notifyDataSetChanged();
+                myCustomPagerAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
-
     }
 
     @OnClick({R.id.rightarrow, R.id.leftarrow, R.id.editpet}) void leftandright(View imageView){
@@ -230,8 +213,7 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
         }
         mypet = pets.get(position);
         petKey = petKeys.get(position);
-        myTabLayoutAdapter.notifyDataSetChanged();
-
+        setupViewPager();
     }
 
     @Override
@@ -239,9 +221,6 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
 
     }
 
-    public Pet setPet(){
-        return mypet;
-    }
     public String setPetKey(){
         return petKey;
     }

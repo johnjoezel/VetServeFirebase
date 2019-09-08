@@ -1,6 +1,7 @@
 package com.example.vetservefirebase.PetDashboard;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,9 +11,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.vetservefirebase.Model.Appointment;
 import com.example.vetservefirebase.R;
@@ -25,6 +28,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,9 +41,11 @@ public class SchedulesFragment extends Fragment {
 
     @BindView(R.id.petAppointmentList)
     RecyclerView petAppointmentList;
+    @BindView(R.id.noappointments)
+    TextView noappointments;
     private DatabaseReference appointmentRef = FirebaseDatabase.getInstance().getReference("appointments");
     private PetAppointmentAdapter mAdapter;
-    ArrayList<Appointment> appointments = new ArrayList<>();
+    ArrayList<Map<String, Object>> appointmentValues;
     private String uId;
     private String petKey;
 
@@ -53,40 +60,29 @@ public class SchedulesFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_schedules, container, false);
         ButterKnife.bind(this, view);
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
-        mAdapter = new PetAppointmentAdapter(appointments);
+        appointmentValues = new ArrayList<>();
+        mAdapter = new PetAppointmentAdapter(appointmentValues);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         petAppointmentList.setLayoutManager(mLayoutManager);
         petAppointmentList.setItemAnimator(new DefaultItemAnimator());
         petAppointmentList.setAdapter(mAdapter);
+        petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
+        getAppointments();
         return view;
     }
 
-    private void checkAppointments() {
-        appointmentRef.child(uId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    getAppointments();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
     private void getAppointments() {
-        appointmentRef.child(uId).addChildEventListener(new ChildEventListener() {
+        appointmentRef.child(uId).child(petKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Appointment appointment = dataSnapshot.getValue(Appointment.class);
-                appointment.getPetKey();
-                if(appointment.getPetKey().equals(petKey))
-                    appointments.add(appointment);
+                if(dataSnapshot.exists()) {
+                    noappointments.setVisibility(View.INVISIBLE);
 
+                    Appointment appointment = dataSnapshot.getValue(Appointment.class);
+                    appointmentValues.add(appointment.toMap());
+                    mAdapter.notifyDataSetChanged();
+                }
+                Log.d("atay", "onChildAdded: " + appointmentValues);
             }
 
             @Override
@@ -110,11 +106,10 @@ public class SchedulesFragment extends Fragment {
         });
     }
 
-
-
-
-
-
-
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        appointmentValues.clear();
+        mAdapter.notifyDataSetChanged();
+    }
 }

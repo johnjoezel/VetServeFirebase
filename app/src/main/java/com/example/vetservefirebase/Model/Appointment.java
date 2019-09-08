@@ -8,28 +8,44 @@ import java.util.Map;
 
 public class Appointment {
 
-    private  String appointmentKey;
+    private  String date_requested;
     private  String date;
     private  String time;
     private  String extranotes;
     private  String providerKey;
     private  String petKey;
-    ArrayList<Services> services;
+    ArrayList<Services> services_requested;
     private String status;
 
     public Appointment() {
     }
 
-    public Appointment(String appointmentKey, String date, String time, String extranotes, String providerKey,
-                       String petKey, ArrayList<Services> services, String status) {
-        this.appointmentKey = appointmentKey;
+    public Appointment(String petKey, String date, String time, String extranotes,
+                       String providerKey, ArrayList<Services> services_requested, String status, String date_requested) {
         this.date = date;
         this.time = time;
         this.extranotes = extranotes;
         this.providerKey = providerKey;
         this.petKey = petKey;
-        this.services = services;
+        this.services_requested = services_requested;
         this.status = status;
+        this.date_requested = date_requested;
+    }
+
+    public String getDate_requested() {
+        return date_requested;
+    }
+
+    public void setDate_requested(String date_requested) {
+        this.date_requested = date_requested;
+    }
+
+    public ArrayList<Services> getServices_requested() {
+        return services_requested;
+    }
+
+    public void setServices_requested(ArrayList<Services> services_requested) {
+        this.services_requested = services_requested;
     }
 
     public String getStatus() {
@@ -38,14 +54,6 @@ public class Appointment {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getAppointmentKey() {
-        return appointmentKey;
-    }
-
-    public void setAppointmentKey(String appointmentKey) {
-        this.appointmentKey = appointmentKey;
     }
 
     public String getDate() {
@@ -88,24 +96,17 @@ public class Appointment {
         this.petKey = petKey;
     }
 
-    public ArrayList<Services> getServices() {
-        return services;
-    }
-
-    public void setServices(ArrayList<Services> services) {
-        this.services = services;
-    }
 
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("appointmentKey", appointmentKey);
         result.put("date", date);
         result.put("time", time);
         result.put("extranotes", extranotes);
         result.put("providerKey", providerKey);
-        result.put("petKey", petKey);
-        result.put("services requested", services);
+        result.put("status", status);
+        result.put("services_requested", services_requested);
+        result.put("date_requested", date_requested);
         return result;
     }
 }

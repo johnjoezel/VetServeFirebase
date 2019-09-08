@@ -1,5 +1,6 @@
 package com.example.vetservefirebase.PetDashboard;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -36,11 +37,11 @@ public class GeneralFragment extends Fragment {
     TextView displaygender;
     @BindView(R.id.displaypetage)
     TextView displaypetage;
-    String petname, breedname, gender;
+    String petname, breedname, gender, petKey;
     private OnFragmentInteractionListener mListener;
     Pet pet;
     String uId;
-    private DatabaseReference dRef;
+    private DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("pets");
 
     public GeneralFragment() {
         // Required empty public constructor
@@ -57,18 +58,36 @@ public class GeneralFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_general, container, false);
         ButterKnife.bind(this, view);
+        petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        pet = ((PetDashboardFragment) getParentFragment()).setPet();
         setInformation();
         return view;
 
     }
 
     private void setInformation() {
+        dRef.child(uId).child(petKey).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    pet = dataSnapshot.getValue(Pet.class);
+                    loadData();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void loadData() {
         displaybreed.setText(breedname = pet.getBreed());
         displaygender.setText(gender = pet.getGender());
         displaypetage.setText(getPetAge() + " months");
     }
+
 
     private int getPetAge() {
         String birthdate = pet.getDob();
@@ -90,9 +109,8 @@ public class GeneralFragment extends Fragment {
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     public interface OnFragmentInteractionListener {

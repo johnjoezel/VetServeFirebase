@@ -1,7 +1,9 @@
 package com.example.vetservefirebase.Appointments;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,22 +18,30 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.Model.Pet;
+import com.example.vetservefirebase.Model.UserProvider;
 import com.example.vetservefirebase.Others.CircleTransform;
+import com.example.vetservefirebase.Others.ShowAlert;
+import com.example.vetservefirebase.Appointments.SelectPetAdapter;
 import com.example.vetservefirebase.R;
+import com.example.vetservefirebase.ServiceProvider.MyRecyclerTouchListener;
+import com.example.vetservefirebase.ServiceProvider.MyRecyclerviewAdapter;
 import com.example.vetservefirebase.ServiceProvider.ProviderProfileActivity;
 import com.example.vetservefirebase.ServiceProvider.ProvidersListView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class SelectPetActivity extends AppCompatActivity {
 
@@ -39,9 +49,9 @@ public class SelectPetActivity extends AppCompatActivity {
     RecyclerView listofpets;
     private String uId;
     private DatabaseReference petRef = FirebaseDatabase.getInstance().getReference("pets");
-    private FirebaseRecyclerAdapter mAdapter;
+    private SelectPetAdapter mAdapter;
     ArrayList<Pet> pets = new ArrayList<Pet>();
-    FirebaseRecyclerOptions<Pet> options;
+    ArrayList<String> petKeys = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,63 +59,50 @@ public class SelectPetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_pet);
         ButterKnife.bind(this);
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        initializeRecycler();
+        mAdapter = new SelectPetAdapter(this,pets);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        listofpets.setLayoutManager(mLayoutManager);
+        listofpets.setItemAnimator(new DefaultItemAnimator());
         listofpets.setAdapter(mAdapter);
-        mAdapter.startListening();
+        listofpets.addOnItemTouchListener(new MyRecyclerTouchListener(this, listofpets, new MyRecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("petKey", petKeys.get(position));
+                returnIntent.putExtra("photoUrl", pets.get(position).getPhotoUrl());
+                returnIntent.putExtra("petname", pets.get(position).getPet_name());
+                setResult(RESULT_OK, returnIntent);
+                finish();
+            }
 
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
+        getPets();
     }
 
-    private void initializeRecycler() {
-        listofpets.setLayoutManager(new LinearLayoutManager(this));
-        options = new FirebaseRecyclerOptions.Builder<Pet>()
-                .setQuery(petRef.child(uId), Pet.class)
-                .build();
-        mAdapter = new FirebaseRecyclerAdapter<Pet, SelectPetActivity.RequestViewHolder>(options) {
+    private void getPets() {
+        petRef.child(uId).addValueEventListener(new ValueEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull RequestViewHolder requestViewHolder, int i, @NonNull Pet pet) {
-                Glide.with(getApplicationContext()).load(pet.getPhotoUrl())
-                        .transition(withCrossFade())
-                        .thumbnail(0.5f)
-                        .transform(new CircleTransform())
-                        .circleCrop()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .into(requestViewHolder.petImage);
-                requestViewHolder.viewpetname.setText(pet.getPet_name());
-                requestViewHolder.viewpetbreed.setText(pet.getBreed());
-                requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent returnIntent = new Intent();
-                        returnIntent.putExtra("petKey", getRef(i).getKey());
-                        returnIntent.putExtra("photoUrl", pet.getPhotoUrl());
-                        returnIntent.putExtra("petname", pet.getPet_name());
-                        setResult(RESULT_OK, returnIntent);
-                        finish();
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for(DataSnapshot ds: dataSnapshot.getChildren()){
+                        Pet pet = ds.getValue(Pet.class);
+                        if (!pet.getStatus().equals("removed")) {
+                            petKeys.add(ds.getKey());
+                            pets.add(pet);
+                            mAdapter.notifyDataSetChanged();
+                        }
                     }
-                });
+
+                }
             }
 
-
-            @NonNull
             @Override
-            public SelectPetActivity.RequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.select_pet_layout, parent, false);
-                SelectPetActivity.RequestViewHolder holder = new SelectPetActivity.RequestViewHolder(view);
-                return holder;
-            }
-        };
-    }
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-    public class RequestViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.petImage)
-        ImageView petImage;
-        @BindView(R.id.viewpetname)
-        TextView viewpetname;
-        @BindView(R.id.viewpetbreed)
-        TextView viewpetbreed;
-        public RequestViewHolder(@NonNull View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
+            }
+        });
     }
 }
