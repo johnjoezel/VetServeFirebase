@@ -140,6 +140,7 @@ public class PetDashboardFragment extends Fragment implements  ViewPager.OnPageC
                     if (arguments.getString("petKey") != null) {
                         petKey = arguments.getString("petKey");
                         petViewPager.setCurrentItem(petKeys.indexOf(petKey));
+                        setupViewPager();
                         return;
                     }
                     petKey = petKeys.get(petViewPager.getCurrentItem());

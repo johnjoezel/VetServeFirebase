@@ -58,8 +58,8 @@ public class GeneralFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_general, container, false);
         ButterKnife.bind(this, view);
-        petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
-        uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            petKey = ((PetDashboardFragment) getParentFragment()).setPetKey();
+            uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         setInformation();
         return view;
 

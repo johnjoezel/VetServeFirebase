@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class Appointment {
 
+    private  String uId;
     private  String date_requested;
     private  String date;
     private  String time;
@@ -20,8 +21,9 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String petKey, String date, String time, String extranotes,
+    public Appointment(String uId, String petKey, String date, String time, String extranotes,
                        String providerKey, ArrayList<Services> services_requested, String status, String date_requested) {
+        this.uId = uId;
         this.date = date;
         this.time = time;
         this.extranotes = extranotes;
@@ -30,6 +32,14 @@ public class Appointment {
         this.services_requested = services_requested;
         this.status = status;
         this.date_requested = date_requested;
+    }
+
+    public String getuId() {
+        return uId;
+    }
+
+    public void setuId(String uId) {
+        this.uId = uId;
     }
 
     public String getDate_requested() {
@@ -103,7 +113,9 @@ public class Appointment {
         result.put("date", date);
         result.put("time", time);
         result.put("extranotes", extranotes);
+        result.put("petKey", petKey);
         result.put("providerKey", providerKey);
+        result.put("uId", uId);
         result.put("status", status);
         result.put("services_requested", services_requested);
         result.put("date_requested", date_requested);

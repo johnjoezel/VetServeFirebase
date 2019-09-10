@@ -72,15 +72,16 @@ public class SchedulesFragment extends Fragment {
     }
 
     private void getAppointments() {
-        appointmentRef.child(uId).child(petKey).addChildEventListener(new ChildEventListener() {
+        appointmentRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.exists()) {
-                    noappointments.setVisibility(View.INVISIBLE);
-
-                    Appointment appointment = dataSnapshot.getValue(Appointment.class);
-                    appointmentValues.add(appointment.toMap());
-                    mAdapter.notifyDataSetChanged();
+                   Appointment appointment = dataSnapshot.getValue(Appointment.class);
+                   if(appointment.getuId().equals(uId) && appointment.getPetKey().equals(petKey)){
+                       noappointments.setVisibility(View.INVISIBLE);
+                       appointmentValues.add(appointment.toMap());
+                       mAdapter.notifyDataSetChanged();
+                   }
                 }
                 Log.d("atay", "onChildAdded: " + appointmentValues);
             }
@@ -112,4 +113,6 @@ public class SchedulesFragment extends Fragment {
         appointmentValues.clear();
         mAdapter.notifyDataSetChanged();
     }
+
+
 }

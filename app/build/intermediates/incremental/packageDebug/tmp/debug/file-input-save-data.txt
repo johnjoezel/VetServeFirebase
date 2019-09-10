@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Sep 08 14:13:40 CST 2019
+#Tue Sep 10 11:01:23 CST 2019
 1.base=C\:\\Users\\ZerahNissi\\Downloads\\VetServeFirebase\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 2.path=crashlytics-build.properties
 0.baseType=DIRECTORY
