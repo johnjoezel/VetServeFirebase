@@ -46,7 +46,7 @@ public class MyRecyclerviewAdapter extends RecyclerView.Adapter<MyRecyclerviewAd
 
     @Override
     public void onBindViewHolder(@NonNull MyRecyclerviewAdapter.MyViewHolder holder, int position) {
-        holder.clinicName.setText(providers.get(position).getClinicname());
+        holder.clinicName.setText(providers.get(position).getFirstname());
     }
 
     @Override

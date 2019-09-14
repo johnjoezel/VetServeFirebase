@@ -45,7 +45,6 @@
             app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tap image to change"
@@ -84,7 +83,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/lblFirstname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/champagne"
@@ -140,7 +138,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/lblMiddlename"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/champagne"
@@ -196,7 +193,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/lblLastname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/champagne"
@@ -252,7 +248,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/lblContact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/champagne"
@@ -308,7 +303,6 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/lblAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/champagne"

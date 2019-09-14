@@ -29,7 +29,7 @@ public class GeocodingLocation {
                 double latit = 0;
                 double longit = 0;
                 try {
-                    List<Address> addressList = geocoder.getFromLocationName(provider.getLocation(), 1);
+                    List<Address> addressList = geocoder.getFromLocationName(provider.getAddress(), 1);
                     if (addressList != null && addressList.size() > 0) {
                         Address address = addressList.get(0);
                         StringBuilder sb = new StringBuilder();
@@ -47,7 +47,7 @@ public class GeocodingLocation {
                     if (result != null) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + provider.getLocation() +
+                        result = "Address: " + provider.getAddress() +
                                 "\n\nLatitude and Longitude :\n" + result;
                         bundle.putString("address", result);
                         bundle.putDouble("latit", latit);
@@ -58,7 +58,7 @@ public class GeocodingLocation {
                     } else {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + provider.getLocation() +
+                        result = "Address: " + provider.getAddress() +
                                 "\n Unable to get Latitude and Longitude for this address location.";
                         bundle.putString("address", result);
                         message.setData(bundle);

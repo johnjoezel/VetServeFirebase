@@ -1,6 +1,7 @@
 package com.example.vetservefirebase.ServiceProvider;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -18,11 +19,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.vetservefirebase.MainActivity;
+import com.example.vetservefirebase.Model.Clinic;
 import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.Services;
 import com.example.vetservefirebase.Others.ShowAlert;
 import com.example.vetservefirebase.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,10 +56,11 @@ public class ProviderProfileActivity extends AppCompatActivity {
     ServiceProvider provider;
     String providerKey;
     ArrayList<String> servicename = new ArrayList<>();
+    ArrayList<String> serviceKeys = new ArrayList<>();
     List<String> servicesHeader;
     Map<String, ArrayList<String>> servicesDataChild;
     ExpandableListAdapter listAdapter;
-    private DatabaseReference dRef;
+    private DatabaseReference dRef, clinicRef;
     private String uId;
 
     @Override
@@ -94,32 +98,76 @@ public class ProviderProfileActivity extends AppCompatActivity {
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         provider = getIntent().getParcelableExtra("provider");
         providerKey = getIntent().getStringExtra("providerKey");
-        dRef = FirebaseDatabase.getInstance().getReference("services").child(providerKey);
-        dRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds: dataSnapshot.getChildren()){
-                    Log.d("asdf", "onDataChange: " + ds.getKey());
-                    Services services = ds.getValue(Services.class);
-                    servicename.add(services.getServicename());
+        if(provider.getUsertype().equals("vetwithclinic")) {
+            dRef = FirebaseDatabase.getInstance().getReference("clinics").child(providerKey).child("services");
+            clinicRef = FirebaseDatabase.getInstance().getReference("clinics").child(providerKey);
+            clinicRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        Clinic clinic = dataSnapshot.getValue(Clinic.class);
+                        loadinformation(clinic);
+                        dRef.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                Services services = dataSnapshot.getValue(Services.class);
+                                serviceKeys.add(dataSnapshot.getKey());
+                                servicename.add(services.getServicename());
+
+                                loadServicesChild();
+                                listAdapter = new ExpandableListAdapter(getApplicationContext(), servicesHeader, servicesDataChild);
+                                clinicServices.setAdapter(listAdapter);
+                                listAdapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                                String key = dataSnapshot.getKey();
+                                for (int i = 0; i < serviceKeys.size(); i++) {
+                                    if(serviceKeys.get(i).equals(key)){
+                                        serviceKeys.remove(i);
+                                        servicename.remove(i);
+                                        listAdapter.notifyDataSetChanged();
+                                        return;
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
                 }
-                loadServicesChild();
-                loadinformation();
-                listAdapter = new ExpandableListAdapter(getApplicationContext(), servicesHeader, servicesDataChild);
-                clinicServices.setAdapter(listAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
+            });
+        }else {
+            dRef = FirebaseDatabase.getInstance().getReference("providers").child(providerKey).child("services");
+            loadinformation(null);
+        }
     }
 
     public void confirm(){
-        ShowAlert.alertAddProvider(this, provider.getClinicname(), providerKey, uId);
+        if(provider.getUsertype().equals("vetwithclinic"))
+            ShowAlert.alertAddProvider(this, "" , providerKey, uId);
+
+        else
+            ShowAlert.alertAddProvider(this, "Dr. " + provider.getFirstname() +" "+ provider.getLastname() , providerKey, uId);
     }
 
     private void loadheaderList() {
@@ -133,11 +181,18 @@ public class ProviderProfileActivity extends AppCompatActivity {
     }
 
 
-    private void loadinformation() {
-        clinicName.setText(provider.getClinicname());
-        clinicAddress.setText(provider.getLocation());
-        clinicHours.setText("8:00 AM - 5:00 PM");
-        clinicPhone.setText(provider.getPhonenumber());
+    private void loadinformation(Clinic clinic) {
+        if(clinic != null) {
+            clinicName.setText(clinic.getName());
+            clinicAddress.setText(clinic.getLocation());
+            clinicHours.setText("8:00 AM - 5:00 PM");
+            clinicPhone.setText(clinic.getContact());
+        }else{
+            clinicName.setText("Dr. " + provider.getFirstname() + " " + provider.getLastname());
+            clinicAddress.setText(provider.getAddress());
+            clinicHours.setText("8:00 AM - 5:00 PM");
+            clinicPhone.setText(provider.getContact());
+        }
 
     }
 

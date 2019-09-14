@@ -1,21 +1,17 @@
 <resources>
     <string name="app_name">VetServePH</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
-    <string name="action_settings">Settings</string>
-    <string name="default_spieces_hint">Select a species</string>
-    <string name="item_picker">Select a Species</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="facebook_app_id">698277223661750</string>
-    <string name="fb_login_protocol_scheme">fb698277223661750</string>
     <!-- Navigation Drawer menu labels -->
     <string name="nav_mypets">My Pets</string>
     <string name="nav_providers">Service Providers</string>
     <string name="nav_profile">User Profile</string>
+
+    <!-- Navigation Drawer menu labels -->
+    <string name="nav_home">Home</string>
+    <string name="nav_mypatient">My Patients</string>
+    <string name="nav_clients">My Clients</string>
+    <string name="nav_appointments">My Appointments</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">
@@ -24,12 +20,12 @@
         <item>User Profile</item>
     </string-array>
 
-    <string name="activity_title_about_us">About Us</string>
-    <string name="activity_title_privacy_policy">Privacy Policy</string>
-    <string name="action_clear_all">Clear All</string>
-    <string name="action_logout">Logout</string>
-    <string name="action_mark_all_read">Mark All as Read</string>
-    <string name="privacy_policy">Privacy Policy</string>
+    <string-array name="vet_item_activity_titles">
+        <item>Home</item>
+        <item>My Patients</item>
+        <item>My Clients</item>
+        <item>My Appointments</item>
+    </string-array>
 
     <string-array name="spinner_species_items">
         <item>Dog</item>
@@ -44,14 +40,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
 
 
-    <string name="fcm_token"><F></F>CM Token: %s</string>
-
-    <string name="google_maps_api">AIzaSyChNcyNy3P6RYEROkc2fesgRHz_vtEckoE</string>
 </resources>

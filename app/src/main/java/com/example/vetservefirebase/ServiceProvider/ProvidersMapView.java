@@ -201,8 +201,8 @@ public class ProvidersMapView extends Fragment implements OnMapReadyCallback, Go
             ClinicMarker clinicMarker = (ClinicMarker) marker.getTag();
             ServiceProvider provider = clinicMarker.getProvider();
             String providerKey = clinicMarker.getProviderKey();
-            clinicName.setText(provider.getClinicname());
-            clinicLocation.setText(provider.getLocation());
+            clinicName.setText(provider.getFirstname());
+            clinicLocation.setText(provider.getAddress());
             linkToClinicProfile.setPaintFlags(linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             linkToClinicProfile.setText("View Details");
             closeview.setOnClickListener(new View.OnClickListener() {
@@ -281,7 +281,7 @@ public class ProvidersMapView extends Fragment implements OnMapReadyCallback, Go
 
     private void loadAddress(double latit, double longit, ServiceProvider provider, String providerKey) {
         LatLng gg = new LatLng(latit, longit);
-        MarkerOptions markerOptions = new MarkerOptions().position(gg).title(provider.getClinicname());
+        MarkerOptions markerOptions = new MarkerOptions().position(gg).title(provider.getFirstname());
         Marker marker = mMap.addMarker(markerOptions);
         ClinicMarker clinicMarker = new ClinicMarker(provider, marker, providerKey);
         marker.setTag(clinicMarker);

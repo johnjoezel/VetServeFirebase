@@ -10,9 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vetservefirebase.Model.Appointment;
+import com.example.vetservefirebase.Model.Clinic;
 import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.Services;
 import com.example.vetservefirebase.R;
+import com.example.vetservefirebase.ServiceProvider.MyRecyclerTouchListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +30,7 @@ import butterknife.ButterKnife;
 
 public class PetAppointmentAdapter extends RecyclerView.Adapter<PetAppointmentAdapter.MyViewHolder> {
 
-    private ArrayList<Map<String, Object>> appointmentValues;
+    private ArrayList<Appointment> appointmentValues;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.providerName)
@@ -45,7 +47,7 @@ public class PetAppointmentAdapter extends RecyclerView.Adapter<PetAppointmentAd
         }
     }
 
-    public PetAppointmentAdapter(ArrayList<Map<String, Object>> appointmentValues) {
+    public PetAppointmentAdapter(ArrayList<Appointment> appointmentValues) {
         this.appointmentValues = appointmentValues;
     }
 
@@ -59,24 +61,34 @@ public class PetAppointmentAdapter extends RecyclerView.Adapter<PetAppointmentAd
 
     @Override
     public void onBindViewHolder(@NonNull PetAppointmentAdapter.MyViewHolder holder, int position) {
-        StringBuilder selectedServices = new StringBuilder();
-        String providerKey = appointmentValues.get(position).get("providerKey").toString();
+        String providerKey = appointmentValues.get(position).getProviderKey();
         DatabaseReference provRef = FirebaseDatabase.getInstance().getReference("providers");
-        ArrayList<Services> services = (ArrayList<Services>) appointmentValues.get(position).get("services_requested");
-        for (int i = 0; i < services.size(); i++) {
-
-            selectedServices.append(services.get(i).getServicename() + ", ");
-        }
-
         provRef.child(providerKey).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     ServiceProvider serviceProvider = dataSnapshot.getValue(ServiceProvider.class);
-                    holder.providerName.setText(serviceProvider.getClinicname());
-                    holder.appointmentDateTime.setText("Date and Time: " + appointmentValues.get(position).get("date") + " - " + appointmentValues.get(position).get("time"));
-                    holder.appointmentServices.setText("Requested Services: " +  selectedServices);
-//                    holder.appointmentStatus.setText("Status: " + appointments.get(position).getStatus());
+                    if(serviceProvider.getUsertype().equals("vetwithclinic")){
+                        DatabaseReference clinicRef = FirebaseDatabase.getInstance().getReference("clinics").child(providerKey);
+                        clinicRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Clinic clinic = dataSnapshot.getValue(Clinic.class);
+                                holder.providerName.setText(clinic.getName());
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }else {
+                        holder.providerName.setText("Dr. " + serviceProvider.getFirstname() + " " + serviceProvider.getLastname());
+
+                    }
+                    holder.appointmentDateTime.setText("Date and Time: " + appointmentValues.get(position).getDate() + " - " + appointmentValues.get(position).getTime());
+                    holder.appointmentServices.setText("Requested Services: " + appointmentValues.get(position).getServices_requested());
+                    holder.appointmentStatus.setText("Status: " + appointmentValues.get(position).getStatus());
                 }
 //                services.clear();
             }

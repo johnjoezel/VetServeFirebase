@@ -35,6 +35,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.example.vetservefirebase.FreelanceVet.VetMainActivity" />
+
         <service
             android:name="com.example.vetservefirebase.MyFirebaseMessagingService"
             android:exported="false" >
@@ -52,14 +54,13 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD3E48J-Ze8go3MoXFZJq6mTzHPWX5p2x0" />
+            android:value="AIzaSyChNcyNy3P6RYEROkc2fesgRHz_vtEckoE" />
 
-        <activity android:name="com.example.vetservefirebase.LocateClinic" />
         <activity
             android:name="com.example.vetservefirebase.ServiceProvider.ServiceProvidersList"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity"
+            android:name="com.example.vetservefirebase.PetOwner.ChangePasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.example.vetservefirebase.AddPet.AddPetActivity"
@@ -185,7 +186,10 @@
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
-        </service>
+        </service> <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"

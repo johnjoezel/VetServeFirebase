@@ -45,7 +45,7 @@ public class SchedulesFragment extends Fragment {
     TextView noappointments;
     private DatabaseReference appointmentRef = FirebaseDatabase.getInstance().getReference("appointments");
     private PetAppointmentAdapter mAdapter;
-    ArrayList<Map<String, Object>> appointmentValues;
+    ArrayList<Appointment> appointmentValues;
     private String uId;
     private String petKey;
 
@@ -77,9 +77,9 @@ public class SchedulesFragment extends Fragment {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.exists()) {
                    Appointment appointment = dataSnapshot.getValue(Appointment.class);
-                   if(appointment.getuId().equals(uId) && appointment.getPetKey().equals(petKey)){
+                   if(appointment.getuId().equals(uId) && appointment.getPetKey().equals(petKey) && appointment.getStatus().equals("pending")){
                        noappointments.setVisibility(View.INVISIBLE);
-                       appointmentValues.add(appointment.toMap());
+                       appointmentValues.add(appointment);
                        mAdapter.notifyDataSetChanged();
                    }
                 }

@@ -18,6 +18,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FreelanceVet.VetMainActivity"></activity>
+
         <service
             android:name=".MyFirebaseMessagingService"
             android:exported="false">
@@ -35,14 +37,13 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD3E48J-Ze8go3MoXFZJq6mTzHPWX5p2x0" />
+            android:value="AIzaSyChNcyNy3P6RYEROkc2fesgRHz_vtEckoE" />
 
-        <activity android:name=".LocateClinic" />
         <activity
             android:name=".ServiceProvider.ServiceProvidersList"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PetOwnerProfile.ChangePasswordActivity"
+            android:name=".PetOwner.ChangePasswordActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddPet.AddPetActivity"

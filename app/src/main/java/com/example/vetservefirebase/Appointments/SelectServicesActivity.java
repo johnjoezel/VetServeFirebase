@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.Services;
 import com.example.vetservefirebase.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -35,6 +36,7 @@ public class SelectServicesActivity extends AppCompatActivity {
     private DatabaseReference dRef = FirebaseDatabase.getInstance().getReference("services");
     private String providerKey;
     FirebaseRecyclerOptions<Services> options;
+    ServiceProvider provider;
     ArrayList<Services> selectedServices = new ArrayList<>();
     FirebaseRecyclerAdapter<Services, SelectServicesActivity.RequestViewHolder> mAdapter;
 
@@ -43,8 +45,10 @@ public class SelectServicesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_services);
         ButterKnife.bind(this);
-        if(getIntent().hasExtra("providerKey"))
+        if(getIntent().hasExtra("providerKey") && getIntent().hasExtra("provider")) {
             providerKey = getIntent().getStringExtra("providerKey");
+            provider = getIntent().getParcelableExtra("provider");
+        }
         loadServices();
         services.setAdapter(mAdapter);
         mAdapter.startListening();
@@ -57,9 +61,14 @@ public class SelectServicesActivity extends AppCompatActivity {
         finish();
     }
     private void loadServices() {
+        if(provider.getUsertype().equals("vetwithclinic")) {
+            dRef = FirebaseDatabase.getInstance().getReference("clinics").child(providerKey).child("services");
+        }else{
+            dRef = FirebaseDatabase.getInstance().getReference("providers").child(providerKey).child("services");
+        }
         services.setLayoutManager(new LinearLayoutManager(this));
         options = new FirebaseRecyclerOptions.Builder<Services>()
-                .setQuery(dRef.child(providerKey), Services.class)
+                .setQuery(dRef, Services.class)
                 .build();
         mAdapter = new FirebaseRecyclerAdapter<Services, SelectServicesActivity.RequestViewHolder>(options) {
             @Override

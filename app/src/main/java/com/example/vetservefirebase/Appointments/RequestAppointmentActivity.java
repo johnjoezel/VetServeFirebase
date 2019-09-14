@@ -21,6 +21,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.MainActivity;
 import com.example.vetservefirebase.Model.Appointment;
 import com.example.vetservefirebase.Model.Pet;
+import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.Services;
 import com.example.vetservefirebase.Others.CircleTransform;
 import com.example.vetservefirebase.Others.ShowAlert;
@@ -74,6 +75,7 @@ public class RequestAppointmentActivity extends AppCompatActivity {
     TimePickerDialog timePickerDialog;
     private static final int SERVICE_REQUEST = 2;
     private String providerKey, petKey, uId;
+    ServiceProvider  provider;
     ArrayList<Services> selectedServices;
     private DatabaseReference dRef;
     @Override
@@ -81,8 +83,10 @@ public class RequestAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_appointments);
         ButterKnife.bind(this);
-        if(getIntent().hasExtra("providerKey"))
+        if(getIntent().hasExtra("providerKey") && getIntent().hasExtra("provider")) {
             providerKey = getIntent().getStringExtra("providerKey");
+            provider = getIntent().getParcelableExtra("provider");
+        }
         uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
@@ -129,6 +133,7 @@ public class RequestAppointmentActivity extends AppCompatActivity {
                 intent = new Intent(this,
                         SelectServicesActivity.class);
                 intent.putExtra("providerKey", providerKey);
+                intent.putExtra("provider", provider);
                 startActivityForResult(intent , SERVICE_REQUEST);
                 break;
             case R.id.btnRequest:
@@ -145,6 +150,7 @@ public class RequestAppointmentActivity extends AppCompatActivity {
         String appDate = appointmentDate.getText().toString();
         String appTime = appointmentTime.getText().toString();
         String appExtraNotes = appointmentNotes.getText().toString();
+        String selectedServices = appointmentServices.getText().toString();
         String appointmentRequestCreated = getTimestamp();
         String status = "pending";
         Appointment appointment = new Appointment(uId ,petKey, appDate, appTime, appExtraNotes, providerKey, selectedServices, status, appointmentRequestCreated);

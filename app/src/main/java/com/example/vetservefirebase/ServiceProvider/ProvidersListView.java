@@ -18,12 +18,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.vetservefirebase.Model.Clinic;
 import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -62,20 +66,60 @@ public class ProvidersListView extends Fragment {
 
             @Override
             protected void onBindViewHolder(@NonNull ProvidersListView.RequestViewHolder requestViewHolder, int i, @NonNull ServiceProvider provider) {
-                requestViewHolder.viewClinicname.setText(provider.getClinicname());
-                requestViewHolder.viewCliniclocation.setText(provider.getLocation());
-                requestViewHolder.linkToClinicProfile.setPaintFlags(requestViewHolder.linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                requestViewHolder.linkToClinicProfile.setText("View Details");
-                requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String providerKey = adapter.getRef(searchProviders.getChildLayoutPosition(view)).getKey();
-                        Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
-                        intent.putExtra("provider", provider);
-                        intent.putExtra("providerKey", providerKey);
-                        startActivity(intent);
+                Log.d("pisti", "onBindViewHolder: " + provider.getSubscribed());
+                if(!provider.getSubscribed().equals("pending")){
+                    if(provider.getUsertype().equals("vetwithclinic")){
+                        String key = adapter.getRef(i).getKey();
+                        dRef = FirebaseDatabase.getInstance().getReference("clinics").child(key);
+                        dRef.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Clinic clinic = dataSnapshot.getValue(Clinic.class);
+                                requestViewHolder.viewClinicname.setText(clinic.getName());
+                                requestViewHolder.viewCliniclocation.setText(clinic.getLocation());
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }else{
+                        requestViewHolder.viewClinicname.setText("Dr. "+ provider.getFirstname() + provider.getLastname());
+                        requestViewHolder.viewCliniclocation.setText(provider.getAddress());
                     }
-                });
+                    requestViewHolder.linkToClinicProfile.setPaintFlags(requestViewHolder.linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                    requestViewHolder.linkToClinicProfile.setText("View Details");
+                    requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String providerKey = adapter.getRef(searchProviders.getChildLayoutPosition(view)).getKey();
+                            Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
+                            intent.putExtra("provider", provider);
+                            intent.putExtra("providerKey", providerKey);
+                            startActivity(intent);
+                        }
+                    });
+                }
+
+
+
+
+//                requestViewHolder.viewClinicname.setText(provider.getClinicname());
+//                requestViewHolder.viewCliniclocation.setText(provider.getLocation());
+//                requestViewHolder.linkToClinicProfile.setPaintFlags(requestViewHolder.linkToClinicProfile.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//                requestViewHolder.linkToClinicProfile.setText("View Details");
+//                requestViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        String providerKey = adapter.getRef(searchProviders.getChildLayoutPosition(view)).getKey();
+//                        Intent intent = new Intent(getContext(), ProviderProfileActivity.class);
+//                        intent.putExtra("provider", provider);
+//                        intent.putExtra("providerKey", providerKey);
+//                        startActivity(intent);
+//                    }
+//                });
 
             }
             @NonNull

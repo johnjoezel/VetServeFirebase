@@ -101,7 +101,7 @@ public class ServiceProviderFragment extends Fragment {
 
             @Override
             public void onLongClick(View view, int position) {
-                ShowAlert.alertRemoveProvider(getContext(), providers.get(position).getClinicname(), userprovKey.get(position), uId);
+                ShowAlert.alertRemoveProvider(getContext(), providers.get(position).getFirstname(), userprovKey.get(position), uId);
             }
         }));
         return view;

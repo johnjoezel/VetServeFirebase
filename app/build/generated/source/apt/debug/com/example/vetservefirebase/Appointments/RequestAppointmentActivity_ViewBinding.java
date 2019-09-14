@@ -17,15 +17,15 @@ import java.lang.Override;
 public class RequestAppointmentActivity_ViewBinding implements Unbinder {
   private RequestAppointmentActivity target;
 
-  private View view7f0a0025;
+  private View view7f0a0023;
+
+  private View view7f0a0026;
 
   private View view7f0a0028;
 
-  private View view7f0a002a;
+  private View view7f0a00c3;
 
-  private View view7f0a00d0;
-
-  private View view7f0a003c;
+  private View view7f0a003a;
 
   @UiThread
   public RequestAppointmentActivity_ViewBinding(RequestAppointmentActivity target) {
@@ -42,7 +42,7 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
     target.petname = Utils.findRequiredViewAsType(source, R.id.petname, "field 'petname'", TextView.class);
     view = Utils.findRequiredView(source, R.id.appointmentDate, "field 'appointmentDate' and method 'onClicks'");
     target.appointmentDate = Utils.castView(view, R.id.appointmentDate, "field 'appointmentDate'", TextView.class);
-    view7f0a0025 = view;
+    view7f0a0023 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,7 +51,7 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.appointmentServices, "field 'appointmentServices' and method 'onClicks'");
     target.appointmentServices = Utils.castView(view, R.id.appointmentServices, "field 'appointmentServices'", TextView.class);
-    view7f0a0028 = view;
+    view7f0a0026 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,7 +60,7 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.appointmentTime, "field 'appointmentTime' and method 'onClicks'");
     target.appointmentTime = Utils.castView(view, R.id.appointmentTime, "field 'appointmentTime'", TextView.class);
-    view7f0a002a = view;
+    view7f0a0028 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,7 +69,7 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
     });
     target.appointmentNotes = Utils.findRequiredViewAsType(source, R.id.appointmentNotes, "field 'appointmentNotes'", EditText.class);
     view = Utils.findRequiredView(source, R.id.linearLayout2, "method 'onClicks'");
-    view7f0a00d0 = view;
+    view7f0a00c3 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -77,7 +77,7 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btnRequest, "method 'onClicks'");
-    view7f0a003c = view;
+    view7f0a003a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -100,15 +100,15 @@ public class RequestAppointmentActivity_ViewBinding implements Unbinder {
     target.appointmentTime = null;
     target.appointmentNotes = null;
 
-    view7f0a0025.setOnClickListener(null);
-    view7f0a0025 = null;
+    view7f0a0023.setOnClickListener(null);
+    view7f0a0023 = null;
+    view7f0a0026.setOnClickListener(null);
+    view7f0a0026 = null;
     view7f0a0028.setOnClickListener(null);
     view7f0a0028 = null;
-    view7f0a002a.setOnClickListener(null);
-    view7f0a002a = null;
-    view7f0a00d0.setOnClickListener(null);
-    view7f0a00d0 = null;
-    view7f0a003c.setOnClickListener(null);
-    view7f0a003c = null;
+    view7f0a00c3.setOnClickListener(null);
+    view7f0a00c3 = null;
+    view7f0a003a.setOnClickListener(null);
+    view7f0a003a = null;
   }
 }

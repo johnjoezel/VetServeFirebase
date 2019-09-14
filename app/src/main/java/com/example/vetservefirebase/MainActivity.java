@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,15 +22,12 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.vetservefirebase.AddPet.AddPetActivity;
-import com.example.vetservefirebase.Base.BaseView;
 import com.example.vetservefirebase.Model.Pet;
 import com.example.vetservefirebase.Model.ServiceProvider;
 import com.example.vetservefirebase.Model.User;
 import com.example.vetservefirebase.Others.CircleTransform;
-import com.example.vetservefirebase.Others.ConnectionDetector;
-import com.example.vetservefirebase.Others.ShowAlert;
-import com.example.vetservefirebase.PetOwnerProfile.ChangePasswordActivity;
-import com.example.vetservefirebase.PetOwnerProfile.ProfileFragment;
+import com.example.vetservefirebase.PetOwner.ChangePasswordActivity;
+import com.example.vetservefirebase.PetOwner.EditProfileFragment;
 import com.example.vetservefirebase.ServiceProvider.ServiceProvidersList;
 import com.example.vetservefirebase.SignIn.SignInActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -256,9 +252,9 @@ public class MainActivity extends AppCompatActivity {
                 blankFragment1.setArguments(arguments);
                 return blankFragment1;
             case 2:
-                ProfileFragment profileFragment = new ProfileFragment();
-                profileFragment.setArguments(userarguments);
-                return profileFragment;
+                EditProfileFragment editProfileFragment = new EditProfileFragment();
+                editProfileFragment.setArguments(userarguments);
+                return editProfileFragment;
             default:
                 return new BlankFragment();
         }

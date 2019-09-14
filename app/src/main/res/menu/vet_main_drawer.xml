@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="vet_nav_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/editpetbutton"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/patients"
+            android:icon="@drawable/petdefaultpic"
+            android:title="@string/nav_mypatient" />
+        <item
+            android:id="@+id/clients"
+            android:icon="@drawable/prof_user"
+            android:title="@string/nav_clients"/>
+        <item
+            android:id="@+id/appointments"
+            android:icon="@drawable/reqappointment"
+            android:title="@string/nav_appointments"/>
+    </group>
+
+    <item android:title="Others">
+        <menu>
+            <!--<item-->
+            <!--android:id="@+id/nav_feedback"-->
+            <!--android:icon="@drawable/prof_feedback"-->
+            <!--android:title="Feedbacks" />-->
+            <item
+                android:id="@+id/vet_changepassword"
+                android:icon="@drawable/prof_password"
+                android:title="Change Your Password" />
+            <item
+                android:id="@+id/vet_logout"
+                android:icon="@drawable/logout_logo"
+                android:title="Logout" />
+        </menu>
+    </item>
+</menu>
